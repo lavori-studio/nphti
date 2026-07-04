@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Faculty — Modern Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,16..72,400;0,16..72,500;0,16..72,600;1,16..72,400;1,16..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f8f6f1; --ink:#22252e; --soft:#565a64; --faint:#8a8d96;
+    --accent:#424c9a; --teal:#2f7f93;
+    --line:#e4e0d4; --line-strong:#cfc9b8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto;font-weight:400;
+    color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:clamp(22px,4vw,44px) clamp(20px,5vw,52px) clamp(48px,6vw,80px);}
+
+  .label{font-family:'Inter',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{text-align:center;padding:clamp(20px,4vw,48px) 0 clamp(28px,4vw,40px);border-bottom:1px solid var(--line-strong);}
+  .masthead .kicker{font-family:'Inter',sans-serif;font-weight:500;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);}
+  .masthead h1{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(48px,10vw,96px);line-height:.95;letter-spacing:-.01em;color:var(--ink);margin:16px 0 0;}
+  .masthead .standfirst{font-family:'Newsreader',serif;font-style:italic;font-weight:400;font-size:clamp(17px,2.4vw,21px);color:var(--soft);max-width:520px;margin:18px auto 0;line-height:1.55;}
+  .masthead .vol{font-family:'Inter',sans-serif;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-top:22px;}
+  .masthead .vol span{color:var(--accent);}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,82px);}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:clamp(24px,3vw,36px);}
+  .sec-head .num{font-family:'Newsreader',serif;font-style:italic;font-weight:500;font-size:clamp(22px,3vw,30px);color:var(--accent);flex:0 0 auto;}
+  .sec-head .sec-title{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,4vw,38px);line-height:1;color:var(--ink);flex:0 0 auto;letter-spacing:-.01em;}
+  .sec-head .ln{flex:1 1 auto;height:1px;background:var(--line-strong);transform:translateY(-6px);}
+  .sec-head .tag{flex:0 0 auto;transform:translateY(-4px);}
+
+  /* ===== FOUNDERS ===== */
+  .lead{display:grid;grid-template-columns:140px 1fr;gap:clamp(20px,3vw,40px);padding:clamp(24px,3vw,36px) 0;border-bottom:1px solid var(--line);}
+  .lead:first-of-type{border-top:1px solid var(--line);}
+  .lead .initial{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(72px,11vw,112px);line-height:.8;color:var(--accent);}
+  .lead .roles{font-family:'Inter',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:18px;line-height:1.9;}
+  .lead h3{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4.4vw,40px);line-height:1.04;color:var(--ink);letter-spacing:-.01em;}
+  .lead .cred{font-family:'Inter',sans-serif;font-weight:500;font-size:12px;letter-spacing:.05em;color:var(--teal);margin-top:8px;}
+  .lead .bio{font-family:'Newsreader',serif;font-size:clamp(16px,2vw,18px);color:var(--soft);line-height:1.75;margin-top:16px;max-width:54ch;}
+  @media(max-width:600px){
+    .lead{grid-template-columns:1fr;gap:10px;}
+    .lead .initial{font-size:64px;}
+    .lead .roles{margin-top:6px;}
+  }
+
+  /* ===== TEACHING FACULTY (directory) ===== */
+  .directory{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,56px);}
+  @media(max-width:620px){.directory{grid-template-columns:1fr;}}
+  .entry{padding:clamp(20px,2.4vw,26px) 0;border-top:1px solid var(--line);position:relative;transition:padding-left .25s ease;}
+  .entry::before{content:"";position:absolute;left:-2px;top:clamp(20px,2.4vw,26px);bottom:clamp(20px,2.4vw,26px);width:2px;background:var(--accent);opacity:0;transition:opacity .25s ease;}
+  .entry:hover{padding-left:16px;}
+  .entry:hover::before{opacity:1;}
+  .entry-top{display:flex;align-items:center;gap:15px;}
+  .mono{
+    flex:0 0 auto;width:46px;height:46px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line-strong);border-radius:3px;
+    font-family:'Newsreader',serif;font-weight:500;font-size:17px;color:var(--accent);letter-spacing:.02em;
+  }
+  .entry h4{font-family:'Newsreader',serif;font-weight:500;font-size:21px;line-height:1.08;color:var(--ink);}
+  .entry .cred{font-family:'Inter',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.06em;color:var(--teal);margin-top:4px;text-transform:uppercase;}
+  .entry .role{font-family:'Inter',sans-serif;font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:12px;}
+  .entry .bio{font-family:'Newsreader',serif;font-size:15.5px;color:var(--soft);line-height:1.7;margin-top:9px;}
+
+  .note{font-family:'Inter',sans-serif;font-size:11px;color:var(--faint);text-align:center;letter-spacing:.04em;margin-bottom:8px;}
+
+  /* ===== folio bar (logo + nav) ===== */
+  .folio{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    padding-bottom:15px;margin-bottom:clamp(10px,2vw,20px);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .folio .logo{display:inline-flex;align-items:center;}
+  .folio .logo img{display:block;height:52px;width:auto;}
+  .folio nav{display:flex;align-items:center;gap:clamp(16px,2.6vw,30px);flex-wrap:wrap;}
+  .folio nav a{
+    font-family:'Inter',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--soft);
+    text-decoration:none;transition:color .15s ease;
+  }
+  .folio nav a:hover{color:var(--ink);}
+  .folio nav a[aria-current="page"]{color:var(--accent);}
+  .folio nav a.reg{color:var(--accent);}
+  @media(max-width:720px){.folio nav a.lnk{display:none;}}
+
+  @media (prefers-reduced-motion:reduce){
+    .entry,.entry::before{transition:none;}
+    .entry:hover{padding-left:0;}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  /* real-content additions */
+  .portrait{position:relative;width:118px;height:118px;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;background:#ece8dd;}
+  .portrait .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.03);}
+  .portrait .ini{display:none;}
+  .portrait.noimg .ph{display:none;}
+  .portrait.noimg .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:'Newsreader',serif;font-weight:500;font-size:54px;color:var(--accent);}
+  @media(max-width:600px){.portrait{width:96px;height:96px;}}
+  .mono{position:relative;overflow:hidden;padding:0;background:#ece8dd;}
+  .mono .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.03);}
+  .mono .ini{display:none;}
+  .mono.noimg .ph{display:none;}
+  .mono.noimg .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+  .entry .bio.clamp{max-height:3.4em;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent);}
+  .lead .bio.clamp{max-height:5.4em;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 65%,transparent);mask-image:linear-gradient(180deg,#000 65%,transparent);}
+  .more{margin-top:10px;background:none;border:0;cursor:pointer;padding:0;font-family:'Inter',sans-serif;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .more:hover{color:var(--ink);}
+  .namelist{list-style:none;columns:2;column-gap:clamp(28px,4vw,56px);}
+  @media(max-width:560px){.namelist{columns:1;}}
+  .namelist li{break-inside:avoid;padding:11px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:3px;}
+  .namelist .nm{font-family:'Newsreader',serif;font-weight:500;font-size:18px;color:var(--ink);line-height:1.1;}
+  .namelist .cr{font-family:'Inter',sans-serif;font-weight:500;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="folio">
+    <a class="logo" href="#" aria-label="NPHTI home"><img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute"></a>
+    <nav aria-label="Primary">
+      <a class="lnk" href="#">About</a>
+      <a class="lnk" href="#">Workshop</a>
+      <a class="lnk" href="#" aria-current="page">Faculty</a>
+      <a class="lnk" href="#">Speakers</a>
+      <a class="reg" href="#">Register</a>
+    </nav>
+  </header>
+
+  <p class="note">Design demonstration · Modern Editorial / Academic — “The Masthead” · placeholder faculty content</p>
+
+  <!-- ===== MASTHEAD ===== -->
+  <header class="masthead">
+    <div class="kicker">National Pediatric Hypnosis Training Institute</div>
+    <h1>Faculty</h1>
+    <p class="standfirst">Licensed clinicians and educators bringing pediatric clinical hypnosis to health professionals across the country.</p>
+    <div class="vol">2026 <span>·</span> Annual Workshop Faculty</div>
+  </header>
+
+  <!-- ===== I. FOUNDING FACULTY ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="num">I.</span>
+      <h2 class="sec-title">Founding Faculty</h2>
+      <span class="ln"></span>
+      <span class="label tag">The People Behind NPHTI</span>
+    </div>
+
+    <article class="lead">
+      <div>
+        <div class="portrait"><img class="ph" src="faculty/kaiser.jpg" alt="Pamela Kaiser" loading="lazy" onerror="this.closest('.portrait').classList.add('noimg')"><span class="ini">P</span></div>
+        <div class="roles">Co-Founder<br>Co-Director of Education, 2010–2021</div>
+      </div>
+      <div>
+        <h3>Pamela Kaiser</h3>
+        <div class="cred">PhD, CPNP, CNS</div>
+        <p class="bio clamp" id="ed-fb-0">Dr. Kaiser is a child/adolescent psychologist, pediatric nurse practitioner, pediatric clinical nurse specialist, and developmental specialist. She is Co-Founder of NPHTI, a founding member of NPHTI’s Board of Directors, and NPHTI Co-director of Education (2010–2021).</p><button class="more" aria-expanded="false" aria-controls="ed-fb-0">Read more</button>
+      </div>
+    </article>
+
+    <article class="lead">
+      <div>
+        <div class="portrait"><img class="ph" src="faculty/kohen.jpg" alt="Daniel P. Kohen" loading="lazy" onerror="this.closest('.portrait').classList.add('noimg')"><span class="ini">D</span></div>
+        <div class="roles">Co-Founder<br>Director of Education</div>
+      </div>
+      <div>
+        <h3>Daniel P. Kohen</h3>
+        <div class="cred">MD, FAAP, ABMH</div>
+        <p class="bio clamp" id="ed-fb-1">Dr. Kohen is NPHTI Co-Founder/Director of Education and is a Developmental-Behavioral Pediatrician now retired from clinical practice with Kohen Therapy Associates, Minnetonka, MN, and a retired Professor of Pediatrics and Family Medicine and Community Health in the Departments of Pediatrics and Family Medicine and Community Health, University of Minnesota. He is the Former Director, Fellowship Training in Developmental-Behavioral Pediatrics, Department of Pediatrics, University of Minnesota. Dr. Kohen is a Diplomate of the American Board of Pediatrics and the American Board of Medical Hypnosis and is a Fellow of the American Academy of Pediatrics, the American Society of Clinical Hypnosis, and the Society of Clinical and Experimental Hypnosis. He has been honored with multiple awards for scientific writing in clinical hypnosis and for clinical excellence and education in Pediatrics and Pediatric Clinical Hypnosis by local, national, and international hypnosis organizations. Dr. Kohen has published over 100 scientific publications including manuscripts in peer-reviewed publications, books, book chapters, and Abstracts. With Dr. Karen Olness he wrote the textbook, Hypnosis and Hypnotherapy with Children, now re-named Hypnosis with Children, in its fifth edition (2023). He has also created dozens of educational video recordings of clinical encounters illustrating and elucidating therapeutic encounters in pediatric clinical hypnosis. Dr. Kohen is past-President of and examiner for the American Board of Medical Hypnosis, past-President of the Minnesota Society of Clinical Hypnosis, and in 2016 completed 30 years as Director of Education and Training for the Minnesota Society of Clinical Hypnosis. He graduated from the Wayne State University School of Medicine and completed Pediatric Residency training at the Children’s Hospital of Michigan in Detroit and the Oklahoma Children’s Memorial Hospital in Oklahoma City. Dr. Kohen served as a Commissioned Officer in the Division of Indian Health of the U.S. Public Health Service (1971–1978).</p><button class="more" aria-expanded="false" aria-controls="ed-fb-1">Read more</button>
+      </div>
+    </article>
+
+    <article class="lead">
+      <div>
+        <div class="portrait"><img class="ph" src="faculty/olness.jpg" alt="Karen Olness" loading="lazy" onerror="this.closest('.portrait').classList.add('noimg')"><span class="ini">K</span></div>
+        <div class="roles">Inaugural Board President, 2016–2020<br>Co-Director of Education, 2010–2021</div>
+      </div>
+      <div>
+        <h3>Karen Olness</h3>
+        <div class="cred">MD, FAAP, ABMH</div>
+        <p class="bio clamp" id="ed-fb-2">Dr. Olness is board certified in Developmental and Behavioral Pediatrics and Professor Emerita of Pediatrics, Global Health and Diseases at Case Western Reserve University in Ohio; Inaugural President of the NPHTI Board of Directors (2016–2020), NPHTI Co-director of Education (2010–2021), and past president of the American Society of Clinical Hypnosis, the Society for Clinical and Experimental Hypnosis, the American Board of Hypnosis, the International Society of Hypnosis, and the Society for Developmental Behavioral Pediatrics.</p><button class="more" aria-expanded="false" aria-controls="ed-fb-2">Read more</button>
+      </div>
+    </article>
+
+    <article class="lead">
+      <div>
+        <div class="portrait"><img class="ph" src="faculty/wark.jpg" alt="David Wark" loading="lazy" onerror="this.closest('.portrait').classList.add('noimg')"><span class="ini">D</span></div>
+        <div class="roles">Founding Faculty</div>
+      </div>
+      <div>
+        <h3>David Wark</h3>
+        <div class="cred">PhD</div>
+        <p class="bio">Dr. Wark is Emeritus Professor of Psychology, University of Minnesota, Minneapolis, MN; Past President, MSCH; Board Member, International Society of Hypnosis; Past President, Fellow, and Approved Consultant, ASCH; Fellow, SCEH.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== II. TEACHING FACULTY ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="num">II.</span>
+      <h2 class="sec-title">Teaching Faculty</h2>
+      <span class="ln"></span>
+      <span class="label tag">2026 Workshop</span>
+    </div>
+
+    <div class="directory">
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/barnes.jpg" alt="Andrew Barnes" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">AB</span></div>
+          <div><h4>Andrew Barnes</h4><div class="cred">MD, MPH, FAAP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-0">Dr. Barnes is Associate Professor in Pediatrics and Adolescent Health, Developmental-Behavioral Pediatrics at the University of Minnesota, Minneapolis, MN. He currently serves as Co-Coordinator of NPHTI Workshops and has served as webmaster and listserv manager for NPHTI, and has held leadership roles in the Minnesota Society of Clinical Hypnosis. His clinical work with children and families focuses on helping children gain mastery of their own mind-body interactions — teaching biofeedback, mindfulness, and self-hypnosis to help them better regulate their thoughts, feelings, and actions. His research focuses on promoting resilience in children under stress and on the interplay between behavior and biology, with recent work on the well-being of children growing up in homeless families, published in journals including Pediatrics and The Journal of Pediatrics. He has been named a regional “top doctor” annually since 2015 by both Minnesota Monthly and Mpls-St. Paul magazines, and received the 2015 Daniel P. Kohen Outstanding Clinician Award and the 2017 Presidential Award for Service from MSCH.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-0">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/becker.jpg" alt="David K. Becker" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">DB</span></div>
+          <div><h4>David K. Becker</h4><div class="cred">MD, MPH, MA, LMFT</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-1">Dr. Becker is Clinical Professor at the UCSF Department of Pediatrics and the UCSF Osher Center for Integrative Medicine, and Co-Medical Director of the IP3 Pediatric Pain Management Clinic. He has extensive training and clinical experience with integrative medicine, mind-body strategies, chronic pain management, and clinical psychology, seeing children and young adults with a range of chronic and complex medical issues, with a focus on chronic pain. He also provides mental health counseling focusing on anxiety, depression, and behavior concerns, as well as family therapy. He received his medical degree, Master’s in Public Health, and pediatric residency training from the University of North Carolina, Chapel Hill, with additional training including the Fellowship in Integrative Medicine at the University of Arizona, a master’s in Clinical Psychology from the Wright Institute, and a three-year psychotherapy internship at the San Francisco Psychotherapy Research Group. Dr. Becker has a background in global humanitarian aid with several relief organizations, including Doctors Without Borders, and teaches and lectures nationally and internationally on integrative medicine, mental health, chronic pain management, and mind-body strategies.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-1">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/bemel.jpg" alt="Cheryl S. Bemel" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">CB</span></div>
+          <div><h4>Cheryl S. Bemel</h4><div class="cred">PhD, LP, NCSP, CTTS</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-2">Dr. Bemel is a Licensed Child/Adolescent Psychologist, Nationally Certified School Psychologist, and a member of the Minnesota Behavioral Health Medical Reserve Corps. She is President of the Minnesota Society of Clinical Hypnosis (MSCH) and an Approved Consultant with the American Society of Clinical Hypnosis. With special expertise in assisting those experiencing crisis, trauma, and other emergencies, she has provided Psychological First Aid at disaster sites following Hurricane Harvey, trauma services within the Minneapolis Police Department’s Child Development Policing Project, and interventions as a Crisis Psychologist in hospital emergency rooms. In her current private practice she sees children, teens, and adults targeting habit control, healthier relationships with food, trauma treatment, healing from chronic pain, and living well with chronic health conditions. With a National Certificate in Tobacco Treatment Practice, she also assists adolescents to become non-smokers.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-2">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/berberich.jpg" alt="F. Ralph Berberich" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">FB</span></div>
+          <div><h4>F. Ralph Berberich</h4><div class="cred">MD, FAAP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-3">Dr. Berberich attended Columbia University and the New York University School of Medicine. He trained in Pediatrics at the University of California, San Diego, and in Pediatric Hematology and Oncology at Children’s Orthopedic Hospital, Seattle, and at Stanford University. Prior to entering private practice, Dr. Berberich was on the clinical faculty at Stanford and attended as staff physician in Hematology-Oncology at the Children’s Hospital at Stanford. During 1989–1992 he served as Chief of Pediatrics at Alta Bates Medical Center.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-3">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/bhandari.jpg" alt="Rashmi Bhandari" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">RB</span></div>
+          <div><h4>Rashmi Bhandari</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio">Dr. Bhandari is Clinical Professor in the Department of Anesthesia at Stanford University Medical Center and works as a pediatric pain psychologist in an interdisciplinary clinic treating youth with chronic pain.</p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/bogin.jpg" alt="Frederick Bogin" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">FB</span></div>
+          <div><h4>Frederick Bogin</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-5">Dr. Bogin is a retired Assistant Professor in Pediatrics, University of Connecticut School of Medicine, and maintains a part-time private practice at CLINIC Alternative Medicines in Northampton, MA. A graduate of Yale College and New York Medical College, he completed his pediatric residency at the University of Connecticut and a one-year mini-fellowship in Developmental-Behavioral Pediatrics, in which he is Board Certified. He spent the last 15 years of his career as Director of the Pediatric Primary Care Center at Saint Francis Hospital in Hartford, CT. Dr. Bogin attended his first pediatric hypnosis training in 1979 and has been involved in the education and clinical practice of pediatric hypnotherapy since. He is a member of ASCH.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-5">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/carlson.jpg" alt="Torie Carlson" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">TC</span></div>
+          <div><h4>Torie Carlson</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-6">Dr. Carlson is a Registered Psychologist with expertise working with children and adults. He received his PhD in Counselling Psychology from Ball State University in 2002. Since 2008 he has worked at the Alberta Children’s Hospital on the Pediatric Complex Pain Team and Burn Team, helping kids and families with self-management approaches to pain, with a special interest in biofeedback and hypnosis.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-6">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/ceppicozzio.jpg" alt="Camilla Gabriella Ceppi Cozzio" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">CC</span></div>
+          <div><h4>Camilla Gabriella Ceppi Cozzio</h4><div class="cred">MD, FMH</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-7">Dr. Ceppi Cozzio maintains a private practice in Dübendorf, Switzerland. She is a member of the Swiss Society of Pediatrics, the Swiss Medical Society of Hypnosis (SMSH), and the Swiss Academy of Psychosomatic and Psychosocial Medicine, and an International Member of ASCH. Early in her career she worked in a Romanian orphanage and was a research assistant at the Department of Neurology, UCSF. She has used hypnosis as part of her general pediatric practice for over a decade, treating headaches, sleep disorders, nocturnal enuresis, functional abdominal pain, tics, and acute pain. As a teacher she is involved in advanced studies in child development and the education of medical students at the University of Zurich, and lectures locally and nationally on hypnosis. She is an SMSH Approved Consultant.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-7">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/erickson.jpg" alt="Candace J. Erickson" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">CE</span></div>
+          <div><h4>Candace J. Erickson</h4><div class="cred">MD, MPH, FAAP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-8">Dr. Erickson is Associate Professor of Clinical Pediatrics at the Columbia University College of Physicians and Surgeons and Director of Developmental and Behavioral Pediatrics at The Brooklyn Hospital Center, New York. In 1987 she developed and implemented the first 3-day skill-building Clinical Hypnosis Workshop for pediatric health care professionals as a pre-meeting workshop of the Society for Developmental and Behavioral Pediatrics (SDBP). For 22 years she was Course Director of the SDBP Pediatric Clinical Hypnosis Workshops, bringing together a core teaching faculty that became NPHTI’s senior faculty, and has been senior faculty since NPHTI’s inception in 2010. For 39 years she has directed and taught skill-building pediatric hypnosis workshops at hospitals, mental health programs, hypnosis societies, and national conferences. Her research has examined the use of self-hypnosis by children with sickle cell anemia and perceptions of hypnosis and biofeedback among inner-city Hispanic children and families, and she received a NIMH Clinical Investigator Award for her study of coping with chronic illness in children. She directed Developmental and Behavioral Pediatrics at Columbia’s Children’s Hospital of New York Presbyterian for 20 years and helped formulate the curriculum requirements for the subspecialty of Developmental and Behavioral Pediatrics.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-8">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/gershan.jpg" alt="Lynn Gershan" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">LG</span></div>
+          <div><h4>Lynn Gershan</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-9">Dr. Gershan is a graduate of McGill University School of Medicine and completed her pediatric residency at the University of Michigan and McGill, followed by a Neonatal-Perinatal fellowship at McGill and St. Louis Universities. Her career began at the Medical College of Wisconsin before she moved to private general pediatric practice and then trained in Integrative Health. She returned to academics in 2010 to start the Integrative Health program at the University of Utah–Primary Children’s Hospital and recently retired as founding Medical Director of Pediatric Integrative Health and Wellbeing at the University of Minnesota Masonic Children’s Hospital. Her published research and clinical interests include incorporating Traditional Chinese Medicine, self-hypnosis, and other integrative modalities into pediatric academic health centers. She is board certified in Medical Acupuncture and certified in clinical hypnosis, medical herbalism, pediatric massage therapy, and aromatherapy. As a member of the NPHTI Board, she looks forward to contributing to NPHTI’s mission and scope.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-9">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/gold.jpg" alt="Melanie A. Gold" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">MG</span></div>
+          <div><h4>Melanie A. Gold</h4><div class="cred">DO, DABMA, DMQ, FAAP, FACOP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-10">Dr. Gold is Professor of Adolescent Medicine at Columbia University Medical Center; Professor in the Department of Population &amp; Family Health, Mailman School of Public Health; and Medical Director of School-Based Health Centers at New York-Presbyterian Hospital. She serves on the Executive Committee of the AAP Section on Integrative Medicine and is a Diplomate of the American Board of Medical Acupuncture, holding a Doctorate in Medical Qi Gong. A Motivational Interviewing Network Trainer since 2000, she has conducted numerous trainings on MI and behavior-change counseling for health care professionals. She began using hypnosis in 1993 and has taught pediatric clinical hypnosis since 1996. With NICHD funding she studied the effectiveness of MI for reducing sexual risk-taking, and she co-led a $3.6 million CDC and Office of Adolescent Health study testing a computer-assisted MI intervention. Dr. Gold is president and founder of Renaissance Research and Educational Consulting, Inc.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-10">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/griffin.jpg" alt="Anya Griffin" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">AG</span></div>
+          <div><h4>Anya Griffin</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio">Dr. Griffin is a Pediatric Psychologist working in chronic pain management, with a special focus on Complex Regional Pain Syndrome (CRPS) and acute and chronic pain management in Sickle Cell Disease.</p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/kass.jpg" alt="Lewis Kass" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">LK</span></div>
+          <div><h4>Lewis Kass</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio">Dr. Kass works in Pediatric Pulmonology and Sleep Medicine at The Center for Clinical Hypnosis in Mount Kisco, NY, and is Medical Director of the Pediatric Sleep Disorders Center at Norwalk Hospital in Norwalk, CT.</p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/keating.jpg" alt="Adam Keating" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">AK</span></div>
+          <div><h4>Adam Keating</h4><div class="cred">MD, FAAP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-13">Dr. Keating is Section Head of Community Pediatrics at Cleveland Clinic Children’s in Wooster, Ohio, and Quality Improvement Officer at Cleveland Clinic Community Pediatrics. He is former Medical Director of the Longbrake Student Wellness Center at The College of Wooster; Clinical Assistant Professor of Pediatrics at the Cleveland Clinic Lerner College of Medicine; and Clinical Associate Professor of Pediatrics at the Ohio University Heritage College of Osteopathic Medicine. He has used hypnosis as part of his general pediatric practice for his entire career, since being introduced to it in his third year of medical school at the University of Rochester, and is an ASCH Approved Consultant and a member of the AAP Section for Complementary and Integrative Medicine. He regularly teaches medical students and works to integrate mental health and primary care for the Cleveland Clinic Children’s population.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-13">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/kono.jpg" alt="Bryan Kono" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">BK</span></div>
+          <div><h4>Bryan Kono</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-14">Dr. Kono is an integrative pediatrician, founder of Highlands Integrative Pediatrics in Denver, and Clinical Instructor at the University of Colorado School of Medicine. He has used hypnosis and biofeedback in practice since 2009. During medical training he relied on journaling and the writing and reading of poetry to process profound patient experiences, and afterward authored the book A Rich Residence: The Poetic Education of a Pediatrician-In-Training. He is currently interested in reframing burnout in healthcare through a poetic lens and offers the workshop From Burnout to Burning Bright.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-14">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/kuttner.jpg" alt="Leora Kuttner" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">LK</span></div>
+          <div><h4>Leora Kuttner</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-15">Dr. Kuttner is Clinical Professor of Pediatrics at the University of British Columbia and BC Children’s Hospital in Vancouver, Canada. Recipient of the American Pain Society’s Jeffrey Lawson Award for Advocacy in Children’s Pain Relief (2007), she is internationally recognized for her work in pain management, with over 45 journal articles and two books — the most recent, A Child in Pain: What Health Professionals Can Do to Help (2010), translated into Italian, French, and Mandarin. As a documentary filmmaker she co-produced and directed the award-winning films No Fears, No Tears (1985), No Fears, No Tears — 13 Years Later (1998), Making Every Moment Count (2003), and Dancing with Pain (2013). Trained in hypnosis in 1976, she has taught pain management and pediatric hypnosis since 1987 throughout Europe, the Middle East, Australia, New Zealand, and Asia, and has taught with NPHTI since its founding in 2010. She serves on the NPHTI Board of Directors and is NPHTI Director of Education (2024–present).</p><button class="more" aria-expanded="false" aria-controls="ed-tb-15">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/lombard.jpg" alt="Lisa Lombard" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">LL</span></div>
+          <div><h4>Lisa Lombard</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-16">Dr. Lombard is a clinical psychologist in private practice in Chicago and co-founder of Comfort Kits for Children®, a 501(c)(3) nonprofit. A former Research Assistant Professor at Northwestern University Feinberg School of Medicine, she studied the psychosocial impacts of food allergies and integrated mindfulness and self-hypnosis into research on food allergies, asthma, and COVID-19, and was an Associate Professor at the Chicago School of Professional Psychology. Her clinical work spans inpatient and outpatient settings, academic testing, and community mental health, helping children, families, and adults cope with anxiety, stress-mediated health concerns, pain, and traumatic bereavement. In 2022 she co-founded the Comfort Kits for Children Initiative, which has delivered nearly 2,000 kits to children affected by conflict, disaster, and illness across Ukraine, Poland, Turkey, Israel, Chile, Maui, Chicago, and Minneapolis. She earned her BA and PhD from the University of Chicago, training with Erika Fromm, PhD, and currently serves as President of the NPHTI Board and President-Elect of APA Division 30.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-16">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/pendergrast.jpg" alt="Robert A. Pendergrast, Jr." loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">RP</span></div>
+          <div><h4>Robert A. Pendergrast, Jr.</h4><div class="cred">MD, MPH, FAAP</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-17">Dr. Pendergrast is Professor of Pediatrics and Director of Adolescent Medicine at the Medical College of Georgia at Augusta University. He completed Pediatrics Residency and a Fellowship in Adolescent Medicine at the University of Mississippi Medical Center, and earned a graduate degree in Public Health at Johns Hopkins. Director of Adolescent Medicine at MCG since 1997, he began training in clinical hypnosis in 2002 and started the Pediatric Mind-Body Program at MCG in 2003, serving children and teens with chronic pain and other chronic conditions. He completed the Fellowship at the Arizona Center for Integrative Medicine in 2005 and is a founding member of the AAP Section on Integrative Medicine, and has been part of NPHTI’s Core Faculty since 2012. He has authored numerous research articles and book chapters; his book Breast Cancer: Reduce Your Risk with Foods You Love was a 2011 Indie Excellence National Book Awards finalist.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-17">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/sarwar.jpg" alt="Nadia Sarwar" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">NS</span></div>
+          <div><h4>Nadia Sarwar</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio">Dr. Sarwar is board certified in Pediatrics and Clinical Hypnosis. She works at Centerpoint Medicine in La Jolla, California.</p>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/sencion.jpg" alt="Alejandra Sención" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">AS</span></div>
+          <div><h4>Alejandra Sención</h4><div class="cred">MD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-19">Dr. Sención is Co-Director of the Centro de Hipnosis Uruguay, Co-Founder of Método Abrigo, and Co-Founder of the Pain Committee at the Uruguayan Society of Pediatrics. She works in private practice with children, adolescents, and adults, with a special focus on anxiety and pain.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-19">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/szelap.jpg" alt="Mindy Szelap" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">MS</span></div>
+          <div><h4>Mindy Szelap</h4><div class="cred">LCSW</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-20">Mindy Szelap is a therapist in private practice in Oakland, California, specializing in the treatment of anxiety, depression, chronic pain, and illness in children, adolescents, and their families. After earning her graduate degree at the University of California, Berkeley, she spent over twenty years working with children with chronic and life-threatening illness in Bay Area pediatric hospitals and clinics, where she learned the value of strengthening the family system to support children through crisis and healing. She developed an integrative program combining clinical hypnosis and CBT for pediatric functional GI conditions for Stanford Children’s Health. In her current practice she incorporates process-oriented hypnosis in every encounter, drawing on positive psychology, acceptance and commitment, and cognitive behavioral therapies, and finds hypnosis an invaluable tool for envisioning more connected families and communities.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-20">Read more</button>
+      </article>
+
+      <article class="entry">
+        <div class="entry-top">
+          <div class="mono"><img class="ph" src="faculty/thomas.jpg" alt="Jody Thomas" loading="lazy" onerror="this.closest('.mono').classList.add('noimg')"><span class="ini">JT</span></div>
+          <div><h4>Jody Thomas</h4><div class="cred">PhD</div></div>
+        </div>
+        <p class="bio clamp" id="ed-tb-21">Dr. Thomas is a Licensed Clinical Psychologist in Denver, Colorado, and Adjunct Faculty in the Stanford Department of Psychiatry. A well-known expert in pediatric pain, she is a founder and the former Clinical Director of the Packard Pediatric Pain Rehabilitation Center at Stanford and a former Assistant Professor at the Stanford University School of Medicine, where she now provides supervision and teaching. As an active consultant for Lucile Packard Children’s Hospital she directs projects on the integration and innovation of pain management and hypnosis, including video-based interventions to empower children and families around pain management. With Dr. Leora Kuttner she founded and serves as Executive Director of the Meg Foundation, a non-profit dedicated to closing the gap between research and clinical practice in children’s pain prevention and management.</p><button class="more" aria-expanded="false" aria-controls="ed-tb-21">Read more</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== III. KEYNOTE & GUEST SPEAKERS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="num">III.</span>
+      <h2 class="sec-title">Keynote &amp; Guest Speakers</h2>
+      <span class="ln"></span>
+      <span class="label tag">With Gratitude</span>
+    </div>
+      <ul class="namelist">
+        <li><span class="nm">Ran Anbar</span><span class="cr">MD</span></li>
+        <li><span class="nm">Stefan Friderichsdorf</span><span class="cr">MD</span></li>
+        <li><span class="nm">Tobi B. Goldfus</span><span class="cr">LCSW-C, BCD</span></li>
+        <li><span class="nm">Lynn Lyons</span><span class="cr">LICSW</span></li>
+        <li><span class="nm">Linda Thomson</span><span class="cr">PhD, APRN, ABMH, ABHN</span></li>
+        <li><span class="nm">Arine Vlieger</span><span class="cr">MD</span></li>
+        <li><span class="nm">Mary Wilde</span><span class="cr">MD</span></li>
+        <li><span class="nm">Michael Yapko</span><span class="cr">PhD</span></li>
+      </ul>
+  </section>
+
+  <!-- ===== IV. PRIOR YEARS' TEACHING FACULTY ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="num">IV.</span>
+      <h2 class="sec-title">Prior Years&rsquo; Teaching Faculty</h2>
+      <span class="ln"></span>
+      <span class="label tag">Our History</span>
+    </div>
+      <ul class="namelist">
+        <li><span class="nm">Timothy P. Culbert</span><span class="cr">MD, FAAP, ABMH, BCB</span></li>
+        <li><span class="nm">Bob Deutsch</span><span class="cr">PhD</span></li>
+        <li><span class="nm">Howard Hall</span><span class="cr">PhD, PsyD, BCB</span></li>
+        <li><span class="nm">Kevin Harrington</span><span class="cr">PhD</span></li>
+        <li><span class="nm">Pamela Kaiser</span><span class="cr">PhD</span></li>
+        <li><span class="nm">Rebecca L. Kajander</span><span class="cr">MPH, APRN, CPMHS, BSB</span></li>
+        <li><span class="nm">Harriet Kohen</span><span class="cr">MA, MSW, LICSW, CPT</span></li>
+        <li><span class="nm">Jeff Lazarus</span><span class="cr">MD, FAAP</span></li>
+        <li><span class="nm">Kate Pfaffinger</span><span class="cr">PhD, LP, BSN, MSPH</span></li>
+        <li><span class="nm">Eileen Poulin</span><span class="cr">MD, FAAP</span></li>
+        <li><span class="nm">Theresa Quinn</span><span class="cr">MD, FAAFP, ABMH</span></li>
+        <li><span class="nm">Lynda Richtsmeier Cyr</span><span class="cr">PhD</span></li>
+        <li><span class="nm">Michele Semerit Strachan</span><span class="cr">MD</span></li>
+        <li><span class="nm">The Rev. James W. Warnke</span><span class="cr">MA, MSW, LCSW</span></li>
+        <li><span class="nm">Mark Weisberg</span><span class="cr">PhD, ABPP, LP</span></li>
+        <li><span class="nm">Elaine Wynne</span><span class="cr">MA, LP</span></li>
+      </ul>
+  </section>
+</div>
+
+<script>
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  document.querySelectorAll('.more').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var bio=document.getElementById(btn.getAttribute('aria-controls'));
+      var open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!open));
+      bio.classList.toggle('clamp',open);
+      btn.firstChild.textContent=open?'Read more ':'Show less ';
+      if(typeof reportHeight==='function')reportHeight();
+    });
+  });
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
