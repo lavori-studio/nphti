@@ -56,8 +56,8 @@
   /* ===== TEACHING FACULTY (directory) ===== */
   .directory{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,4vw,56px);}
   @media(max-width:620px){.directory{grid-template-columns:1fr;}}
-  .entry{padding:clamp(20px,2.4vw,26px) 0;border-top:1px solid var(--line);position:relative;transition:padding-left .25s ease;}
-  .entry::before{content:"";position:absolute;left:-3px;top:clamp(20px,2.4vw,26px);bottom:clamp(20px,2.4vw,26px);width:3px;background:var(--accent);opacity:0;transition:opacity .2s ease;}
+  .entry{padding:clamp(20px,2.4vw,26px) 0 clamp(20px,2.4vw,26px) 16px;border-top:1px solid var(--line);position:relative;}
+  .entry::before{content:"";position:absolute;left:0;top:clamp(20px,2.4vw,26px);bottom:clamp(20px,2.4vw,26px);width:3px;background:var(--accent);opacity:0;transition:opacity .2s ease;}
   .entry:hover::before{opacity:1;}
   .entry-top{display:flex;align-items:center;gap:15px;}
   .mono{
@@ -79,7 +79,7 @@
     border-bottom:1px solid var(--line-strong);
   }
   .folio .logo{display:inline-flex;align-items:center;}
-  .folio .logo img{display:block;height:52px;width:auto;}
+  .folio .logo img{display:block;height:74px;width:auto;}
   .folio nav{display:flex;align-items:center;gap:clamp(16px,2.6vw,30px);flex-wrap:wrap;}
   .folio nav a{
     font-family:'Inter',sans-serif;font-weight:500;font-size:11px;
@@ -93,7 +93,6 @@
 
   @media (prefers-reduced-motion:reduce){
     .entry,.entry::before{transition:none;}
-    .entry:hover{padding-left:0;}
   }
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
 
