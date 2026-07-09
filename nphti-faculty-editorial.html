@@ -117,6 +117,11 @@
   .namelist li{break-inside:avoid;padding:11px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:3px;}
   .namelist .nm{font-family:'Newsreader',serif;font-weight:500;font-size:18px;color:var(--ink);line-height:1.1;}
   .namelist .cr{font-family:'Inter',sans-serif;font-weight:500;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);}
+  @media(max-width:600px){
+    .sec-head{flex-wrap:wrap;gap:4px 12px;}
+    .sec-head .ln{display:none;}
+    .sec-head .tag{flex-basis:100%;transform:none;margin-top:1px;}
+  }
 </style>
 </head>
 <body>
@@ -133,7 +138,7 @@
     </nav>
   </header>
 
-  <p class="note">Design preview · Option A · 2026 Annual Workshop Faculty</p>
+  <p class="note">Design preview · Option A · 2026 Workshop Faculty</p>
 
   <!-- ===== MASTHEAD ===== -->
   <header class="masthead">
@@ -206,7 +211,7 @@
       <span class="num">II.</span>
       <h2 class="sec-title">Teaching Faculty</h2>
       <span class="ln"></span>
-      <span class="label tag">2026 Annual Workshops</span>
+      <span class="label tag">2026 Workshop</span>
     </div>
 
     <div class="directory">
