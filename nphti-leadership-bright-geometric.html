@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Leadership — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb;          /* cool paper, NOT warm cream */
+    --paper-2:#e7ecf8;
+    --white:#ffffff;
+    --ink:#161b38;            /* deep cool navy */
+    --mid:#5b618c;            /* cool grey-purple body */
+    --line:#dbe1f4;
+    --spark:#f2b134;          /* the single warm guest, micro-dose only */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);
+    background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+
+  .eyebrow{
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:680px;padding-left:6px;}
+  .hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(40px,8vw,82px);line-height:.96;letter-spacing:-.02em;
+    color:var(--ink);margin:18px 0 0;
+  }
+  .hero h1 .c{color:var(--purple);}
+  .hero h1 .c2{color:var(--teal);}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:480px;margin:20px 0 0;line-height:1.65;}
+
+  /* geometric play-shapes signature motif */
+  .shapes{position:absolute;top:50%;right:-80px;transform:translateY(-50%);z-index:1;width:500px;height:500px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{right:-200px;opacity:.5;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;
+    padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;
+  }
+  .sec-head .count{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;color:var(--mid);}
+
+  /* ===== CARD base ===== */
+  .card{
+    position:relative;background:var(--white);border:1.5px solid var(--line);
+    border-radius:10px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  }
+  .band{height:8px;width:100%;}           /* color-block top band */
+  .b-purple{background:var(--purple);} .b-teal{background:var(--teal);}
+  .b-lav{background:var(--lavender);} .b-aqua{background:var(--aqua);}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(22,27,56,.13);}
+  .card.t-purple:hover{border-color:var(--purple);}
+  .card.t-teal:hover{border-color:var(--teal);}
+  .card.t-lav:hover{border-color:var(--lavender);}
+  .card.t-aqua:hover{border-color:var(--aqua);}
+  /* per-hue glyph color + rotating diamond corner mark */
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+  .card::after{content:"";position:absolute;top:16px;right:16px;width:10px;height:10px;background:var(--glyph);border-radius:2px;transform:rotate(45deg);opacity:.85;transition:transform .35s ease;}
+  .card:hover::after{transform:rotate(135deg);}
+
+  .avatar{
+    flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--white);border-radius:28%;
+    position:relative;overflow:hidden;
+  }
+  .a-purple{background:var(--purple);} .a-teal{background:var(--teal);}
+  .a-lav{background:var(--lavender);} .a-aqua{background:var(--aqua);}
+  .avatar .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .avatar .ini{display:none;}
+  .avatar.noimg .ph{display:none;}
+  .avatar.noimg .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+
+  /* ===== BOARD (founder-card layout, 2-up) ===== */
+  .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;}
+  @media(min-width:720px){.board{grid-template-columns:1fr 1fr;}}
+  .member .inner{padding:24px 24px 26px;display:flex;flex-direction:column;}
+  .member-top{display:flex;align-items:center;gap:18px;}
+  .member .avatar{width:74px;height:74px;font-size:26px;}
+  .member h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;line-height:1.08;color:var(--ink);}
+  .member .cred{color:var(--mid);font-size:12.5px;font-weight:500;margin-top:4px;}
+  .member .role{color:var(--mid);font-size:11.5px;font-weight:500;margin-top:5px;line-height:1.45;letter-spacing:.02em;text-transform:uppercase;}
+  .member .bio{color:var(--mid);font-size:14px;line-height:1.7;margin-top:14px;}
+  .bio.clamp{max-height:4.4em;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent);mask-image:linear-gradient(180deg,#000 60%,transparent);}
+  .more{margin-top:11px;background:none;border:0;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.03em;color:var(--purple);display:inline-flex;align-items:center;gap:6px;}
+  .more:hover{color:#353f85;}
+  .more .chev{transition:transform .2s;display:inline-block;}
+  .more[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .member .bio a{color:var(--purple);}
+
+  .note{font-size:11.5px;color:var(--mid);text-align:center;opacity:.85;letter-spacing:.02em;margin-bottom:6px;}
+
+  /* ===== site header (4-hue band + logo + nav) ===== */
+  .topband{display:flex;height:6px;width:100%;}
+  .topband i{flex:1;display:block;}
+  .topband .p{background:var(--purple);} .topband .t{background:var(--teal);}
+  .topband .l{background:var(--lavender);} .topband .a{background:var(--aqua);}
+  .site-head{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    padding:clamp(16px,3vw,24px) 0 clamp(14px,2.2vw,20px);margin-bottom:8px;
+    border-bottom:2px solid var(--ink);
+  }
+  .site-head .logo{display:inline-flex;align-items:center;}
+  .site-head .logo img{display:block;height:80px;width:auto;}
+  .site-nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,26px);flex-wrap:wrap;}
+  .site-nav a{
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;
+    color:var(--mid);text-decoration:none;transition:color .15s ease;
+  }
+  .site-nav a:hover{color:var(--ink);}
+  .site-nav a[aria-current="page"]{color:var(--ink);}
+  .site-nav .cta{
+    color:#fff;background:var(--purple);padding:9px 18px;border-radius:8px;
+    font-size:13px;letter-spacing:.01em;
+  }
+  .site-nav .cta:hover{background:#353f85;color:#fff;}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:40px;padding:9px 10px;margin:-3px 0;background:none;border:0;cursor:pointer;}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .22s ease,opacity .2s ease;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:720px){
+    .nav-toggle{display:flex;}
+    .site-nav{display:none;flex-basis:100%;order:3;flex-direction:column;align-items:stretch;gap:0;margin-top:14px;}
+    .site-nav.open{display:flex;}
+    .site-nav a{padding:13px 4px;font-size:15px;color:var(--ink);border-top:1px solid var(--line);}
+    .site-nav a.cta{margin-top:12px;border-top:0;border-radius:8px;text-align:center;color:#fff;background:var(--purple);padding:13px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .card,.card::after{transition:none;}
+    .card:hover{transform:none;}
+    .card:hover::after{transform:rotate(45deg);}
+  }
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="topband" aria-hidden="true"><i class="p"></i><i class="t"></i><i class="l"></i><i class="a"></i></div>
+<div class="wrap">
+
+  <header class="site-head">
+    <a class="logo" href="#" aria-label="NPHTI home"><img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute"></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary">
+      <a class="lnk" href="#">About</a>
+      <a class="lnk" href="#" aria-current="page">Leadership</a>
+      <a class="lnk" href="#">Training</a>
+      <a class="lnk" href="#">Resources</a>
+      <a class="lnk" href="#">Contact</a>
+      <a class="cta" href="#">Donate</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> National Pediatric Hypnosis Training Institute</span>
+      <h1>Our <span class="c">Leadership</span>.</h1>
+      <p>The volunteer Board of Directors guiding NPHTI&rsquo;s mission &mdash; licensed clinicians, educators, and advisors from across pediatric medicine, psychology, and law.</p>
+    </div>
+  </section>
+
+  <!-- ===== BOARD ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Meet the board</span><h2>NPHTI Board of Directors</h2></div>
+    </div>
+    <div class="board">
+
+      <article class="card member t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-purple"><img class="ph" src="board/bemel.jpg" alt="Cheryl Bemel" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">CB</span></div>
+            <div><h3>Cheryl Bemel</h3><div class="cred">PhD, LP</div><div class="role">Secretary</div></div>
+          </div>
+          <p class="bio clamp" id="board-0">Cheryl Bemel is an Adjunct Professor at the University of Minnesota&rsquo;s School of Dentistry, training dentists and dental students in psychophysiological management techniques with pain patients. She also has her own private practice to treat these mind/body issues. Dr. Bemel is a consultant at Allina Health in the Center for Obesity and Bariatric Interventions. Dr. Bemel has provided on-site trauma services within the Minneapolis Police Department&rsquo;s Child Development Policing Project. She has also provided care as a Crisis Psychologist in hospital emergency departments. Dr. Bemel is an Approved Consultant with the American Society of Clinical Hypnosis. She teaches as a faculty member for ASCH workshops &amp; NPHTI workshops. &lsquo;Engaging in play&rsquo; is important to her, so she will be happy to play Pickle Ball or bicycle with you when you visit Minnesota.</p><button class="more" aria-expanded="false" aria-controls="board-0">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-teal"><img class="ph" src="board/boucher.jpg" alt="Bonnie Boucher" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">BB</span></div>
+            <div><h3>Bonnie Boucher</h3><div class="cred">HMCC, CMP</div><div class="role">Vice President</div></div>
+          </div>
+          <p class="bio clamp" id="board-1">Bonnie has been a leader in the meeting and hospitality industry for over 25 years. Her career began at the University of Minnesota Medical School, where she spent over 27 years in both support and leadership positions, including Assistant Director of Continuing Medical Education and Administrative Director for the medical simulation center, where she participated on the single largest grant ever issued by the U.S. Department of Defense as the administrative lead on the project.
+
+In 2015, she began a new career with ConferenceDirect and now negotiates group and convention contracts globally and fully facilitates meetings and events for her clients. She was recognized by her company for being in the Top 102 Top Producers in 2019. She received her CMP designation in 2004 and taught portions of the CMP Prep Camp through the Minnesota Chapter of Meeting Professionals International (MPI), served as an MPI board member, and was nominated for &ldquo;Meeting Planner of the Year.&rdquo; Bonnie received her Healthcare Meeting Compliance Certificate (HMCC) in 2018. She is also involved in several industry organizations, has been President of Mallard Point Townhome Association for the past 10 years, and has served on the NPHTI Board of Directors since 2019.
+
+In her spare time, Bonnie enjoys traveling and family trips to the cabin, and has co-led several junior high school trips abroad to Spain, Guatemala, Costa Rica, Germany, Italy, and Africa.</p><button class="more" aria-expanded="false" aria-controls="board-1">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-lav">
+        <div class="band b-lav"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-lav"><img class="ph" src="board/carlson.jpg" alt="Torie Carlson" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">TC</span></div>
+            <div><h3>Torie Carlson</h3><div class="cred">PhD</div></div>
+          </div>
+          <p class="bio clamp" id="board-2">Dr. Torie Carlson is a Registered Psychologist with expertise working with children and adults. He received his Ph.D. in Counselling Psychology from Ball State University in Indiana in 2002. Since 2008, he has worked at the Alberta Children&rsquo;s Hospital on the Pediatric Complex Pain Team and Burn Team helping kids and families with self-management approaches to pain, with a special interest in biofeedback and hypnosis. He is a clinical assistant professor in the Department of Anesthesia in the Cumming School of Medicine at the University of Calgary.</p><button class="more" aria-expanded="false" aria-controls="board-2">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-aqua">
+        <div class="band b-aqua"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-aqua"><img class="ph" src="board/keating.jpg" alt="Adam Keating" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">AK</span></div>
+            <div><h3>Adam Keating</h3><div class="cred">MD, FAAP</div></div>
+          </div>
+          <p class="bio clamp" id="board-3">Dr. Keating is Section Head of Community Pediatrics at Cleveland Clinic Children&rsquo;s in Wooster, Ohio, and Quality Improvement Officer at Cleveland Clinic Community Pediatrics. He is former Medical Director, Longbrake Student Wellness Center, The College of Wooster; Clinical Assistant Professor of Pediatrics, Cleveland Clinic Lerner College of Medicine; and Clinical Associate Professor of Pediatrics, Ohio University Heritage College of Osteopathic Medicine. Dr. Keating has used hypnosis as part of his general pediatric practice for his entire career, since being first introduced to hypnosis in his third year of medical school at the University of Rochester.
+
+He is an American Society of Clinical Hypnosis (ASCH) Approved Consultant and a member of the American Academy of Pediatrics Section for Complementary and Alternative Medicine. In addition to his community-based pediatric practice, he regularly teaches medical students in the clinical setting, serves as primary care physician to the youth in The Village Network Wooster residential facility, and works to integrate mental health and primary care for the Cleveland Clinic Children&rsquo;s population.</p><button class="more" aria-expanded="false" aria-controls="board-3">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-purple"><img class="ph" src="board/lombard.jpg" alt="Lisa Lombard" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">LL</span></div>
+            <div><h3>Lisa Lombard</h3><div class="cred">PhD</div><div class="role">President</div></div>
+          </div>
+          <p class="bio clamp" id="board-4">Dr. Lombard is a clinical psychologist in private practice in Chicago and co-founder of Comfort Kits for Children&reg;, a 501(c)(3) nonprofit. A former Research Assistant Professor at Northwestern University Feinberg School of Medicine, she studied the psychosocial impacts of food allergies and integrated mindfulness and self-hypnosis into research on food allergies, asthma, and COVID-19. She was also an Associate Professor at the Chicago School of Professional Psychology, where she helped launch the child and adolescent track.
+
+Her clinical work has spanned inpatient and outpatient settings, academic testing, and community mental health. She helps children, families, and adults cope with anxiety, stress-mediated health concerns, pain, and traumatic bereavement, integrating mind-body skills with a relational perspective. For over 10 years she provided clinical services, parent guidance, supervision, and consultation within a preschool and elementary school. Currently, her practice includes specialized services for those with food allergies, eczema, atopic disease, and inflammatory conditions.
+
+In March 2022, Dr. Lombard co-founded the Comfort Kits for Children Initiative with Dr. Bob Deutsch through her leadership role as President of the Board of NPHTI. Comfort Kits has delivered nearly 2,000 kits to children affected by conflict, natural disaster, and illness across Ukraine, Poland, Turkey, Israel, Chile, Maui, Chicago, and Minneapolis. Staff and caregiver trainings and a multilingual behavioral health resource website support the initiative&rsquo;s reach.
+
+Dr. Lombard earned her BA and PhD from the University of Chicago, where she trained with renowned psychologist Erika Fromm, PhD, and completed an APA-approved internship at the Illinois State Psychiatric Institute. An ASCH Approved Consultant, she currently serves as President of the NPHTI Board and President-Elect of APA Division 30, and regularly teaches healthcare providers on integrating hypnosis into clinical specialties such as GI, dermatology, and integrative medicine.</p><button class="more" aria-expanded="false" aria-controls="board-4">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-teal"><img class="ph" src="board/meyer.jpg" alt="Neil Meyer" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">NM</span></div>
+            <div><h3>Neil Meyer</h3></div>
+          </div>
+          <p class="bio clamp" id="board-5">Neil Meyer is a shareholder in the Minneapolis law firm Meyer Njus Tanick, PA. He practices in the areas of business representation, commercial real estate, and estate planning. He has been selected to the Best Lawyers in America and Minnesota Super Lawyers, named a Minnesota Lawyer of the Year, and honored by the Minnesota Supreme Court as the Lawyers Professional Responsibility Board Volunteer of the Year. Neil recognizes that the practice of law is a privilege to be earned each day, and with that privilege comes a responsibility to give back to the community.
+
+Neil has served as a founder and president of LegalCORPS, a nonprofit pro bono organization providing business lawyers to microenterprises and small nonprofits, and helped develop and lead its Inventors Assistance Program, the first pro bono patent law program in the country. He has also served on the Lawyer&rsquo;s Professional Responsibility Board, having been appointed by the Minnesota Supreme Court to that position.
+
+He is honored to serve on the Board of NPHTI and to help it in carrying out its mission. Neil received his undergraduate degree from Drake University and his law degree from the University of Minnesota School of Law. He is a passionate baseball fan &mdash; in what other sport is the goal to be &ldquo;safe at home&rdquo;?</p><button class="more" aria-expanded="false" aria-controls="board-5">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-lav">
+        <div class="band b-lav"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-lav"><img class="ph" src="board/pendergrast.jpg" alt="Robert Pendergrast" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">RP</span></div>
+            <div><h3>Robert Pendergrast</h3><div class="cred">MD, MPH</div><div class="role">Treasurer</div></div>
+          </div>
+          <p class="bio clamp" id="board-6">Robert Pendergrast is Professor, Department of Pediatrics, and director of Adolescent Medicine at the Medical College of Georgia at Augusta University. He completed Pediatrics Residency and a Fellowship in Adolescent Medicine at the University of Mississippi Medical Center, Jackson, MS. After a graduate degree in Public Health at Johns Hopkins University, he has spent his career teaching medical students and pediatric residents in the context of pediatric primary care of children and teens. Since 1997 he has been the director of Adolescent Medicine at the Medical College of Georgia. He is a Fellow of the American Academy of Pediatrics and an Approved Consultant in clinical hypnosis, American Society of Clinical Hypnosis.
+
+After beginning training in clinical hypnosis in 2002, he started the Pediatric Mind-Body Program at MCG in 2003, serving children and teens with chronic pain and other chronic medical conditions. In 2005 he completed the Fellowship at the Andrew Weil Center for Integrative Medicine, University of Arizona Health Sciences Center, and has since contributed to editing portions of their online curriculum in nutritional medicine.
+
+He is a founding member of the Section on Integrative Medicine of the American Academy of Pediatrics and has been part of NPHTI&rsquo;s Core Faculty since 2012. He has authored and co-authored a number of medical research articles and book chapters, including published research through the Georgia Prevention Institute on the effects of meditation on cardiovascular disease risk factors in youth. He was honored by the MCG School of Medicine class of 2004 as their Educator of the Year, has received the Exemplary Teacher Award in the Department of Pediatrics seven times since 2010, and was Teacher of the Year for the Department of Pediatrics in 2020. His book, <em>Breast Cancer: Reduce Your Risk with Foods You Love</em>, was a Finalist in the Indie Excellence National Book Awards competition in 2011.</p><button class="more" aria-expanded="false" aria-controls="board-6">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+      <article class="card member t-aqua">
+        <div class="band b-aqua"></div>
+        <div class="inner">
+          <div class="member-top">
+            <div class="avatar a-aqua"><img class="ph" src="board/thomson.jpg" alt="Linda Thomson" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">LT</span></div>
+            <div><h3>Linda Thomson</h3><div class="cred">PhD, APRN, ABMH, ABHN</div></div>
+          </div>
+          <p class="bio clamp" id="board-7">Linda Thomson is a pediatric nurse practitioner, mostly retired after 45 years in primary care pediatrics, who continues to see patients for clinical hypnosis in her private practice, Hypnosis for Health and Healing. Linda is a Past-President of the American Society of Clinical Hypnosis (ASCH), the New England Society of Clinical Hypnosis, and the current president of the Northeastern Mountain Society of Clinical Hypnosis. She is a fellow of both the American Society of Clinical Hypnosis and the Pediatric Nurse Practitioner Association. Linda is co-founder of Hypnovations: Clinical Hypnosis Education Training Programs, a Diplomate of both the American Board of Medical Hypnosis and the American Board of Hypnosis in Nursing, and serves on the Council of Representatives of the International Society of Hypnosis and as a member of Hypnosis Without Borders.
+
+Linda is an advisory editor for the American Journal of Clinical Hypnosis and a member of the American Holistic Nurses Association. She was awarded the William Wester Award for her significant contributions to the field of hypnosis as applied to the treatment of children, and the Josephine Hilgard Award for Best Paper on Pediatric Uses of Hypnosis. She has also received four President&rsquo;s Awards from ASCH and the ASCH Award of Merit on five occasions. In 2022 Linda received the Lifetime Achievement Award from ASCH, and in 2025 was presented with the Clinical Hypnosis Education and Training Lifetime Achievement Award. From Hartwick College, Linda has received the Outstanding Young Alumna Award, Distinguished Nursing Alumna Award, and President&rsquo;s Award for Liberal Arts in Practice.</p><button class="more" aria-expanded="false" aria-controls="board-7">Read more <span class="chev">&#9662;</span></button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  (function(){
+    var t=document.querySelector('.nav-toggle'), nav=document.querySelector('.site-nav');
+    if(t&&nav){
+      var setNav=function(open){ nav.classList.toggle('open',open); t.setAttribute('aria-expanded',String(open)); if(typeof reportHeight==='function'){reportHeight();} };
+      t.addEventListener('click',function(){ setNav(!nav.classList.contains('open')); });
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setNav(false); }); });
+    }
+  })();
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  document.querySelectorAll('.more').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var bio=document.getElementById(btn.getAttribute('aria-controls'));
+      var open=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!open));
+      bio.classList.toggle('clamp',open);
+      btn.firstChild.textContent=open?'Read more ':'Show less ';
+      if(typeof reportHeight==='function')reportHeight();
+    });
+  });
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
