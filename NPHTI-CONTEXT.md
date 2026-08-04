@@ -24,7 +24,7 @@ The other two directions (Editorial "The Masthead" = Option A, Storybook = Optio
 - Board proposal drafted (Word doc): overview, rationale, 5-phase scope, 60-day timeline, $1,000 not-to-exceed cost table. *Placeholders left: hourly rate, date, preview link.*
 - Board has chosen Bright Geometric.
 - **Homepage built** (`nphti-home-bright-geometric.html`): alert banner → hero → free webinar callout → What We Do → mission band → workshop CTA → three-up audience cards (For Health Professionals / Support Our Mission / Find a Provider) → footer.
-- **Leadership page built** (`nphti-leadership-bright-geometric.html`): reuses the faculty page's founder-card layout (2-up grid, rounded-square avatar, color-block band, clamp + "Read more" bios) for the 8-member Board of Directors, alphabetical by last name: Bemel (Secretary) · Boucher (Vice President) · Carlson · Keating · Lombard (President) · Meyer · Pendergrast (Treasurer) · Thomson. Officer titles render as a small uppercase line under credentials; members without a title just omit that line. Bios are the live site's text as-is. Photos wired to `board/<lastname>.jpg` with the same jpg→png→initials fallback as faculty — no board headshots exist yet, so all avatars currently render as initials.
+- **Leadership page built** (`nphti-leadership-bright-geometric.html`): reuses the faculty page's founder-card layout (2-up grid, rounded-square avatar, color-block band, clamp + "Read more" bios) for the 8-member Board of Directors, alphabetical by last name: Bemel (Secretary) · Boucher (Vice President) · Carlson · Keating · Lombard (President) · Meyer · Pendergrast (Treasurer) · Thomson. Officer titles render as a small uppercase line under credentials; members without a title just omit that line. Bios are the live site's text as-is. Photos wired to `faculty/<lastname>.jpg` (board headshots live in the same `faculty/` folder as everyone else, not a separate `board/` folder) with the same jpg→png→initials fallback as faculty — no board headshots exist yet, so all avatars currently render as initials.
 
 **Homepage content decisions made this round:**
 - Hero copy uses NPHTI's own existing tagline rather than invented copy: *"The world's premier resource for pediatric clinical hypnosis training"* (H1) + supporting line about "highest quality... training for licensed health professionals."
@@ -32,7 +32,7 @@ The other two directions (Editorial "The Masthead" = Option A, Storybook = Optio
 - Workshop levels: **Fundamentals** (not "Foundations") → Intermediate → Advanced.
 - Tone pass: removed pushy/urgency phrasing ("space is limited," etc.), switched "kids" → "children" throughout, removed an unverified "since 1994" founding-date claim I'd guessed at.
 - Added a **Find a Provider** callout card, linking to the live `nphti.org/find-a-provider` directory (also in the footer).
-- Added a board-requested **free webinar callout** section: "Hypno-curious?" + 4 bullet points (bust myths / review evidence / see it in action / preview the Annual Workshops) + audience note (MDs, NPs, PAs, Child Life Specialists, Pediatric Mental Health Providers) + a small photo of a child. **Webinar button currently links to `#` — needs the real recording URL.**
+- Added a board-requested **free webinar callout** section: "Hypno-curious?" + 4 bullet points (bust myths / review evidence / see it in action / preview the Annual Workshops) + audience note (MDs, NPs, PAs, Child Life Specialists, Pediatric Mental Health Providers) + a small photo of a child. Webinar button now links to the real Zoom recording (opens in a new tab).
 - Design craft pass: replaced generic icon-grid cards with an editorial diamond-marker list (reusing the site's existing chip/prior-faculty visual language instead of a generic SaaS icon set); mission section is now a full-bleed dark band (same `100vw` negative-margin technique used elsewhere on the site) instead of a rounded CTA box; workshop CTA is a striped card instead of a plain rounded box.
 
 **Photo handling:**
@@ -41,11 +41,8 @@ The other two directions (Editorial "The Masthead" = Option A, Storybook = Optio
 - Default rule going forward: **max 1 photo per page** unless L says otherwise (the homepage is an explicit exception — two photos, both requested).
 
 **Open items:**
-- ⚠️ **Verify David Wark's first name and credentials.** Currently listed as "David Wark, PhD" — inferred, not confirmed.
-- Get a **transparent NPHTI logo** (PNG/SVG) — current file has an opaque white background.
 - Verify all 26 faculty headshots are present in the `faculty/` folder.
-- **Board headshots needed** in a `board/` folder (`bemel.jpg`, `boucher.jpg`, `carlson.jpg`, `keating.jpg`, `lombard.jpg`, `meyer.jpg`, `pendergrast.jpg`, `thomson.jpg`) — none exist yet, all avatars fall back to initials.
-- **Webinar recording URL** needed — CTA button is currently a placeholder.
+- **Board headshots needed** in the `faculty/` folder (`bemel.jpg`, `boucher.jpg`, `carlson.jpg`, `keating.jpg`, `lombard.jpg`, `meyer.jpg`, `pendergrast.jpg`, `thomson.jpg`) — none exist yet, all avatars fall back to initials.
 - Live site currently shows **2026 Annual Workshops registration open, Oct 15–17, in St. Charles, IL** (per nphti.org) — not yet reflected in the homepage copy; flagged but not added since the level of specificity wasn't confirmed as wanted.
 
 ---
@@ -66,6 +63,8 @@ These were learned the hard way. Don't regress on them.
 - No small "Design preview · Option X" note line under the header on pages going forward — dropped from the leadership page at L's request; strip it from earlier pages too when next touched.
 
 ---
+
+**Confirmed:** `nphti-logo.png` in the repo root is a genuine transparent PNG (RGBA, verified alpha channel — corners fully transparent, only the mark itself is opaque). No re-sourcing needed.
 
 ## 4. The winning design system — Bright Geometric
 
@@ -145,7 +144,7 @@ Call `reportHeight()` again after ANY interaction that changes page height (bio 
 
 ## 6. Content reference
 
-- **Founders (4):** Pamela Kaiser (PhD, CPNP, CNS) · Daniel P. Kohen (MD, FAAP, ABMH) · Karen Olness (MD, FAAP, ABMH) · David Wark (PhD — ⚠️ verify). Shown 2×2, name + credentials + bio only (no role/title lines).
+- **Founders (4):** Pamela Kaiser (PhD, CPNP, CNS) · Daniel P. Kohen (MD, FAAP, ABMH) · Karen Olness (MD, FAAP, ABMH) · David Wark (PhD). Shown 2×2, name + credentials + bio only (no role/title lines).
 - **Teaching Faculty (22):** alphabetical by last name, expandable bios, no tags.
 - **Past Keynote & Guest Speakers (8):** name + credentials only, no years.
 - **Prior Years' Teaching Faculty (16):** name + credentials only.
@@ -178,9 +177,8 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 
 ## 9. Next up
 
-- Verify David Wark's name/credentials and get the transparent logo + confirm all 26 faculty headshots are present.
-- Get board headshots into a `board/` folder (currently all initials fallback).
-- Get the real webinar recording URL and wire it into the homepage CTA.
+- Confirm all 26 faculty headshots are present in `faculty/`.
+- Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
 - Build remaining interior pages in Bright Geometric: About, Training, Resources, Contact, Donate. (Leadership is done.)
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.
