@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI About — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb;          /* cool paper, NOT warm cream */
+    --paper-2:#e7ecf8;
+    --white:#ffffff;
+    --ink:#161b38;            /* deep cool navy */
+    --mid:#5b618c;            /* cool grey-purple body */
+    --line:#dbe1f4;
+    --spark:#f2b134;          /* the single warm guest, micro-dose only */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);
+    background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+  .rule-mini{display:flex;gap:3px;margin-top:10px;}
+  .rule-mini i{width:16px;height:3px;border-radius:2px;}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:680px;padding-left:6px;}
+  .hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(40px,8vw,82px);line-height:.96;letter-spacing:-.02em;
+    color:var(--ink);margin:18px 0 0;
+  }
+  .hero h1 .c{color:var(--purple);}
+  .hero h1 .c2{color:var(--teal);}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:520px;margin:20px 0 0;line-height:1.65;}
+
+  .shapes{position:absolute;top:50%;right:-80px;transform:translateY(-50%);z-index:1;width:500px;height:500px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{right:-200px;opacity:.5;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;
+    padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;
+  }
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== MISSION/VISION — full-bleed band ===== */
+  .mission-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(44px,7vw,84px) 0;}
+  .mission-inner{max-width:760px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+  .mission-inner .eyebrow{color:var(--lavender);}
+  .mission-inner .rule-mini i:nth-child(1){background:var(--purple);} .mission-inner .rule-mini i:nth-child(2){background:var(--teal);}
+  .mission-inner .rule-mini i:nth-child(3){background:var(--lavender);} .mission-inner .rule-mini i:nth-child(4){background:var(--aqua);}
+  .mission-inner h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--white);font-size:clamp(22px,3.2vw,32px);line-height:1.28;letter-spacing:-.01em;margin-top:20px;}
+  .mission-inner p{color:#c6cbea;font-size:14.5px;line-height:1.75;margin-top:18px;max-width:600px;}
+
+  /* ===== PILLAR LIST — editorial, not icon cards ===== */
+  .pillar-list{display:flex;flex-direction:column;}
+  .pillar-row{display:grid;grid-template-columns:22px 1fr;gap:22px;padding:24px 0;border-top:1.5px solid var(--line);align-items:start;transition:background .15s ease;}
+  .pillar-list .pillar-row:first-child{border-top:2px solid var(--ink);}
+  .pillar-row:hover{background:var(--paper-2);margin:0 -18px;padding-left:18px;padding-right:18px;}
+  .pillar-row i{width:12px;height:12px;margin-top:9px;border-radius:2px;background:var(--glyph);transform:rotate(45deg);flex:0 0 auto;}
+  .pillar-row h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:var(--ink);display:inline;margin-right:12px;}
+  .pillar-row p{color:var(--mid);font-size:14px;line-height:1.7;margin-top:6px;max-width:660px;}
+  .pillar-row p a{color:var(--purple);text-decoration:underline;text-underline-offset:2px;}
+  .pillar-row p a:hover{color:#353f85;}
+
+  /* ===== HISTORY — editorial text ===== */
+  .hist{max-width:760px;}
+  .hist h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);margin-top:30px;}
+  .hist h3:first-child{margin-top:0;}
+  .hist p{color:var(--mid);font-size:14.5px;line-height:1.8;margin-top:12px;}
+
+  /* ===== STAT BAND ===== */
+  .stat-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(40px,6vw,68px) 0;margin-top:clamp(48px,7vw,80px);}
+  .stat-inner{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+  .stat-inner .eyebrow{color:var(--lavender);}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,30px);margin-top:26px;}
+  @media(max-width:760px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  .stat{border-top:3px solid var(--glyph);padding-top:14px;}
+  .stat .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(28px,4.4vw,40px);color:var(--white);line-height:1;}
+  .stat .label{color:#c6cbea;font-size:12px;margin-top:8px;line-height:1.5;}
+  .stat-note{color:#a9b0d9;font-size:12.5px;margin-top:26px;line-height:1.65;}
+
+  /* ===== DIAMOND LIST ===== */
+  .dlist{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:16px;max-width:700px;}
+  .dlist li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start;font-size:14px;color:var(--mid);line-height:1.65;}
+  .dlist li i{width:9px;height:9px;background:var(--purple);border-radius:2px;transform:rotate(45deg);margin-top:6px;flex:0 0 auto;}
+  .dlist li b{color:var(--ink);font-weight:600;}
+
+  /* ===== NEXT-STEP CARDS ===== */
+  .twoup{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.twoup{grid-template-columns:1fr 1fr;}}
+  @media(max-width:620px){.twoup{grid-template-columns:1fr;}}
+  .card{position:relative;background:var(--white);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+  .band{height:8px;width:100%;}
+  .b-purple{background:var(--purple);} .b-teal{background:var(--teal);} .b-lav{background:var(--lavender);} .b-aqua{background:var(--aqua);}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(22,27,56,.13);}
+  .card.t-purple:hover{border-color:var(--purple);} .card.t-teal:hover{border-color:var(--teal);}
+  .card.t-lav:hover{border-color:var(--lavender);} .card.t-aqua:hover{border-color:var(--aqua);}
+  .card::after{content:"";position:absolute;top:16px;right:16px;width:10px;height:10px;background:var(--glyph);border-radius:2px;transform:rotate(45deg);opacity:.85;transition:transform .35s ease;}
+  .card:hover::after{transform:rotate(135deg);}
+  .twoup .card .inner{padding:clamp(26px,3.4vw,34px) clamp(24px,3vw,30px) clamp(28px,3.6vw,34px);}
+  .twoup h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;color:var(--ink);margin-bottom:10px;}
+  .twoup p{color:var(--mid);font-size:14px;line-height:1.65;margin-bottom:18px;}
+  .link-arrow{display:inline-flex;align-items:center;gap:7px;font-weight:500;font-size:13.5px;text-decoration:none;color:var(--glyph);}
+  .link-arrow svg{width:14px;height:14px;transition:transform .18s ease;}
+  .link-arrow:hover svg{transform:translateX(3px);}
+
+  /* ===== site header (4-hue band + logo + nav) ===== */
+  .topband{display:flex;height:6px;width:100%;}
+  .topband i{flex:1;display:block;}
+  .topband .p{background:var(--purple);} .topband .t{background:var(--teal);}
+  .topband .l{background:var(--lavender);} .topband .a{background:var(--aqua);}
+  .site-head{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    padding:clamp(16px,3vw,24px) 0 clamp(14px,2.2vw,20px);margin-bottom:8px;
+    border-bottom:2px solid var(--ink);
+  }
+  .site-head .logo{display:inline-flex;align-items:center;}
+  .site-head .logo img{display:block;height:80px;width:auto;}
+  .site-nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,26px);flex-wrap:wrap;}
+  .site-nav a{
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;
+    color:var(--mid);text-decoration:none;transition:color .15s ease;
+  }
+  .site-nav a:hover{color:var(--ink);}
+  .site-nav a[aria-current="page"]{color:var(--ink);}
+  .site-nav .cta{
+    color:#fff;background:var(--purple);padding:9px 18px;border-radius:8px;
+    font-size:13px;letter-spacing:.01em;
+  }
+  .site-nav .cta:hover{background:#353f85;color:#fff;}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:40px;padding:9px 10px;margin:-3px 0;background:none;border:0;cursor:pointer;}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .22s ease,opacity .2s ease;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:720px){
+    .nav-toggle{display:flex;}
+    .site-nav{display:none;flex-basis:100%;order:3;flex-direction:column;align-items:stretch;gap:0;margin-top:14px;}
+    .site-nav.open{display:flex;}
+    .site-nav a{padding:13px 4px;font-size:15px;color:var(--ink);border-top:1px solid var(--line);}
+    .site-nav a.cta{margin-top:12px;border-top:0;border-radius:8px;text-align:center;color:#fff;background:var(--purple);padding:13px;}
+  }
+
+  /* ===== FOOTER ===== */
+  .site-foot{margin-top:clamp(56px,8vw,100px);border-top:2px solid var(--ink);padding-top:clamp(30px,4vw,42px);}
+  .foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(24px,4vw,40px);}
+  @media(max-width:700px){.foot-top{grid-template-columns:1fr;}}
+  .foot-brand img{height:56px;width:auto;display:block;margin-bottom:14px;}
+  .foot-brand p{color:var(--mid);font-size:13px;max-width:280px;line-height:1.6;}
+  .foot-col h4{font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+  .foot-col a{display:block;color:var(--mid);font-size:13.5px;text-decoration:none;padding:6px 0;}
+  .foot-col a:hover{color:var(--ink);}
+  .foot-base{margin-top:clamp(28px,4vw,40px);padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--mid);font-size:12px;}
+
+  @media (prefers-reduced-motion:reduce){
+    .card,.card::after{transition:none;}
+    .card:hover{transform:none;}
+    .card:hover::after{transform:rotate(45deg);}
+  }
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="topband" aria-hidden="true"><i class="p"></i><i class="t"></i><i class="l"></i><i class="a"></i></div>
+<div class="wrap">
+
+  <header class="site-head">
+    <a class="logo" href="nphti-home-bright-geometric.html" aria-label="NPHTI home"><img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute"></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary">
+      <a class="lnk" href="nphti-about-bright-geometric.html" aria-current="page">About</a>
+      <a class="lnk" href="#">Training</a>
+      <a class="lnk" href="#">Resources</a>
+      <a class="lnk" href="#">Contact</a>
+      <a class="cta" href="#">Donate</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> National Pediatric Hypnosis Training Institute</span>
+      <h1>About <span class="c">NPHTI</span>.</h1>
+      <p>NPHTI is a 501(c)(3) nonprofit educational organization that serves as a resource for health professionals and parents on therapeutic hypnosis &mdash; helping children and teens build resilience and overall well-being.</p>
+    </div>
+  </section>
+
+  <!-- ===== MISSION & VISION ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Our purpose</span><h2>Mission &amp; Vision</h2></div>
+    </div>
+  </section>
+
+  <section class="mission-band">
+    <div class="mission-inner">
+      <span class="eyebrow">Our vision</span>
+      <div class="rule-mini" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h2>Children will develop the skills to regulate their emotions, behavior, and mind-body reactions &mdash; and be confident in their capacities.</h2>
+      <p>NPHTI&rsquo;s mission is to be an educational and communication resource for health professionals and parents regarding therapeutic hypnosis, to maximize children&rsquo;s and teens&rsquo; resilience and overall well-being.</p>
+    </div>
+  </section>
+
+  <!-- ===== HOW WE FULFILL OUR MISSION ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Our approach</span><h2>How We Fulfill Our Mission</h2></div>
+    </div>
+    <div class="pillar-list">
+      <div class="pillar-row t-purple"><i></i><div><h3>Training Program</h3><p>Ongoing clinical hypnosis skill development for advanced practice pediatric clinicians &mdash; helping children and teens build self-regulation, optimize resilience related to medical and mental health issues and stressful experiences, and maximize well-being and peak performance.</p></div></div>
+      <div class="pillar-row t-teal"><i></i><div><h3>Resource Center</h3><p>A place for parents and professionals to locate NPHTI-trained clinicians through our <a href="https://www.nphti.org/find-a-provider">Find a Provider</a> directory, and to access literature and media resources reflecting the most current clinical and research information in the field of pediatric hypnosis.</p></div></div>
+      <div class="pillar-row t-lav"><i></i><div><h3>Community</h3><p>A global network of hypnosis-trained child health clinicians who share a vision of empowering healthy and ill children through self-hypnosis, fostering self-regulation and resilience.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== HISTORY ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Since 1976</span><h2>Our History</h2></div>
+    </div>
+    <div class="hist">
+      <h3>NPHTI&rsquo;s Roots</h3>
+      <p>The first workshop devoted solely to teaching hypnosis with children was held in Philadelphia in 1976, led by Gail Gardner, PhD and Karen Olness, MD &mdash; work that grew into the field&rsquo;s foundational text, <em>Hypnosis and Hypnotherapy with Children</em> (Gardner &amp; Olness, 1981). Annual introductory workshops began in 1987 at the Society for Developmental and Behavioral Pediatrics, taught for 25 years by a small group of clinician-educators: Karen Olness, Daniel Kohen, Candace Erickson, Leora Kuttner, Jud Reaney, and Lonnie Zeltzer, later joined by Rev. James Warnke, Melanie Gold, Laurence Sugarman, Pamela Kaiser, and Bob Deutsch. Intermediate and Advanced workshops followed in 1988 and 1989 to meet growing demand.</p>
+
+      <h3>Founding NPHTI</h3>
+      <p>In 2009, this core faculty formalized their work as the National Pediatric Hypnosis Training Institute. Co-founders Pamela Kaiser, PhD, CPNP, CNS and Daniel Kohen, MD, FAAP, ABMH set out to build the premier pediatric-specific hypnosis training organization in North America &mdash; designing a curriculum grounded in current research on adult learning and visual presentation, with the majority of training time devoted to hands-on skills practice rather than lecture.</p>
+    </div>
+  </section>
+
+  <section class="stat-band">
+    <div class="stat-inner">
+      <span class="eyebrow">Growth &amp; impact</span>
+      <div class="stat-grid">
+        <div class="stat t-purple"><div class="num">1,000+</div><div class="label">Pediatric clinicians trained</div></div>
+        <div class="stat t-teal"><div class="num">15</div><div class="label">Countries represented</div></div>
+        <div class="stat t-lav"><div class="num">100+</div><div class="label">Pediatric medical institutions reached</div></div>
+        <div class="stat t-aqua"><div class="num">900+</div><div class="label">NPHTI listserv members</div></div>
+      </div>
+      <p class="stat-note">Average annual enrollment spans all three workshop levels: Fundamentals (Introductory), Utilization &amp; Expanded Clinical Applications (Intermediate), and Individualized Consultation (Advanced) &mdash; a small-group offering not taught every year.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Looking ahead</span><h2>Continued Growth</h2></div>
+    </div>
+    <ul class="dlist">
+      <li><i></i><div><b>Monthly webinar series</b> &mdash; launched in August 2020 in response to the COVID-19 pandemic, taught by NPHTI faculty for clinicians with a pediatric hypnosis background, and still running today.</div></li>
+      <li><i></i><div><b>Regional workshops</b> &mdash; hosted at U.S. children&rsquo;s hospitals, bringing training closer to clinicians nationwide.</div></li>
+      <li><i></i><div><b>International workshops</b> &mdash; multiple workshops abroad, extending NPHTI&rsquo;s reach beyond the United States.</div></li>
+      <li><i></i><div><b>Expanded resources</b> &mdash; a growing listserv, website, and literature and media library for both professionals and parents.</div></li>
+    </ul>
+  </section>
+
+  <!-- ===== TRAINING LEADERSHIP ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Leadership</span><h2>Our Training Leadership</h2></div>
+    </div>
+    <div class="hist">
+      <p>Co-founders Pamela Kaiser, PhD, CPNP, CNS and Daniel Kohen, MD, FAAP, ABMH shaped NPHTI&rsquo;s curriculum with input from a founding group of Senior Faculty &mdash; Karen Olness, MD, FAAP, ABMH; Candace Erickson, MD, MPH, FAAP; Leora Kuttner, PhD; Laurence Sugarman, MD, ABMH, FAAP; Jud Reaney, MD, FAAP, BCB; and Bob Deutsch, PhD &mdash; along with additional inaugural faculty who joined in the years that followed. In 2016, Bonnie Boucher, HMCC, CMP joined as administrative and conference coordinator for NPHTI&rsquo;s training program, and was invited to join the Board of Directors in 2019.</p>
+    </div>
+  </section>
+
+  <!-- ===== NEXT STEPS ===== -->
+  <section class="sec">
+    <div class="twoup">
+      <article class="card t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner">
+          <h3>Meet the Faculty</h3>
+          <p>Get to know the founders, senior faculty, and teaching faculty who lead NPHTI&rsquo;s training program.</p>
+          <a class="link-arrow" href="nphti-faculty-bright-geometric.html">View faculty <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="card t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner">
+          <h3>Meet the Board</h3>
+          <p>The volunteer Board of Directors guiding NPHTI&rsquo;s mission and organizational strategy.</p>
+          <a class="link-arrow" href="nphti-leadership-bright-geometric.html">View the board <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="card t-lav">
+        <div class="band b-lav"></div>
+        <div class="inner">
+          <h3>Explore Training</h3>
+          <p>Review the training calendar, prerequisites, and levels &mdash; Fundamentals, Intermediate, and Advanced.</p>
+          <a class="link-arrow" href="#">View training programs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-foot">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute">
+        <p>Training licensed health professionals in pediatric clinical hypnosis.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="nphti-about-bright-geometric.html">About</a>
+        <a href="#">Training</a>
+        <a href="nphti-faculty-bright-geometric.html">Faculty</a>
+        <a href="#">Resources</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://www.nphti.org/find-a-provider">Find a Provider</a>
+        <a href="#">Contact</a>
+        <a href="#">Donate</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 National Pediatric Hypnosis Training Institute.</span>
+      <span>All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var t=document.querySelector('.nav-toggle'), nav=document.querySelector('.site-nav');
+    if(t&&nav){
+      var setNav=function(open){ nav.classList.toggle('open',open); t.setAttribute('aria-expanded',String(open)); if(typeof reportHeight==='function'){reportHeight();} };
+      t.addEventListener('click',function(){ setNav(!nav.classList.contains('open')); });
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setNav(false); }); });
+    }
+  })();
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
