@@ -25,6 +25,8 @@ The other two directions (Editorial "The Masthead" = Option A, Storybook = Optio
 - Board has chosen Bright Geometric.
 - **Homepage built** (`nphti-home-bright-geometric.html`): alert banner → hero → free webinar callout → What We Do → mission band → workshop CTA → three-up audience cards (For Health Professionals / Support Our Mission / Find a Provider) → footer.
 - **Leadership page built** (`nphti-leadership-bright-geometric.html`): reuses the faculty page's founder-card layout (2-up grid, rounded-square avatar, color-block band, clamp + "Read more" bios) for the 8-member Board of Directors, alphabetical by last name: Bemel (Secretary) · Boucher (Vice President) · Carlson · Keating · Lombard (President) · Meyer · Pendergrast (Treasurer) · Thomson. Officer titles render as a small uppercase line under credentials; members without a title just omit that line. Bios are the live site's text as-is. Photos wired to `faculty/<lastname>.jpg` (board headshots live in the same `faculty/` folder as everyone else, not a separate `board/` folder) with the same jpg→png→initials fallback as faculty — no board headshots exist yet, so all avatars currently render as initials.
+- **Homepage hero photo reworked**: the bubbles photo now runs through a purple→aqua SVG duotone filter (`#duotone-hero`) instead of full color, and sits in an angled clipped frame (matching the play-shapes) with an offset purple color-block backing instead of a plain rounded-rect + border. Hero columns rebalanced from `1.2fr .8fr` to `1fr 1fr` so the photo carries equal visual weight against the headline.
+- **About page built** (`nphti-about-bright-geometric.html`): interior-page hero pattern (angular play-shapes, no photo, matches Leadership rather than the homepage's marketing hero). Sections: Mission & Vision (vision as a full-bleed pull-quote band) → How We Fulfill Our Mission (the three pillars, fuller wording than the homepage's paraphrase, Resource Center links to the live Find a Provider directory) → Our History (Roots 1976–2009 + Founding NPHTI 2009, condensed but keeping all names/dates) → Growth & Impact stat band (new component: 1,000+ clinicians · 15 countries · 100+ institutions · 900+ listserv members) → Continued Growth (diamond-marker list) → Our Training Leadership (co-founders + senior faculty, full credentials on everyone per client request — "they care a lot about it") → next-step cards (Faculty / Leadership / Training placeholder).
 
 **Homepage content decisions made this round:**
 - Hero copy uses NPHTI's own existing tagline rather than invented copy: *"The world's premier resource for pediatric clinical hypnosis training"* (H1) + supporting line about "highest quality... training for licensed health professionals."
@@ -104,7 +106,9 @@ The four logo hues (purple / teal / lavender / aqua) are used as **bold blocks**
 - **Avatars** (`.avatar`) — rounded squares (28% radius), never circles.
 - **Section headers** (`.sec-head`) — eyebrow (+ optional marigold spark dot) → big Bricolage title → 2px ink underline rule.
 - **Editorial diamond-marker lists** — used for prior-years faculty and now for the homepage "What We Do" section; preferred over generic icon-in-a-box cards, which read as templated.
-- **Full-bleed color bands** — `width:100vw; margin-left:calc(50% - 50vw);` trick, used for the homepage mission section instead of a rounded CTA box.
+- **Full-bleed color bands** — `width:100vw; margin-left:calc(50% - 50vw);` trick, used for the mission sections and (new) the About page's stat band, instead of a rounded CTA box.
+- **Stat band** (`.stat-band` / `.stat-grid` / `.stat`) — new on the About page: a full-bleed dark band with a 4-up grid of big Bricolage numbers over a thin hue-cycling top rule (purple/teal/lavender/aqua) and a small DM Sans caption. Reusable anywhere a few credible numbers need to land with weight without turning into generic icon-stat cards.
+- **Duotone photo treatment** — new on the homepage hero: an SVG `<filter>` (`feColorMatrix` to grayscale + `feComponentTransfer` remapping shadows→purple, highlights→aqua) applied via `filter:url(#duotone-hero)`, paired with an angled `clip-path` frame and an offset color-block "backing" shape instead of a plain border. Use this instead of full-color photography when a photo needs to feel native to the palette rather than bolted on.
 - **Chips** (`.chip`) — pill outlines with a small diamond, used for keynote speakers.
 - **Expandable bios** (`.more`) — long bios clamp with a mask fade and a "Read more" toggle.
 
@@ -180,5 +184,5 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 - Confirm all 26 faculty headshots are present in `faculty/`.
 - Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
-- Build remaining interior pages in Bright Geometric: About, Training, Resources, Contact, Donate. (Leadership is done.)
+- Build remaining interior pages in Bright Geometric: Training, Resources, Contact, Donate. (Leadership and About are done.)
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.
