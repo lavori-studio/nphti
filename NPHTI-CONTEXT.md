@@ -112,10 +112,13 @@ The four logo hues (purple / teal / lavender / aqua) are used as **bold blocks**
 - **Chips** (`.chip`) — pill outlines with a small diamond, used for keynote speakers.
 - **Expandable bios** (`.more`) — long bios clamp with a mask fade and a "Read more" toggle.
 
-### Header & nav
+### Header & nav — now Wix-native, not in the HTML
 
-- Logo left, nav right: **About · Training · Resources · Contact · Donate** (Donate is a filled purple button).
-- **Below 720px:** links collapse into a **hamburger** (`.nav-toggle`) that opens an in-flow stacked menu and calls `reportHeight()` on open/close.
+**As of this round, the topband, logo, primary nav, and footer have been stripped out of all four HTML pages.** Wix owns them now — every page embeds via iframe into a Wix page that already has its own header/footer, so duplicating that chrome inside each HTML file was redundant. Full rebuild spec (exact colors, spacing, states, and how to handle the Training dropdown natively in Wix) lives in **`WIX-HEADER-FOOTER-SPEC.md`** — read that before touching Wix's header/footer.
+
+Quick summary for reference: Logo left, nav right — **About · Training (dropdown) · Resources · Contact · Donate** (Donate is a filled purple button). Below 720px, links collapse into a hamburger that opens an in-flow stacked menu. Training has no landing page — it's a dropdown/accordion listing four real subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), ideally built as native Wix child pages so Wix's menu auto-nests them.
+
+**What stays in the HTML:** everything from the hero down. The homepage's dark "Registration is open" promo banner is page content (not chrome) and stays in `nphti-home-bright-geometric.html` only.
 
 ---
 
@@ -140,7 +143,8 @@ Call `reportHeight()` again after ANY interaction that changes page height (bio 
 - Filenames lowercase, no accents — GitHub Pages is case-sensitive.
 
 ### Other conventions
-- Self-contained HTML; fonts via Google Fonts `<link>`; logo referenced as `nphti-logo.png` in the root.
+- Self-contained HTML; fonts via Google Fonts `<link>`.
+- **No topband, header, nav, or footer markup in the HTML anymore** — that's Wix-native now (see above / `WIX-HEADER-FOOTER-SPEC.md`). `nphti-logo.png` is no longer referenced by any HTML file — it's a Wix header asset only. New pages should start directly with page content (hero section down), not a header.
 - Accessibility: `prefers-reduced-motion` guards on all animation; `:focus-visible` outlines.
 - Faculty data lives in a single `data.py`, rendered into HTML by a `build.py` generator — don't hand-copy content across files.
 
@@ -181,8 +185,10 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 
 ## 9. Next up
 
+- **Build the Wix header and footer** per `WIX-HEADER-FOOTER-SPEC.md` — topband, logo, nav (including the Training dropdown), and footer, applied sitewide.
 - Confirm all 26 faculty headshots are present in `faculty/`.
 - Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
-- Build remaining interior pages in Bright Geometric: Training, Resources, Contact, Donate. (Leadership and About are done.)
+- Build remaining pages in Bright Geometric: Resources, Contact, Donate, plus the four Training subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive). (Leadership and About are done.)
+- Once real Wix page URLs exist, remap the cross-page links still pointing at sibling HTML filenames (e.g. About page's faculty/board cards) to the actual Wix paths.
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.
