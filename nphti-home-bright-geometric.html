@@ -24,50 +24,6 @@
   .rule-mini{display:flex;gap:3px;margin-top:10px;}
   .rule-mini i{width:16px;height:3px;border-radius:2px;}
 
-  .topband{display:flex;height:6px;width:100%;}
-  .topband i{flex:1;display:block;}
-  .topband .p{background:var(--purple);} .topband .t{background:var(--teal);}
-  .topband .l{background:var(--lavender);} .topband .a{background:var(--aqua);}
-  .site-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:clamp(16px,3vw,24px) 0 clamp(14px,2.2vw,20px);margin-bottom:8px;border-bottom:2px solid var(--ink);}
-  .site-head .logo{display:inline-flex;align-items:center;}
-  .site-head .logo img{display:block;height:80px;width:auto;}
-  .site-nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,26px);flex-wrap:wrap;}
-  .site-nav a{font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;color:var(--mid);text-decoration:none;transition:color .15s ease;}
-  .site-nav a:hover{color:var(--ink);}
-  .site-nav a[aria-current="page"]{color:var(--ink);}
-  .site-nav .cta{color:#fff;background:var(--purple);padding:9px 18px;border-radius:8px;font-size:13px;letter-spacing:.01em;}
-  .site-nav .cta:hover{background:#353f85;color:#fff;}
-  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:40px;padding:9px 10px;margin:-3px 0;background:none;border:0;cursor:pointer;}
-  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .22s ease,opacity .2s ease;}
-  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
-  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-  /* ===== NAV DROPDOWN ===== */
-  .nav-drop{position:relative;}
-  .nav-drop .drop-trigger{display:inline-flex;align-items:center;gap:5px;background:none;border:0;padding:0;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;color:var(--mid);transition:color .15s ease;}
-  .nav-drop .drop-trigger:hover{color:var(--ink);}
-  .nav-drop.open .drop-trigger{color:var(--ink);}
-  .nav-drop .chev{width:10px;height:10px;flex:0 0 auto;transition:transform .2s ease;}
-  .nav-drop.open .chev{transform:rotate(180deg);}
-  .drop-panel{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-6px);z-index:20;min-width:240px;background:var(--white);border:1.5px solid var(--line);border-radius:10px;box-shadow:0 18px 44px rgba(22,27,56,.16);padding:8px;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;}
-  .nav-drop.open .drop-panel{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
-  .drop-panel a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:7px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:13.5px;color:var(--ink);text-decoration:none;transition:background .15s ease;}
-  .drop-panel a:hover{background:var(--paper-2);}
-  .drop-panel a i{width:8px;height:8px;border-radius:2px;background:var(--glyph);transform:rotate(45deg);flex:0 0 auto;}
-  @media(prefers-reduced-motion:reduce){.nav-drop .chev,.drop-panel{transition:none;}}
-
-  @media(max-width:720px){
-    .nav-toggle{display:flex;}
-    .site-nav{display:none;flex-basis:100%;order:3;flex-direction:column;align-items:stretch;gap:0;margin-top:14px;}
-    .site-nav.open{display:flex;}
-    .site-nav a{padding:13px 4px;font-size:15px;color:var(--ink);border-top:1px solid var(--line);}
-    .site-nav a.cta{margin-top:12px;border-top:0;border-radius:8px;text-align:center;color:#fff;background:var(--purple);padding:13px;}
-    .nav-drop .drop-trigger{width:100%;justify-content:space-between;padding:13px 4px;font-size:15px;color:var(--ink);border-top:1px solid var(--line);}
-    .drop-panel{position:static;transform:none;opacity:1;pointer-events:none;max-height:0;overflow:hidden;background:none;border:0;box-shadow:none;padding:0 0 0 14px;transition:max-height .22s ease;}
-    .nav-drop.open .drop-panel{pointer-events:auto;max-height:260px;padding-bottom:6px;transform:none;}
-    .drop-panel a{padding:10px 4px;font-size:14.5px;}
-  }
   :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
 
   .alert{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:var(--ink);color:var(--white);text-align:center;padding:12px clamp(16px,4vw,32px);font-size:13.5px;font-weight:400;}
@@ -169,17 +125,6 @@
   .link-arrow svg{width:14px;height:14px;transition:transform .18s ease;}
   .link-arrow:hover svg{transform:translateX(3px);}
 
-  /* ===== FOOTER ===== */
-  .site-foot{margin-top:clamp(56px,8vw,100px);border-top:2px solid var(--ink);padding-top:clamp(30px,4vw,42px);}
-  .foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(24px,4vw,40px);}
-  @media(max-width:700px){.foot-top{grid-template-columns:1fr;}}
-  .foot-brand img{height:56px;width:auto;display:block;margin-bottom:14px;}
-  .foot-brand p{color:var(--mid);font-size:13px;max-width:280px;line-height:1.6;}
-  .foot-col h4{font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
-  .foot-col a{display:block;color:var(--mid);font-size:13.5px;text-decoration:none;padding:6px 0;}
-  .foot-col a:hover{color:var(--ink);}
-  .foot-base{margin-top:clamp(28px,4vw,40px);padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--mid);font-size:12px;}
-
   @media (prefers-reduced-motion:reduce){.card,.card::after,.btn{transition:none;}.card:hover,.btn:hover{transform:none;}.card:hover::after{transform:rotate(45deg);}}
 </style>
 </head>
@@ -194,8 +139,6 @@
     </feComponentTransfer>
   </filter>
 </svg>
-<div class="topband" aria-hidden="true"><i class="p"></i><i class="t"></i><i class="l"></i><i class="a"></i></div>
-
 <div class="alert" role="note">
   <span class="dot" aria-hidden="true"></span>
   Registration is open for the 2026 Annual Workshops.
@@ -203,26 +146,6 @@
 </div>
 
 <div class="wrap">
-
-  <header class="site-head">
-    <a class="logo" href="#" aria-label="NPHTI home"><img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute"></a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span></button>
-    <nav class="site-nav" id="primary-nav" aria-label="Primary">
-      <a class="lnk" href="#" aria-current="page">About</a>
-      <div class="nav-drop">
-        <button class="drop-trigger" type="button" aria-expanded="false" aria-haspopup="true">Training <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="drop-panel">
-          <a href="#" class="t-purple"><i></i>Mid-Year Meetup</a>
-          <a href="#" class="t-teal"><i></i>Annual Workshops</a>
-          <a href="#" class="t-lav"><i></i>Webinars</a>
-          <a href="#" class="t-aqua"><i></i>Training Archive</a>
-        </div>
-      </div>
-      <a class="lnk" href="#">Resources</a>
-      <a class="lnk" href="#">Contact</a>
-      <a class="cta" href="#">Donate</a>
-    </nav>
-  </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
@@ -338,60 +261,9 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-foot">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <img src="nphti-logo.png" alt="National Pediatric Hypnosis Training Institute">
-        <p>Training licensed health professionals in pediatric clinical hypnosis.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Explore</h4>
-        <a href="#">About</a>
-        <a href="#">Training</a>
-        <a href="#">Faculty</a>
-        <a href="#">Resources</a>
-      </div>
-      <div class="foot-col">
-        <h4>Connect</h4>
-        <a href="https://www.nphti.org/find-a-provider">Find a Provider</a>
-        <a href="#">Contact</a>
-        <a href="#">Donate</a>
-      </div>
-    </div>
-    <div class="foot-base">
-      <span>&copy; 2026 National Pediatric Hypnosis Training Institute.</span>
-      <span>All rights reserved.</span>
-    </div>
-  </footer>
 </div>
 
 <script>
-  (function(){
-    var t=document.querySelector('.nav-toggle'), nav=document.querySelector('.site-nav');
-    if(t&&nav){
-      var setNav=function(open){ nav.classList.toggle('open',open); t.setAttribute('aria-expanded',String(open)); if(typeof reportHeight==='function'){reportHeight();} };
-      t.addEventListener('click',function(){ setNav(!nav.classList.contains('open')); });
-      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ setNav(false); }); });
-    }
-  })();
-  (function(){
-    var drops=document.querySelectorAll('.nav-drop');
-    var closeAll=function(){ drops.forEach(function(d){ d.classList.remove('open'); d.querySelector('.drop-trigger').setAttribute('aria-expanded','false'); }); };
-    drops.forEach(function(d){
-      var trigger=d.querySelector('.drop-trigger');
-      trigger.addEventListener('click',function(e){
-        e.stopPropagation();
-        var willOpen=!d.classList.contains('open');
-        closeAll();
-        d.classList.toggle('open',willOpen);
-        trigger.setAttribute('aria-expanded',String(willOpen));
-        if(typeof reportHeight==='function')reportHeight();
-      });
-    });
-    document.addEventListener('click',function(){ closeAll(); });
-    document.addEventListener('keydown',function(e){ if(e.key==='Escape')closeAll(); });
-  })();
   function reportHeight(){
     var h=document.documentElement.scrollHeight;
     if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
