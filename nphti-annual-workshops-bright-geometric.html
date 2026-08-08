@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Annual Workshops — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb;          /* cool paper, NOT warm cream */
+    --paper-2:#e7ecf8;
+    --white:#ffffff;
+    --ink:#161b38;            /* deep cool navy */
+    --mid:#5b618c;            /* cool grey-purple body */
+    --line:#dbe1f4;
+    --spark:#f2b134;          /* the single warm guest, micro-dose only */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);
+    background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:700px;padding-left:6px;}
+  .hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+    font-size:clamp(36px,6.4vw,64px);line-height:1.02;letter-spacing:-.02em;
+    color:var(--ink);margin:18px 0 0;
+  }
+  .hero h1 .c{color:var(--purple);}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:560px;margin:20px 0 0;line-height:1.65;}
+  .hero .tagline{font-family:'Bricolage Grotesque',sans-serif;font-style:italic;font-weight:600;color:var(--teal);font-size:clamp(15px,2vw,18px);margin-top:14px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;padding:13px 22px;border-radius:9px;text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease;}
+  .btn-solid{background:var(--purple);color:#fff;}
+  .btn-solid:hover{background:#353f85;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);}
+  .btn svg{width:15px;height:15px;flex:0 0 auto;}
+
+  .shapes{position:absolute;top:50%;right:-80px;transform:translateY(-50%);z-index:1;width:500px;height:500px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{right:-200px;opacity:.5;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;
+    padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+    font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;
+  }
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== FACT BAND — full-bleed, quick facts not stats ===== */
+  .fact-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(36px,6vw,60px) 0;}
+  .fact-inner{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+  .fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,30px);}
+  @media(max-width:760px){.fact-grid{grid-template-columns:1fr 1fr;}}
+  .fact{border-top:3px solid var(--glyph);padding-top:14px;}
+  .fact .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(18px,2.6vw,23px);color:var(--white);line-height:1.2;}
+  .fact .label{color:#a9b0d9;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:8px;}
+
+  /* ===== DIAMOND LIST ===== */
+  .dlist{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:16px;max-width:760px;}
+  .dlist li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start;font-size:14px;color:var(--mid);line-height:1.65;}
+  .dlist li i{width:9px;height:9px;background:var(--purple);border-radius:2px;transform:rotate(45deg);margin-top:6px;flex:0 0 auto;}
+  .dlist li b{color:var(--ink);font-weight:600;}
+  .dlist.two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;}
+  @media(max-width:700px){.dlist.two-col{grid-template-columns:1fr;}}
+
+  /* ===== CARD base ===== */
+  .card{position:relative;background:var(--white);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+  .band{height:8px;width:100%;}
+  .b-purple{background:var(--purple);} .b-teal{background:var(--teal);} .b-lav{background:var(--lavender);} .b-aqua{background:var(--aqua);}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(22,27,56,.13);}
+  .card.t-purple:hover{border-color:var(--purple);} .card.t-teal:hover{border-color:var(--teal);}
+  .card.t-lav:hover{border-color:var(--lavender);} .card.t-aqua:hover{border-color:var(--aqua);}
+  .card::after{content:"";position:absolute;top:16px;right:16px;width:10px;height:10px;background:var(--glyph);border-radius:2px;transform:rotate(45deg);opacity:.85;transition:transform .35s ease;}
+  .card:hover::after{transform:rotate(135deg);}
+
+  /* ===== WORKSHOP LEVEL CARDS ===== */
+  .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.levels{grid-template-columns:1fr;}}
+  .level .inner{padding:clamp(24px,3.4vw,30px) clamp(22px,3vw,26px) clamp(26px,3.4vw,30px);}
+  .level h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:var(--ink);margin-bottom:4px;}
+  .level .sub{font-size:11.5px;color:var(--mid);font-weight:500;text-transform:uppercase;letter-spacing:.04em;}
+  .full-badge{display:inline-block;font-family:'DM Sans',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#7a4a00;background:#fbe4ae;border:1px solid var(--spark);border-radius:20px;padding:3px 10px;}
+  .level p{color:var(--mid);font-size:13.5px;line-height:1.65;margin-top:14px;}
+  .price-table{margin-top:18px;border-top:1.5px solid var(--line);padding-top:14px;}
+  .price-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;padding:5px 0;color:var(--mid);}
+  .price-row b{color:var(--ink);font-weight:600;}
+  .price-row .amt{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--ink);}
+  .price-note{font-size:11px;color:var(--mid);opacity:.85;margin-top:10px;line-height:1.5;}
+  .level .link-arrow{margin-top:18px;}
+
+  .link-arrow{display:inline-flex;align-items:center;gap:7px;font-weight:500;font-size:13.5px;text-decoration:none;color:var(--glyph);}
+  .link-arrow svg{width:14px;height:14px;transition:transform .18s ease;}
+  .link-arrow:hover svg{transform:translateX(3px);}
+
+  /* ===== LOCATION ===== */
+  .loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,48px);align-items:start;}
+  @media(max-width:820px){.loc{grid-template-columns:1fr;}}
+  .loc h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);margin-top:26px;}
+  .loc h3:first-child{margin-top:0;}
+  .loc p{color:var(--mid);font-size:14.5px;line-height:1.75;margin-top:10px;}
+  .loc address{font-style:normal;color:var(--mid);font-size:14.5px;line-height:1.7;margin-top:10px;}
+  .pkg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px;}
+  @media(max-width:520px){.pkg{grid-template-columns:1fr;}}
+  .pkg .box{border:1.5px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--white);}
+  .pkg .box h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14.5px;color:var(--ink);}
+  .pkg .box p{font-size:12.5px;color:var(--mid);margin-top:6px;line-height:1.55;}
+
+  /* ===== ACCREDITATION ===== */
+  .accred{max-width:760px;}
+  .accred p{color:var(--mid);font-size:14px;line-height:1.75;margin-top:10px;}
+
+  /* ===== SCHOLARSHIP — striped card ===== */
+  .scholarship{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
+  .scholarship .stripe{width:10px;background:var(--teal);flex:0 0 auto;}
+  .scholarship .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .scholarship h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
+  .scholarship h3 i{width:10px;height:10px;background:var(--teal);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .scholarship p{color:var(--mid);font-size:14px;margin-top:8px;max-width:520px;}
+  .scholarship .btn-solid{background:var(--teal);flex:0 0 auto;}
+  .scholarship .btn-solid:hover{background:#276f7e;}
+
+  /* ===== TESTIMONIALS ===== */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){.quotes{grid-template-columns:1fr;}}
+  .quote .inner{padding:24px 22px 26px;}
+  .quote p{font-family:'Bricolage Grotesque',sans-serif;font-style:italic;font-weight:500;font-size:14.5px;color:var(--ink);line-height:1.6;}
+  .quote p::before{content:"\201C";}
+  .quote p::after{content:"\201D";}
+
+  /* ===== PROGRAM GUIDE CTA — striped card ===== */
+  .guide-cta{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
+  .guide-cta .stripe{width:10px;background:var(--purple);flex:0 0 auto;}
+  .guide-cta .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .guide-cta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
+  .guide-cta h3 i{width:10px;height:10px;background:var(--purple);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .guide-cta p{color:var(--mid);font-size:14px;margin-top:8px;max-width:480px;}
+  .guide-cta .btn-solid{flex:0 0 auto;}
+
+  @media (prefers-reduced-motion:reduce){
+    .card,.card::after,.btn{transition:none;}
+    .card:hover,.btn:hover{transform:none;}
+    .card:hover::after{transform:rotate(45deg);}
+  }
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training &middot; Annual Workshops</span>
+      <h1>15th Annual Pediatric Clinical Hypnosis Skills <span class="c">Development Workshops</span></h1>
+      <p>October 15&ndash;17, 2026 &middot; Q Center, St. Charles, IL &mdash; a new retreat setting near Chicago.</p>
+      <p class="tagline">&ldquo;Helping Children Help Themselves&rdquo;</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="https://www.nphti.org/event-details-registration/2026-nphti-annual-workshops" target="_blank" rel="noopener">Register for the Workshop</a>
+        <a class="btn btn-outline" href="training/nphti-2026-annual-workshops-program-guide.pdf" target="_blank" rel="noopener">Download the Brochure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUICK FACTS ===== -->
+  <section class="fact-band">
+    <div class="fact-inner">
+      <div class="fact-grid">
+        <div class="fact t-purple"><div class="val">Oct 15&ndash;17, 2026</div><div class="label">Thursday &ndash; Saturday</div></div>
+        <div class="fact t-teal"><div class="val">Q Center &middot; St. Charles, IL</div><div class="label">New retreat location</div></div>
+        <div class="fact t-lav"><div class="val">3 Concurrent Levels</div><div class="label">Fundamentals &middot; Utilization &middot; Advanced</div></div>
+        <div class="fact t-aqua"><div class="val">Earn CEUs / CMEs</div><div class="label">AMA PRA Category 1 CME/CE</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT'S NEW ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">2026</span><h2>What&rsquo;s New This Year</h2></div>
+    </div>
+    <ul class="dlist">
+      <li><i></i><div><b>New retreat location</b> &mdash; the Q Center, a 95-acre retreat respite in St. Charles, IL, about 40 minutes from Chicago O&rsquo;Hare, with walking trails, bike paths, and many other amenities.</div></li>
+      <li><i></i><div><b>New Advanced Case-based Masterclass</b> &mdash; for clinicians who&rsquo;ve completed both Fundamentals and Utilization &amp; Expanded Clinical Applications and want case-based, mentor-led training in a small group (max 10).</div></li>
+      <li><i></i><div><b>New mini-intensives, panel discussions, and large group discussions</b> woven throughout the workshops.</div></li>
+    </ul>
+  </section>
+
+  <!-- ===== WORKSHOP LEVELS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Choose your track</span><h2>Workshop Levels</h2></div>
+    </div>
+    <div class="levels">
+      <article class="card level t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner">
+          <div class="sub">Introductory</div>
+          <h3>Fundamentals</h3>
+          <p>For clinicians who haven&rsquo;t yet completed pediatric-specific hypnosis training (20+ hours), or who want to refresh core skills. Foundational skill-building in hypnosis as therapeutic communication for pain, anxiety, chronic functional conditions, and sleep &mdash; with over half the workshop spent in small-group practice (6:1 ratio).</p>
+          <div class="price-table">
+            <div class="price-row"><span>Standard</span><span class="amt">$970 <span style="opacity:.6">/ $1,100</span></span></div>
+            <div class="price-row"><span>MSCH Members / U of MN Faculty &amp; Staff</span><span class="amt">$915 <span style="opacity:.6">/ $1,060</span></span></div>
+            <div class="price-row"><span>Grad / Resident / Fellow</span><span class="amt">$750 <span style="opacity:.6">/ $825</span></span></div>
+            <p class="price-note">Early bird (before or on July 31) / Regular (after July 31)</p>
+          </div>
+          <a class="link-arrow" href="https://www.nphti.org/event-details-registration/2026-nphti-annual-workshops" target="_blank" rel="noopener">Register for Fundamentals <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card level t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner">
+          <div class="sub">Intermediate</div>
+          <h3>Utilization &amp; Expanded Clinical Applications</h3>
+          <p>For clinicians who&rsquo;ve completed a Fundamentals-level pediatric hypnosis training and use clinical hypnosis with patients regularly. Focused on personalized hypnosis goals, Ericksonian utilization principles, and applying skills to more complex medical and mental health issues.</p>
+          <div class="price-table">
+            <div class="price-row"><span>Standard</span><span class="amt">$970 <span style="opacity:.6">/ $1,100</span></span></div>
+            <div class="price-row"><span>MSCH Members / U of MN Faculty &amp; Staff</span><span class="amt">$915 <span style="opacity:.6">/ $1,060</span></span></div>
+            <div class="price-row"><span>Grad / Resident / Fellow</span><span class="amt">$750 <span style="opacity:.6">/ $825</span></span></div>
+            <p class="price-note">Early bird (before or on July 31) / Regular (after July 31)</p>
+          </div>
+          <a class="link-arrow" href="https://www.nphti.org/event-details-registration/2026-nphti-annual-workshops" target="_blank" rel="noopener">Register for Utilization <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card level t-lav">
+        <div class="band b-lav"></div>
+        <div class="inner">
+          <div class="sub" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">Advanced &middot; New for 2026 <span class="full-badge">Full for 2026</span></div>
+          <h3>Advanced Case-based Masterclass</h3>
+          <p>Requires both Fundamentals and Utilization &amp; Expanded Clinical Applications. A case-based, mentor-led format (max 10 participants) covering pain, anxiety, DGBI, habit &amp; elimination disorders, storytelling/metaphors, and neurodiversity. Each participant prepares at least 4 clinical cases.</p>
+          <div class="price-table">
+            <div class="price-row"><span>Workshop Registration Fee</span><span class="amt">$970 <span style="opacity:.6">/ $1,100</span></span></div>
+            <p class="price-note">Before July 31 / After July 31. This workshop is now full for 2026 &mdash; join the waitlist to be notified of openings or for next year.</p>
+          </div>
+          <a class="link-arrow" href="mailto:TrainWithNPHTI@gmail.com?subject=Advanced%20Case-based%20Masterclass%20Waitlist" target="_blank" rel="noopener">Join the Waitlist <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+    <p class="price-note" style="margin-top:18px;max-width:760px;">Participants aren&rsquo;t considered registered until registration information is complete, the Acknowledgment &amp; Release Waiver is agreed to, and payment is received. Cancellation policy: full refund (minus a $100 admin fee) until 30 days before the training (Sept 15, 2026); no refunds after that date. Questions: <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">TrainWithNPHTI@gmail.com</a></p>
+  </section>
+
+  <!-- ===== ELIGIBILITY ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Who can attend</span><h2>Eligibility</h2></div>
+    </div>
+    <p style="color:var(--mid);font-size:14px;max-width:760px;">Requires an active clinical license <b style="color:var(--ink);">and</b> one of the following:</p>
+    <ul class="dlist two-col">
+      <li><i></i><div>Doctoral degree in Medicine, Psychology, Nursing, or Dentistry</div></li>
+      <li><i></i><div>Masters degree in Social Work, Marriage &amp; Family Therapy, or Clinical/Counseling Psychology</div></li>
+      <li><i></i><div>Masters degree in Nursing or Advanced Practice Registered Nurse (APRN, CPNP, CNS)</div></li>
+      <li><i></i><div>Other advanced-degree clinicians (e.g. Occupational &amp; Physical Therapists, Speech &amp; Language Pathologists)</div></li>
+      <li><i></i><div>Child Life Specialists holding a doctoral, masters, or bachelors degree with CCLS certification</div></li>
+      <li><i></i><div>Music Therapists with MT-BC board certification</div></li>
+      <li><i></i><div>Registered or Board Certified Art Therapists (ATR / ATR-BC)</div></li>
+      <li><i></i><div>Full-time interns, residents, fellows, or graduate students, with a letter from their department confirming current status</div></li>
+    </ul>
+    <p style="color:var(--mid);font-size:13px;margin-top:16px;max-width:760px;line-height:1.6;">Relevant clinical pediatric training and experience will also be considered on an individual basis &mdash; contact <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">TrainWithNPHTI@gmail.com</a> for more information.</p>
+  </section>
+
+  <!-- ===== LOCATION & LODGING ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Where you&rsquo;ll stay</span><h2>Location &amp; Lodging</h2></div>
+    </div>
+    <div class="loc">
+      <div>
+        <p>The Q Center is a 95-acre retreat respite in St. Charles, IL &mdash; about 40 minutes from Chicago O&rsquo;Hare and 50 minutes from Midway &mdash; with walking trails, bike paths, and many other amenities. St. Charles is a picturesque riverfront city offering restaurants, nightlife, and shopping just outside Chicago.</p>
+        <address>Q Center<br>1405 North Fifth Avenue<br>St. Charles, Illinois<br>(630) 377-3100 &middot; <a href="https://www.qcenter.com" target="_blank" rel="noopener" style="color:var(--purple);text-decoration:underline;">qcenter.com</a></address>
+      </div>
+      <div>
+        <h3 style="margin-top:0;">All Attendees Choose a Package</h3>
+        <p>As an all-inclusive retreat center, every attendee selects either the Overnight or Day Package, in addition to workshop registration.</p>
+        <div class="pkg">
+          <div class="box"><h4>Overnight Package</h4><p>Private sleeping room, all meals and refreshments, full access to retreat amenities.</p></div>
+          <div class="box"><h4>Day Package</h4><p>Breakfast, lunch, refreshments, complimentary parking, full access to retreat amenities.</p></div>
+        </div>
+        <a class="btn btn-solid" style="margin-top:20px;" href="https://book.passkey.com/event/51187468/owner/12843352/home" target="_blank" rel="noopener">Reserve Your Retreat Package</a>
+        <p class="price-note" style="margin-top:12px;">A limited block of overnight packages is available at a discounted rate. Reserve directly with the Q Center by September 15, 2026 to secure it. Both workshop registration and a package reservation are required to hold your spot.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCREDITATION & SCHOLARSHIPS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Credit</span><h2>Accreditation</h2></div>
+    </div>
+    <div class="accred">
+      <p>Approved by the American Society of Clinical Hypnosis Standards of Training Committee toward Membership and Certification requirements. The ASCH Education &amp; Research Foundation (ASCH-ERF) is accredited by the Accreditation Council for Continuing Medical Education and designates this activity for up to <b style="color:var(--ink);">21 AMA PRA Category 1 Credits&trade;</b> (Fundamentals &amp; Utilization) and <b style="color:var(--ink);">20 credits</b> (Advanced Case-based Masterclass). Also approved by the National Association of Social Workers for 20 continuing education contact hours, and an approved PACE Program Provider for FAGD/MAGD credit.</p>
+    </div>
+  </section>
+
+  <section class="scholarship">
+    <div class="stripe" aria-hidden="true"></div>
+    <div class="content">
+      <div>
+        <h3><i></i>Scholarships Available</h3>
+        <p>NPHTI offers scholarships to help defray registration costs for trainees, clinicians in resource-limited countries, and early-career professionals with limited financial resources. Applications are due <b style="color:var(--ink);">August 15</b>.</p>
+      </div>
+      <a class="btn btn-solid" href="https://www.nphti.org/scholarships" target="_blank" rel="noopener">Scholarship Details</a>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">In their words</span><h2>What Past Attendees Say</h2></div>
+    </div>
+    <div class="quotes">
+      <article class="card quote t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner"><p>NPHTI has transformed my daily practice. Hypnosis helps my patients but it also helps me!</p></div>
+      </article>
+      <article class="card quote t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner"><p>NPHTI as an organization and the faculty at the conference have been impactful beyond anything I had expected. It has fundamentally changed how I view my clients as well as how I view myself.</p></div>
+      </article>
+      <article class="card quote t-lav">
+        <div class="band b-lav"></div>
+        <div class="inner"><p>I have grown so much as a professional in just three days! I felt so supported and valued by the faculty. This course felt like an apprenticeship. I had the chance to work with experts in the field, who came alongside me and boosted me up with empowerment and helpful suggestions.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM GUIDE CTA ===== -->
+  <section class="guide-cta">
+    <div class="stripe" aria-hidden="true"></div>
+    <div class="content">
+      <div>
+        <h3><i></i>Get the Full Brochure</h3>
+        <p>Complete day-by-day agendas for all three workshop levels, educational objectives, and the 2026 teaching faculty roster.</p>
+      </div>
+      <a class="btn btn-solid" href="training/nphti-2026-annual-workshops-program-guide.pdf" target="_blank" rel="noopener">Download the Brochure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
