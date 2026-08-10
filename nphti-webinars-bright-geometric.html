@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Webinar Series — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:700px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:600px;margin:20px 0 0;line-height:1.65;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;padding:13px 22px;border-radius:9px;text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease;}
+  .btn-solid{background:var(--purple);color:#fff;}
+  .btn-solid:hover{background:#353f85;transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);}
+
+  .shapes{position:absolute;top:50%;right:-100px;transform:translateY(-50%);z-index:1;width:460px;height:460px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{display:none;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== FACT BAND ===== */
+  .fact-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(32px,5vw,52px) 0;}
+  .fact-inner{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+  .fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,30px);}
+  @media(max-width:760px){.fact-grid{grid-template-columns:1fr 1fr;}}
+  .fact{border-top:3px solid var(--glyph);padding-top:14px;}
+  .fact .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,21px);color:var(--white);line-height:1.2;}
+  .fact .label{color:#a9b0d9;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:8px;}
+
+  /* ===== SESSIONS ===== */
+  .sessions{display:flex;flex-direction:column;gap:16px;}
+  .session{display:grid;grid-template-columns:190px 1fr;background:var(--white);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease;}
+  .session:hover{box-shadow:0 14px 34px rgba(22,27,56,.09);}
+  @media(max-width:680px){.session{grid-template-columns:1fr;}}
+  .session-date{padding:20px 22px;background:var(--paper-2);border-left:6px solid var(--glyph);border-right:1.5px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:2px;}
+  @media(max-width:680px){.session-date{border-right:none;border-bottom:1.5px solid var(--line);}}
+  .session-full{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;color:var(--ink);}
+  .session-time{font-size:11.5px;color:var(--mid);margin-top:3px;}
+  .session-body{padding:20px 24px;display:flex;flex-direction:column;justify-content:center;gap:9px;}
+  .session-body h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;color:var(--ink);line-height:1.35;}
+  .session-desc{font-size:12.5px;color:var(--mid);line-height:1.6;max-width:620px;}
+  .session-people{display:flex;gap:26px;flex-wrap:wrap;font-size:13px;color:var(--ink);}
+  .session-people span.lbl{display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mid);opacity:.8;font-weight:500;}
+  .tbd-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#7a4a00;background:#fbe4ae;border:1px solid var(--spark);border-radius:20px;padding:3px 9px;margin-left:2px;vertical-align:middle;}
+
+  .footnote{font-size:12px;color:var(--mid);opacity:.85;margin-top:18px;max-width:760px;line-height:1.6;}
+
+  /* ===== CLOSING CTA — striped card ===== */
+  .close-cta{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
+  .close-cta .stripe{width:10px;background:var(--purple);flex:0 0 auto;}
+  .close-cta .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .close-cta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
+  .close-cta h3 i{width:10px;height:10px;background:var(--purple);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .close-cta p{color:var(--mid);font-size:14px;margin-top:8px;max-width:480px;}
+  .close-cta .btn-solid{flex:0 0 auto;}
+
+  @media (prefers-reduced-motion:reduce){.session,.btn{transition:none;}.btn:hover{transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training &middot; Webinar Series</span>
+      <h1>NPHTI Monthly Webinars</h1>
+      <p>Live, faculty-led sessions on focused clinical topics for clinicians with prior hypnosis training &mdash; held virtually on the third Tuesday of most months. We&rsquo;ve been at it since August 2020 and love welcoming new faces.</p>
+      <p>Registration for each session is announced on the NPHTI listserv. Not on the list? Reach out to get details about registration.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="mailto:TrainWithNPHTI@gmail.com?subject=Webinar%20Series%20Registration" target="_blank" rel="noopener">Join the Listserv</a>
+        <a class="btn btn-outline" href="https://us02web.zoom.us/rec/share/CB4Mpa4BrOk3rNANpu41v70lFfBFc5vJpJxWJixlnuYw2DKKfQc0NQ3P-D1A6d2g.etFL_GMlYQe8LRCg" target="_blank" rel="noopener">Watch a Past Webinar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUICK FACTS ===== -->
+  <section class="fact-band">
+    <div class="fact-inner">
+      <div class="fact-grid">
+        <div class="fact t-purple"><div class="val">3rd Tuesday</div><div class="label">Most months</div></div>
+        <div class="fact t-teal"><div class="val">11:00–12:15 CT</div><div class="label">Central time</div></div>
+        <div class="fact t-lav"><div class="val">$55 per Session</div><div class="label">Virtual, live</div></div>
+        <div class="fact t-aqua"><div class="val">Pediatric Focus</div><div class="label">Clinicians with prior hypnosis training</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCHEDULE ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">2026&ndash;2027</span><h2>Upcoming Schedule</h2></div>
+    </div>
+    <div class="sessions">
+
+      <article class="session t-purple">
+        <div class="session-date">
+          <div class="session-full">Sep 15, 2026</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3>Hypnotically Bringing Order to the Habit Disorders</h3>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Fred Bogin</b></div>
+            <div><span class="lbl">Moderator</span><b>Dr. Adam Keating</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-teal">
+        <div class="session-date">
+          <div class="session-full">Nov 17, 2026</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3>Hypnosis in Pediatric Palliative Care</h3>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Marcela Pizarro</b></div>
+            <div><span class="lbl">Moderator</span><b>Dr. Leora Kuttner</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-lav">
+        <div class="session-date">
+          <div class="session-full">Jan 19, 2027</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CST</div>
+        </div>
+        <div class="session-body">
+          <h3>Skills Practice <span class="tbd-badge">Topic TBD</span></h3>
+          <div class="session-people">
+            <div><span class="lbl">Speakers &amp; Moderators</span><b>Dr. Adam Keating &amp; Dr. Leora Kuttner</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-aqua">
+        <div class="session-date">
+          <div class="session-full">Feb 16, 2027</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3>Changing Young Minds &mdash; From Depression to Hope</h3>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Dr. Julie Linden</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-purple">
+        <div class="session-date">
+          <div class="session-full">Mar 16, 2027</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3>Pediatric Hypnosis and Mindfulness</h3>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Nadia Sarwar, MD, FAAP</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-teal">
+        <div class="session-date">
+          <div class="session-full">Apr 20, 2027</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3>Update on Hypnosis Research</h3>
+          <p class="session-desc">An online study on hypnotherapy for children with IBS in primary care, and whether hypnotherapy affects stress, sleep, and the microbiome.</p>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Arine Vlieger</b></div>
+            <div><span class="lbl">Moderator</span><b>Dr. Adam Keating</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="session t-lav">
+        <div class="session-date">
+          <div class="session-full">May 18, 2027</div>
+          <div class="session-time">11:00 a.m.&ndash;12:15 p.m. CDT</div>
+        </div>
+        <div class="session-body">
+          <h3><span class="tbd-badge">Topic TBD</span></h3>
+          <div class="session-people">
+            <div><span class="lbl">Speaker</span><b>Dr. Alejandra Sencion</b></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="footnote">Some session topics and moderators are still being confirmed and will be added as details are finalized.</p>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section class="close-cta">
+    <div class="stripe" aria-hidden="true"></div>
+    <div class="content">
+      <div>
+        <h3><i></i>Want to Join a Session?</h3>
+        <p>Registration is announced on the NPHTI listserv ahead of each session. Email us to be added.</p>
+      </div>
+      <a class="btn btn-solid" href="mailto:TrainWithNPHTI@gmail.com?subject=Webinar%20Series%20Registration" target="_blank" rel="noopener">Email TrainWithNPHTI@gmail.com</a>
+    </div>
+  </section>
+
+</div>
+<script>
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
