@@ -54,7 +54,7 @@ In Wix: four equal-width rectangle/strip elements stacked horizontally, or a sin
 - Background: `--paper` (#f1f4fb) or transparent over the page background — the page background is `--paper` everywhere, so either works as long as it's not white or warm.
 
 ### 3.3 Nav links
-Order: **About · Training (dropdown) · Resources (dropdown) · Contact · Donate**
+Order: **About · Training (dropdown) · Find a Provider · Training Resources · Contact · Donate**
 
 | State | Style |
 |---|---|
@@ -89,18 +89,12 @@ Gap between nav items: ~14–26px depending on viewport (tighter on smaller desk
 
 **Mobile:** below 720px, this should behave as an accordion — tapping "Training" expands the four items in place (indented, same diamond/no-diamond treatment), rather than navigating or overlaying. Wix's native mobile menu should handle this automatically once the pages are nested under "Training" in the page manager; verify it actually accordions rather than just listing all four as flat top-level items in the mobile menu.
 
-### 3.4b Resources dropdown
+### 3.4b Find a Provider and Training Resources — flat links, not dropdowns
 
-**Same pattern as Training — Resources also has no landing page of its own.** It's a menu of six items:
+Unlike Training, these two are plain flat nav links (default nav-link styling from the table above), each pointing at one page:
 
-- Find a Provider (→ external link, `https://www.nphti.org/find-a-provider` — the live provider directory, not a Bright Geometric page)
-- Learn about Hypnosis
-- From our Faculty
-- NPHTI Listserv
-- Other Hypnosis Training
-- FAQ
-
-Build and styling notes are identical to §3.4 (trigger chevron, panel dimensions, diamond markers cycling purple → teal → lavender → aqua → purple → teal for the six items, mobile accordion behavior below 720px). The one difference: "Find a Provider" is an external link (opens the existing nphti.org directory), so it shouldn't be nested as a Wix child page the way the other five subpages are — set it as a plain external-link menu item within the Resources dropdown instead.
+- **Find a Provider** → external link to the live `https://www.nphti.org/find-a-provider` directory. This is parent/caregiver-facing (finding a clinician for their child), so it gets its own top-level slot rather than being buried in trainee-facing content.
+- **Training Resources** → a single Bright Geometric page (not a dropdown) aimed at clinicians considering training with NPHTI. Combines what were originally going to be five separate subpages — Learn about Hypnosis, From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — into sections on one page instead. (Earlier drafts of this spec called this nav item "Resources" and modeled it as a second dropdown; renamed to avoid reading as a parent/caregiver resource hub, which it isn't.)
 
 ### 3.5 Mobile hamburger
 Below **720px**, the nav collapses into a hamburger menu:
@@ -124,7 +118,7 @@ Three-column layout (desktop), stacking to one column below **700px**:
 | Column | Width ratio | Content |
 |---|---|---|
 | Brand | 1.3fr | Logo (56px height) + one-line tagline: "Training licensed health professionals in pediatric clinical hypnosis." (13px, `--mid`) |
-| Explore | 1fr | Label "EXPLORE" (12px, uppercase, letter-spacing .08em, `--teal`) + links: About, Training, Faculty, Resources |
+| Explore | 1fr | Label "EXPLORE" (12px, uppercase, letter-spacing .08em, `--teal`) + links: About, Training, Faculty, Training Resources |
 | Connect | 1fr | Label "CONNECT" (same label style) + links: Find a Provider (→ `https://www.nphti.org/find-a-provider`), Contact, Donate |
 
 Column gap: ~24–40px.
