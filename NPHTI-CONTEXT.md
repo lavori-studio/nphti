@@ -116,7 +116,7 @@ The four logo hues (purple / teal / lavender / aqua) are used as **bold blocks**
 
 **As of this round, the topband, logo, primary nav, and footer have been stripped out of all four HTML pages.** Wix owns them now — every page embeds via iframe into a Wix page that already has its own header/footer, so duplicating that chrome inside each HTML file was redundant. Full rebuild spec (exact colors, spacing, states, and how to handle the Training dropdown natively in Wix) lives in **`WIX-HEADER-FOOTER-SPEC.md`** — read that before touching Wix's header/footer.
 
-Quick summary for reference: Logo left, nav right — **About · Training (dropdown) · Resources · Contact · Donate** (Donate is a filled purple button). Below 720px, links collapse into a hamburger that opens an in-flow stacked menu. Training has no landing page — it's a dropdown/accordion listing four real subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), ideally built as native Wix child pages so Wix's menu auto-nests them.
+Quick summary for reference: Logo left, nav right — **About · Training (dropdown) · Find a Provider · Training Resources · Contact · Donate** (Donate is a filled purple button). Below 720px, links collapse into a hamburger that opens an in-flow stacked menu. Training has no landing page of its own — it's a dropdown/accordion listing four real subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), built as native Wix child pages so Wix's menu auto-nests them. Find a Provider and Training Resources are both flat links, not dropdowns: Find a Provider points at the existing external `nphti.org/find-a-provider` directory (parent/caregiver-facing), and Training Resources is a single Bright Geometric page (built) aimed at clinicians considering training with NPHTI, combining what were originally separate subpage ideas — From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — into sections on one page. ("Learn about Hypnosis" was dropped from the lineup per client feedback rather than built.) (This nav item was briefly called "Resources" and modeled as a second dropdown — renamed since "Resources" reads as parent/caregiver-facing, which this content isn't.)
 
 **What stays in the HTML:** everything from the hero down. The homepage's dark "Registration is open" promo banner is page content (not chrome) and stays in `nphti-home-bright-geometric.html` only.
 
@@ -163,6 +163,12 @@ Call `reportHeight()` again after ANY interaction that changes page height (bio 
 
 Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner and Lombard are current teaching faculty and were removed from the past-speakers list at client request.
 
+- **"Information for Caregivers and Children" links** — removed from the Training Resources page's Other Hypnosis Training section at client request (that page is scoped to clinicians, not caregivers), but kept here in case they come back in as a section on a caregiver-facing page later:
+  - Hypnosis: Your Child &ndash; University of Michigan Health System &mdash; `https://www.med.umich.edu/yourchild/topics/hypnosis.htm`
+  - Understanding Hypnosis &ndash; via F. Ralph Berberich, MD &mdash; `https://www.pediatricsuggestions.net`
+  - How Does Medical Hypnosis Work? &ndash; via Jeff Lazarus, MD &mdash; `https://www.jefflazarusmd.com/faqs.html#how`
+  - What is Hypnosis and Why Use Hypnosis? &ndash; via Ran Anbar, MD &mdash; `https://www.centerpointmedicine.com/#!information-for-parents/c1uuw`
+
 ---
 
 ## 7. Hosting & deployment
@@ -185,10 +191,10 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 
 ## 9. Next up
 
-- **Build the Wix header and footer** per `WIX-HEADER-FOOTER-SPEC.md` — topband, logo, nav (including the Training dropdown), and footer, applied sitewide.
+- **Build the Wix header and footer** per `WIX-HEADER-FOOTER-SPEC.md` — topband, logo, nav (including the Training dropdown and the flat Find a Provider / Training Resources links), and footer, applied sitewide.
 - Confirm all 26 faculty headshots are present in `faculty/`.
 - Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
-- Build remaining pages in Bright Geometric: Resources, Contact, Donate, plus the four Training subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive). (Leadership and About are done.)
+- Build remaining pages in Bright Geometric: the four Training subpages (done: Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), the Training Resources page (done: sections are From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — Find a Provider is an external link, not a new page), plus Contact and Donate. (Leadership and About are done.)
 - Once real Wix page URLs exist, remap the cross-page links still pointing at sibling HTML filenames (e.g. About page's faculty/board cards) to the actual Wix paths.
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Training Resources — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:700px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:640px;margin:18px 0 0;line-height:1.7;}
+  .hero p a{color:var(--purple);font-weight:500;text-decoration:underline;text-underline-offset:3px;}
+  .hero p a:hover{color:#353f85;}
+
+  .shapes{position:absolute;top:50%;right:-100px;transform:translateY(-50%);z-index:1;width:460px;height:460px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{display:none;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  .jump-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;}
+  .jump-nav a{font-size:12.5px;font-weight:500;color:var(--mid);background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:7px 14px;text-decoration:none;transition:border-color .15s ease,color .15s ease;}
+  .jump-nav a:hover{border-color:var(--purple);color:var(--purple);}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);scroll-margin-top:20px;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+  .sec-intro{color:var(--mid);font-size:14px;max-width:760px;margin-bottom:22px;line-height:1.7;}
+  .sec-intro a, p.cite a, .listserv p a, .media-item a{color:var(--purple);text-decoration:underline;text-underline-offset:2px;}
+  .sec-intro a:hover, p.cite a:hover, .listserv p a:hover, .media-item a:hover{color:#353f85;}
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== ACCORDION (faculty + FAQ) ===== */
+  details.acc{background:var(--white);border:1.5px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden;}
+  details.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 20px;border-left:6px solid var(--glyph);}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;color:var(--ink);flex:1;}
+  .chev{width:15px;height:15px;color:var(--mid);transition:transform .2s ease;flex:0 0 auto;}
+  details.acc[open] .chev{transform:rotate(180deg);}
+  .acc-body{padding:4px 20px 16px;}
+
+  p.cite{font-size:13px;color:var(--mid);line-height:1.65;padding:9px 0;border-top:1px solid var(--line);}
+  p.cite:first-child{border-top:none;}
+
+  .faq-q{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;color:var(--ink);line-height:1.4;}
+  .faq-a{font-size:13.5px;color:var(--mid);line-height:1.75;}
+  .faq-a p{margin-top:10px;}
+  .faq-a p:first-child{margin-top:0;}
+
+  /* ===== MEDIA LIST ===== */
+  .media-note{font-size:12.5px;color:var(--mid);opacity:.9;font-style:italic;margin-bottom:16px;max-width:760px;}
+  .media-list{display:flex;flex-direction:column;gap:2px;}
+  .media-item{padding:12px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--mid);line-height:1.6;}
+  .media-list .media-item:first-child{border-top:none;}
+  .media-item b{color:var(--ink);font-weight:600;}
+
+  /* ===== LINK GRID (Other Hypnosis Training) ===== */
+  .link-group{margin-bottom:30px;}
+  .link-group:last-child{margin-bottom:0;}
+  .link-group h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;color:var(--ink);margin-bottom:12px;}
+  .link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  @media(max-width:640px){.link-grid{grid-template-columns:1fr;}}
+  .ext-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border:1.5px solid var(--line);border-radius:9px;background:var(--white);font-size:13.5px;color:var(--ink);text-decoration:none;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;}
+  .ext-link:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 10px 22px rgba(22,27,56,.09);}
+  .ext-link svg{width:14px;height:14px;flex:0 0 auto;color:var(--purple);}
+  .footnote{font-size:12px;color:var(--mid);opacity:.85;margin-top:18px;max-width:760px;line-height:1.6;}
+
+  /* ===== LISTSERV ===== */
+  .listserv h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;color:var(--ink);margin-top:26px;}
+  .listserv h3:first-child{margin-top:0;}
+  .listserv p{color:var(--mid);font-size:14px;line-height:1.75;margin-top:10px;max-width:780px;}
+
+  @media (prefers-reduced-motion:reduce){.ext-link,.chev{transition:none;}.ext-link:hover{transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training Resources</span>
+      <h1>Training Resources</h1>
+      <p>Reference material for clinicians training with, or considering training with, NPHTI &mdash; faculty publications, our listserv community, other reputable hypnosis training organizations, and answers to common questions. Looking for a NPHTI-trained provider? Visit our <a href="https://www.nphti.org/find-a-provider" target="_blank" rel="noopener">Find a Provider</a> directory instead.</p>
+      <div class="jump-nav">
+        <a href="#from-our-faculty">From our Faculty</a>
+        <a href="#nphti-listserv">NPHTI Listserv</a>
+        <a href="#other-hypnosis-training">Other Hypnosis Training</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FROM OUR FACULTY ===== -->
+  <section class="sec" id="from-our-faculty">
+    <div class="sec-head">
+      <div><span class="eyebrow">Bibliography</span><h2>From our Faculty</h2></div>
+    </div>
+    <p class="sec-intro">Selected publications by NPHTI faculty on pediatric clinical hypnosis and hypnotherapy.</p>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label">Andrew Barnes, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Barnes, A. &amp; Kohen, D. (2006). Clinical hypnosis as an effective adjunct in the care of pediatric inpatients. <em>J. Pediatrics</em>, October. Volume 149, Issue 4, 563&ndash;565.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label">Howard H. Hall, Ph.D., PsyD</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Hall, H., Chiarucci, K., &amp; Berman, B. (1992). Self-regulation and assessment approaches for vaso-occlusive pain management for pediatric sickle cell anemia patients. <em>International Journal of Psychosomatics</em>, 39(1&ndash;4), 28&ndash;33.</p>
+        <p class="cite">Anbar, R.D. &amp; Hall, H.R. (2004). Childhood habit cough treated with self-hypnosis. <em>J Pediatrics</em>, 144:213&ndash;7.</p>
+        <p class="cite">Hall, H. &amp; Olness, K. (2014). Hypnosis, imagery, self-regulation and immune activity. In C. Schubert (Ed.). <em>Psychoneuroimmunology and psychotherapy</em>. 2nd Edition. Germany: Schattauer-Verlag.</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label">Pamela Kaiser, Ph.D., CPNP</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Kaiser, P., Kohen, D., Brown, M., Kajander, R. &amp; Barnes, A. (2018). Integrating Pediatric Hypnosis with Complementary Modalities: Clinical Perspectives on Personalized Treatment. <em>Children</em>, 5(8), 108; <a href="https://doi.org/10.3390/children5080108" target="_blank" rel="noopener">doi.org/10.3390/children5080108</a></p>
+        <p class="cite">Kaiser, P. (2014). Childhood anxiety and psychophysiological reactivity: Hypnosis to build discrimination and self-regulation skills. <em>American Journal of Clinical Hypnosis</em>, Special Issue: Anxiety and Hypnosis, 56: 343&ndash;367.</p>
+        <p class="cite">Kaiser, P. (2011). Childhood anxiety, worry and fear: Individualizing hypnosis goals and suggestions for self-regulation. <em>American Journal of Clinical Hypnosis</em>, Special Issue: Pediatric Hypnosis, 54:1, 16&ndash;31.</p>
+        <p class="cite">Kaiser, P. (2017). Anxiety in Children and Teens. In Elkins, G.R. (Ed.) <em>Handbook of Medical and Psychological Hypnosis: Foundations, Applications, and Professional Issues</em>. Chapt. 53, pp 477&ndash;484. Springer Publishing Company.</p>
+      </div>
+    </details>
+
+    <details class="acc t-aqua">
+      <summary><span class="acc-label">Daniel P. Kohen, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Kohen, D., Kaiser, P., &amp; Olness, K. (2017). State-of-the-Art Pediatric Hypnosis Training: Remodeling Curriculum and Refining Faculty Development. <em>American Journal of Clinical Hypnosis</em>, Volume 59, 292&ndash;310. Issue 3: Exploring, Evolving and Refining Hypnosis Education.</p>
+        <p class="cite">Kohen, D.P. &amp; Kaiser, P. (2014). Clinical hypnosis with children and adolescents&mdash;What? Why? How?: Origins, applications, and efficacy. <em>Children</em> 2014, 1, 74&ndash;98; <a href="https://doi.org/10.3390/children1020074" target="_blank" rel="noopener">doi:10.3390/children1020074</a></p>
+        <p class="cite">Kohen, D.P., &amp; Olness, K.N. (2011). <em>Hypnosis and Hypnotherapy with Children</em> (4th ed). Routledge Publications.</p>
+        <p class="cite">Kohen, D.P., Olness, K.N., Colwell, S., &amp; Heimel, A. (1984). The use of relaxation/mental imagery (self-hypnosis) in the management of 505 pediatric behavioral encounters. <em>J Dev Behav Pediatr</em>, 1: 21&ndash;25.</p>
+        <p class="cite">Friedrichsdorf S.J., Kohen D.P. (2018). Integration of hypnosis into pediatric palliative care. <em>Annals of Palliative Medicine</em>. <a href="https://doi.org/10.21037/apm.2017.05.02" target="_blank" rel="noopener">doi:10.21037/apm.2017.05.02</a></p>
+        <p class="cite">Kohen, D.P. (2010). Long-term follow-up of self-hypnosis training for recurrent headaches: What the children say. <em>Int J Clin Exp Hypn</em>, 58(4):417&ndash;32.</p>
+        <p class="cite">Kohen, D.P. (2017). Nail Biting. In Elkins, G.R. (Ed.) <em>Handbook of Medical and Psychological Hypnosis: Foundations, Applications, and Professional Issues</em>. Chap 34, pp 321&ndash;325. Springer Publishing Company.</p>
+        <p class="cite">Kohen, D.P. (2018). So, what am I supposed to DO about these headaches that keep coming?! In Jensen, M.P. (Ed) <em>Hypnosis for Chronic Pain: Favorite Strategies of Master Clinicians</em>. Chapter 14, pp 276&ndash;299. <a href="http://www.dennycreekpress.info" target="_blank" rel="noopener">Denny Creek Press</a>, Kirkland, WA 98033.</p>
+        <p class="cite">Kohen, D.P. (1997). Teaching children with asthma to help themselves with relaxation/mental imagery (self-hypnosis). In Matthews, W.J. &amp; Edgette, J.H. (Eds.). <em>Current Thinking and Research in Brief Therapy: Solutions, Strategies, Narratives</em>. pp: 169&ndash;191, New York: Brunner/Mazel.</p>
+        <p class="cite">Kohen, D.P., Mahowald, M.W., and Rosen, G.R. (1992). Sleep-terror disorder in children: The role of self-hypnosis in management. <em>American Journal of Clinical Hypnosis</em> 34:233&ndash;244.</p>
+        <p class="cite">Kohen, D.P. (1995). Ericksonian communication and hypnotic strategies in the management of tics and Tourette syndrome in children and adolescents with Tourette syndrome. In Lankton S.R., Zeig J.K. (eds.) <em>Difficult Contexts for Therapy &ndash; Ericksonian Monographs</em> 10:117&ndash;142, New York: Brunner/Mazel.</p>
+      </div>
+    </details>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label">Leora Kuttner, Ph.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Friedrichsdorf, S.J., Kuttner, L., Westendorp, K., &amp; McCarty, R. (2010). Integrative Pediatric Palliative Care. In T. Culbert, K. Olness (Eds.), <em>Integrative Pediatrics</em>, p. 569&ndash;593. London: Oxford University Press.</p>
+        <p class="cite">Kuttner, L. Pain &ndash; An integrative approach. In A. Goldman, R. Hain, &amp; S. Liben (Eds.). (2006). <em>Oxford Textbook of Palliative Care for Children</em>. New York: Oxford University Press, p.332&ndash;341.</p>
+        <p class="cite">Kuttner, L. &amp; Catchpole, R.E.H. (2014). Development matters: Hypnosis with children (pp. 25&ndash;44). In L.I. Sugarman &amp; W.C. Wester (Eds.), <em>Therapeutic Hypnosis with Children and Adolescents</em>, 2nd edition. Williston, VT, USA: Crown House.</p>
+        <p class="cite">Kuttner, L. (2009). Treating pain, anxiety and sleep disorders with children and adolescents. In D.C. Brown (Ed.), <em>Advances in the use of hypnosis in medicine, dentistry, pain prevention and management</em>. CT: Crown House Publishers.</p>
+        <p class="cite">Kuttner, L. (2010). <em>A Child in Pain: What Health Professionals can do to Help</em>. Bath UK &amp; Connect, USA: Crown House Publishing.</p>
+        <p class="cite">Kuttner, L. (2018). The Pain Switch for Teens with Complex Pain. In Jensen, M. (ed.), <em>Hypnosis for Chronic Pain Management: Favorite Methods of Master Clinicians</em>. Denny Creek Press, Kirkland, WA. p.256&ndash;276.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label">Jeffrey Lazarus, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Lazarus, J. (2017). Enuresis. In Elkins, G.R. (Ed.) <em>Handbook of Medical and Psychological Hypnosis: Foundations, Applications, and Professional Issues</em>. Chapt. 24, pp 225&ndash;234. Springer Publishing Company.</p>
+        <p class="cite">Lazarus, J.E. &amp; Klein, S. (2010). Non-pharmacological treatment of tics in Tourette Syndrome with videotape training in self-hypnosis. <em>Journal of Developmental &amp; Behavioral Pediatrics</em>, 31:6, 498&ndash;504.</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label">Lisa Lombard, Ph.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Lombard, L., &amp; Milling, L.S. (2023). Hypnosis with Children and Adolescents. In L. Milling (Ed.), <em>Evidence-based practice in clinical hypnosis</em>. American Psychological Association.</p>
+        <p class="cite">Lombard, L. &amp; Lyons, L. Using hypnosis with children: Creating and delivering effective interventions, by Lynn Lyons. <em>American Journal of Clinical Hypnosis</em>. 2017 Jan; 59(3): 321&ndash;322. <a href="https://doi.org/10.1080/00029157.2017.1210411" target="_blank" rel="noopener">doi.org/10.1080/00029157.2017.1210411</a></p>
+        <p class="cite">Kahn, S.P., Fromm, E., Lombard, L.S., Sossi, M. The relation of self-reports of hypnotic depth in self-hypnosis to hypnotizability and imagery production. <em>International Journal of Clinical and Experimental Hypnosis</em>, 1989.</p>
+        <p class="cite">Lombard, L.S., Kahn, S.P., Fromm, E. The role of imagery in self-hypnosis: Its relationship to personality characteristics and gender. <em>International Journal of Clinical and Experimental Hypnosis</em>, 1990.</p>
+        <p class="cite">Fromm, E., Lombard, L., Skinner, S.H., Kahn, S. The modes of the ego in self-hypnosis. <em>Imagination, Cognition and Personality</em>, 1988.</p>
+        <p class="cite">Lombard, L. A vision to enhance self-regulation in children: The promise of pediatric hypnosis. <em>American Journal of Clinical Hypnosis</em>, 2024.</p>
+        <p class="cite">Lombard, L., Polloni, L. (2024). Medical trauma. In Sicherer, S.H. (Ed.), <em>Encyclopedia of Food Allergy</em>, vol. 1. pp. 655&ndash;665. UK: Elsevier. <a href="https://dx.doi.org/10.1016/B978-0-323-96018-2.00054-7" target="_blank" rel="noopener">dx.doi.org/10.1016/B978-0-323-96018-2.00054-7</a></p>
+      </div>
+    </details>
+
+    <details class="acc t-aqua">
+      <summary><span class="acc-label">Karen Olness, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Olness, K.N. &amp; Gardner, G.G. (1978). Some guidelines for uses of hypnotherapy in pediatrics. <em>Pediatrics</em>, 62:228.</p>
+        <p class="cite">Hall, H. &amp; Olness, K. (2014). Hypnosis, imagery, self-regulation and immune activity. In C. Schubert (Ed.). <em>Psychoneuroimmunology and psychotherapy</em>. 2nd Edition. Germany: Schattauer-Verlag.</p>
+        <p class="cite">Olness, K., MacDonald, J.T., &amp; Uden, D.L. (1987). Comparison of self-hypnosis and propranolol in the treatment of juvenile classic migraine. <em>Pediatrics</em>, 79(4):59.</p>
+        <p class="cite">Olness, K.N. &amp; Libbey, P. (1987). Unrecognized biologic bases of behavioral symptoms in patients referred for hypnotherapy. <em>American Journal of Clinical Hypnosis</em>, 30:1.</p>
+      </div>
+    </details>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label">Robert Pendergrast, Jr., M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Pendergrast, R. Jr. (2017). Incorporating Hypnosis into Pediatric Clinical Encounters. <em>Children</em> 2017, 4(3), 18; <a href="http://dx.doi.org/10.3390/children4030018" target="_blank" rel="noopener">doi:10.3390/children4030018</a></p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label">Laurence I. Sugarman, MD, FAAP, ABMH</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body">
+        <p class="cite">Hope, A.E. &amp; Sugarman, L.I. (2015). Orienting Hypnosis. <em>American Journal of Clinical Hypnosis</em>, 57:3, 212&ndash;229. <a href="https://doi.org/10.1080/00029157.2014.976787" target="_blank" rel="noopener">doi.org/10.1080/00029157.2014.976787</a></p>
+      </div>
+    </details>
+
+    <p class="sec-intro" style="margin-top:26px;margin-bottom:6px;">Media &amp; Recommended Viewing</p>
+    <p class="media-note">This list includes some free resources and some available for purchase. For purchase, please contact each distributor indicated by the links. NPHTI is not involved in promotion, sales, or collection regarding these products.</p>
+    <div class="media-list">
+      <p class="media-item"><b>Kaiser, P. (2016). Working Hypnotically with Children and Teens.</b> Online webinar (60 min). <a href="http://bestpracticesintherapy.com/pam-kaiser" target="_blank" rel="noopener">bestpracticesintherapy.com/pam-kaiser</a></p>
+      <p class="media-item"><b>Kaiser, P. (2013). Childhood Anxiety, Fear and Worries: Individualizing Hypnosis for Self-Regulation.</b> From Michael Yapko's 2013 online webinar series, <em>The Heads &amp; Tales of Clinical Hypnosis: Candid Conversations with the Experts</em>. <a href="https://yapko.com/products" target="_blank" rel="noopener">yapko.com/products</a></p>
+      <p class="media-item"><b>Kohen, D.P. (2021). Interview by Ben Furman, M.D. (Finland)</b> &mdash; topics include Behavioral Medicine, Child Psychiatry, Bed Wetting, Habits, Rapport. <a href="https://youtu.be/wBmU4kL2xtU" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <p class="media-item"><b>Kuttner, L. (2013). Dancing with Pain.</b> DVD. Youth with Chronic Pain. (20 min.) Contact: bookstore, BC Children's Hospital.</p>
+      <p class="media-item"><b>Kuttner, L. (2003). Making Every Moment Count.</b> Documentary (38 min), co-produced with the National Film Board of Canada. <a href="https://www.nfb.ca" target="_blank" rel="noopener">nfb.ca</a> &middot; 1-800-267-7710</p>
+      <p class="media-item"><b>Kuttner, L. &ldquo;No Fears, No Tears&rdquo;</b> (29 min). DVD available from <a href="http://bookstore.cw.bc.ca" target="_blank" rel="noopener">bookstore.cw.bc.ca</a> (<a href="mailto:bookstore@cw.bc.ca">bookstore@cw.bc.ca</a>, US/Canada 1-800-331-1533 x3) or <a href="http://www.chpus.com" target="_blank" rel="noopener">Crown House Publishing</a>.</p>
+      <p class="media-item"><b>Kuttner, L. &ldquo;No Fears, No Tears &mdash; 13 Years Later: Children Coping with Pain&rdquo;</b> (46 min). DVD available from <a href="http://bookstore.cw.bc.ca" target="_blank" rel="noopener">bookstore.cw.bc.ca</a> (<a href="mailto:bookstore@cw.bc.ca">bookstore@cw.bc.ca</a>) or <a href="http://www.chpus.com" target="_blank" rel="noopener">Crown House Publishing</a>.</p>
+      <p class="media-item"><b>Lazarus, J. (2014). &ldquo;Keeping the Bed Dry.&rdquo;</b> Video (44 min) for families &mdash; a comprehensive program incorporating medical hypnosis to treat nocturnal enuresis (bedwetting). <a href="https://www.keepingthebeddry.com" target="_blank" rel="noopener">keepingthebeddry.com</a></p>
+      <p class="media-item"><b>Sugarman, L.I. (2006). &ldquo;Hypnosis in Pediatric Practice: Imaginative Medicine in Action.&rdquo;</b> (70 min.) DVD and booklet. Carmarthen, Wales: Crown House Publishing.</p>
+      <p class="media-item"><b>Sesame Street:</b> Common and Colbie Caillat sing &ldquo;Belly Breathe&rdquo; with Elmo. (2:25 min.) Free. <a href="https://www.youtube.com/watch?v=_mZbzDOpylA" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <p class="media-item"><b>Thomas, J. (2017). &ldquo;You Are the Boss of Your Brain: Learning How to Manage Pain During Medical Procedures.&rdquo;</b> (13 min.) Produced by Stanford Children's Health and Lucile Packard Children's Hospital. Free. <a href="https://www.youtube.com/watch?v=UbK9FFoAcvs" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </div>
+  </section>
+
+  <!-- ===== NPHTI LISTSERV ===== -->
+  <section class="sec" id="nphti-listserv">
+    <div class="sec-head">
+      <div><span class="eyebrow">Community</span><h2>NPHTI Listserv</h2></div>
+    </div>
+    <div class="listserv">
+      <h3>Goal</h3>
+      <p>Our Listserv is a supportive forum in which NPHTI faculty and our past workshop attendees are able to refine, define, and shine a light on the practice of pediatric clinical hypnosis for and with one another. It&rsquo;s the ongoing &ldquo;workshop&rdquo; of our everyday clinical and hypnosis experiences and a place to bring questions, successes, and pearls of wisdom. It&rsquo;s amazingly empowering to have a large array of colleagues and friends on six continents ready, able, and willing to collaborate and congratulate. Connection and consultation with our community is just an email away! Sharing with each other expands our mutual knowledge and experience; promotes reflection, continued education, and growth; and ultimately maximizes the service that we provide to our patients, clients, and their families.</p>
+
+      <h3>Membership</h3>
+      <p>This is a closed Google group listserv, i.e. membership and posting is by invitation only. Membership is limited to NPHTI graduates and faculty, all SDBP (Society for Developmental and Behavioral Pediatrics) Pediatric Hypnosis Workshop alumni, and selected other workshops with comparable pediatric hypnosis training approved by NPHTI. Invitations are sent out to our workshop attendees shortly after completion of their first workshop with us. We find that limiting the membership to those who have trained with us allows for an understanding of our shared clinical philosophy and high quality discourse.</p>
+      <p>If you attended any of these workshops and are not yet a member of this Listserv, please contact our NPHTI Listserv Manager, Adam Keating, M.D., at <a href="mailto:keatina@ccf.org">keatina@ccf.org</a>.</p>
+      <p>Once a NPHTI Listserv member, please be sure to read the <a href="https://docs.google.com/document/d/14bMSPYeomQVBCdCjzi4CSMl5Xc_-gjELF9OCsN0k5lA/edit" target="_blank" rel="noopener">Guidelines for Posting Messages</a> on the NPHTI Google site, as well as other helpful hints sent to you.</p>
+      <p>Already a member? Access the group here: <a href="http://groups.google.com/group/NPHTI-listserve" target="_blank" rel="noopener">groups.google.com/group/NPHTI-listserve</a>. For more detailed support, YouTube also offers excellent tutorials for using Google Groups.</p>
+
+      <h3>History</h3>
+      <p>Coinciding with our inaugural 2010 NPHTI Workshops in Minneapolis, NPHTI&rsquo;s Listserv was launched. During the 2002 Advanced Pediatric Hypnosis Workshop (at that time, sponsored by the Society for Developmental and Behavioral Pediatrics&ndash;SDBP, Seattle), the trainees created the first pediatric hypnosis listserv, called the Pediatric Guerilla Hypnosis listserv. The intention was to provide a forum for dialogue among faculty and clinicians around the world with advanced pediatric hypnosis training and a commitment to excellence in the utilization of pediatric hypnosis and hypnotherapy with children, youth, and families.</p>
+      <p>Bob Deutsch, PhD, a NPHTI Faculty member, was our initial (and outstanding!) manager. He continued leadership and guidance as the workshops transitioned from SDBP to NPHTI. Andy Barnes, MD, another member of the NPHTI Faculty family, was Bob&rsquo;s successor. Andy provided stellar management of the Listserv from 2012 to 2019. Adam Keating, MD, also a NPHTI Faculty member, took the helm in 2019 and the NPHTI Listserv remains in great hands.</p>
+    </div>
+  </section>
+
+  <!-- ===== OTHER HYPNOSIS TRAINING ===== -->
+  <section class="sec" id="other-hypnosis-training">
+    <div class="sec-head">
+      <div><span class="eyebrow">Beyond NPHTI</span><h2>Other Hypnosis Training</h2></div>
+    </div>
+    <p class="sec-intro">These sites offer additional reliable information about clinical hypnosis (for adults) for health professionals, families, and patients.</p>
+
+    <div class="link-group">
+      <h3>Training and Certification</h3>
+      <div class="link-grid">
+        <a class="ext-link" href="https://www.asch.net" target="_blank" rel="noopener">American Society of Clinical Hypnosis (ASCH) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.erickson-foundation.org" target="_blank" rel="noopener">The Milton H. Erickson Foundation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.sceh.us" target="_blank" rel="noopener">Society for Clinical and Experimental Hypnosis (SCEH) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.ishhypnosis.org" target="_blank" rel="noopener">The International Society of Hypnosis (ISH) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.apadivisions.org/division-30/" target="_blank" rel="noopener">The Society of Psychological Hypnosis &ndash; APA Division 30 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.esh-hypnosis.eu" target="_blank" rel="noopener">The European Society of Hypnosis (ESH) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.aapb.org" target="_blank" rel="noopener">Association for Applied Psychophysiology and Biofeedback (AAPB) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.yapko.com" target="_blank" rel="noopener">Michael D. Yapko, Ph.D. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a class="ext-link" href="https://www.msch.us" target="_blank" rel="noopener">Minnesota Society of Clinical Hypnosis (MSCH) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+      </div>
+    </div>
+
+    <p class="footnote">Note: NPHTI is not responsible for the creation or content of information on the foregoing websites. Readers are encouraged to contact the individual clinicians for questions about anything on their respective websites.</p>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec" id="faq">
+    <div class="sec-head">
+      <div><span class="eyebrow">Questions</span><h2>FAQ</h2></div>
+    </div>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label faq-q">I work as a ________ [or I am in training for ________]. Can I attend NPHTI workshops?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Please see our <a href="nphti-annual-workshops-bright-geometric.html" style="color:var(--purple);text-decoration:underline;">eligibility criteria</a> for specific details of whether you qualify for NPHTI training. NPHTI provides training only to licensed health professionals (with a master&rsquo;s level degree or higher, or in training for such qualifications) to teach patients/clients how to use hypnosis within their professional scope of practice. If you cannot determine whether or not you qualify after reading our criteria, please <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">contact us</a>.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label faq-q">Will the populations of children I see who have condition &ldquo;X&rdquo; benefit from hypnotherapy?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Hypnosis is an evidence-based treatment supported by well-designed scientific studies for a variety of pediatric health conditions &mdash; acute and chronic, mental and physical. We refer you to a <a href="https://doi.org/10.3390/children1020074" target="_blank" rel="noopener" style="color:var(--purple);text-decoration:underline;">2014 journal article</a> by NPHTI Co-founders and Co-directors of Education Drs. Dan Kohen and Pamela Kaiser, for a comprehensive overview of these applications. Similarly, NPHTI faculty are responsible for two seminal textbooks that further review this decades-long body of scientific evidence (<em>Hypnosis and Hypnotherapy with Children</em> by Drs. Dan Kohen and Karen Olness, and <em>Therapeutic Hypnosis with Children and Adolescents</em> co-edited by Dr. Laurence Sugarman), and many of our faculty have published about specific applications of hypnosis for various conditions. All NPHTI workshop participants receive an extensive, proprietary bibliography that is organized by condition (e.g. &ldquo;headaches&rdquo;).</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label faq-q">I mostly work with adults. Is NPHTI right for me?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Possibly, depending upon the focus of the work and the developmental capacity of the adults with whom you work. At NPHTI, our focus is on developmental aspects of hypnosis, which can be salient for situations such as parenting stress; developmental or intellectual disabilities; or the transition to young adulthood. We suggest that you look at our past and current <a href="nphti-training-archive-bright-geometric.html" style="color:var(--purple);text-decoration:underline;">brochures</a> to get a sense of the breadth of topics we cover, to see if our objectives seem appropriate for your needs. Feel free to <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">contact us</a> if you remain unsure.</p>
+      </div>
+    </details>
+
+    <details class="acc t-aqua">
+      <summary><span class="acc-label faq-q">I&rsquo;ve taken the NPHTI Fundamentals level workshop in the past (or took the Introductory Workshop under the auspices of the Society for Developmental and Behavioral Pediatrics prior to 2010), but I&rsquo;m not sure if I&rsquo;m ready for the next level (Utilization and Expanded Clinical Applications) training right now. Would it be worthwhile for me to retake a Fundamentals Workshop?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Taking another Fundamentals workshop is very valuable for professionals who want to expand their existing hypnosis skills and/or use more formal hypnosis as part of their therapeutic repertoire. Clinicians often do so if they haven&rsquo;t been using formal hypnosis much in their practice since attending their first workshop. We have had many who have taken this path over the years and they uniformly tell us afterwards how much more they learned the second time around. We believe that this happens because people have changed significantly in their practice and knowledge over the time between their first and subsequent Fundamentals workshops, which means that they hear and absorb new learning. Importantly, the evidence base upon which we continually evolve the Fundamentals workshop is deeper and broader than ever, thanks to new scientific literature in pediatric hypnosis; each year we change some talks, change some speakers, and add new topics and new ways to approach hypnotic phenomena and skills. Over the years we&rsquo;ve also significantly increased the time spent in small group practices during the Fundamentals workshop.</p>
+      </div>
+    </details>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label faq-q">I&rsquo;ve taken the Utilization (previously Intermediate) or Individualized Consultation (Advanced) course in the past; does it make sense to return for further workshops?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Those who have taken the Utilization or Individualized Consultation NPHTI workshops in the past are invited to consider taking another Utilization Workshop to further enhance development of skills in specific areas that vary from year to year, led by guest faculty with expertise in these areas. Throughout the year we are consistently working on updating and creating new workshop content, and are confident that attending again can enhance and deepen your practice. We also encourage you to contact us to seek out further Individualized Consultation with one of our ASCH Approved Consultant faculty.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label faq-q">I&rsquo;ve attended Fundamental (or higher level) hypnosis training through other organizations and/or have extensive experience teaching hypnosis skills to children or teens; can I skip the NPHTI Fundamentals workshop and attend Intermediate or Advanced workshops?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>No. In general, we require those new to NPHTI begin with our Fundamentals workshop because of our unique methodology for teaching clinicians hypnosis, including in particular our focus upon its developmental aspects and pediatric-specific utilization. While there may be some overlap between what you already know/do and what we teach in our Fundamentals workshop, we are confident that you&rsquo;ll be pleasantly surprised to find new approaches with us in Fundamentals which will strengthen and evolve your work. Our confidence in this is based upon how even long-time master clinicians with extensive expertise in hypnosis have attended our Fundamentals workshops and have consistently told us happily of the important new learnings, insights, and discoveries gleaned during the workshop.</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label faq-q">Will I be able to use hypnosis after my first Introductory workshop with NPHTI?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Yes! Our Fundamentals course is tailor-made to ensure your comfort, confidence, and competence in beginning to utilize these principles &ldquo;starting on Monday&rdquo; after you return back to your workplace! We also have an active, outstanding, world-class <a href="#nphti-listserv" style="color:var(--purple);text-decoration:underline;">Listserv/Google Group</a> that our participants may join free after their first workshop with us. The NPHTI Listserv encourages ongoing dialogue between faculty and your colleagues alike about how to work with children and adolescents hypnotically.</p>
+      </div>
+    </details>
+
+    <details class="acc t-aqua">
+      <summary><span class="acc-label faq-q">What kind of certification can I obtain after completing a NPHTI workshop?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>NPHTI workshops are planned and implemented in accordance with the accreditation requirements and policies of the Accreditation Council for Continuing Medical Education (ACCME), and are typically designated for the appropriate hours of Category 1 AMA PRA credits of CME, as well as Continuing Education (CE) credits from other relevant disciplinary credentialing groups (e.g. nurse practitioners, social workers, psychologists, and marital and family therapists). The specific types of credits available can vary by type of workshop, so please refer to the specific registration information for the workshop you plan to attend for full details. At the end of each workshop, NPHTI automatically provides a continuing education certificate attesting to the hours of training you attended over the three days. These hours, which are kept on file by our accreditation provider, can be used for your license renewal. Upon workshop completion, all attendees receive this document, attesting to the number of hours of training received. If you are a member of the American Society of Clinical Hypnosis (ASCH), these hours also count toward ASCH certification.</p>
+        <p>In addition, a display-quality Certificate of Participation (suitable for framing/wall hanging) is available for purchase at the completion of every workshop. Hanging these certificates within your work setting offers visible documentation of your training. Such a display provides evidence to health care colleagues and administrators of your expanding repertoire in integrative health modalities and may contribute to patients&rsquo; trust and confidence.</p>
+        <p>Certificates of competence are awarded to clinicians who successfully meet predetermined standards for knowledge, skills and competencies by completing an assessment process (e.g. oral, practical and/or written exam) offered by the American Boards of Hypnosis in Medicine, Psychology, Dentistry, Nursing, or Social Work. While there are plans for the future, NPHTI does not yet offer a specific pediatric certificate of competence.</p>
+      </div>
+    </details>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label faq-q">What credentials are required to use clinical hypnosis within my practice settings? Will NPHTI give me these credentials?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>Credentials to practice hypnosis in your areas of expertise and training will vary according to your local and regional standards of care. For most of our workshop participants, there is no special requirement to be credentialed to practice hypnosis after they&rsquo;ve completed their training with us. Occasionally a hospital or health care system may require a review of our course materials before they grant credentials to practice this skill-set with patients. In addition to our Certificate of Participation (see above), we are happy to provide individualized guidance and/or letters of support on these matters on a case-by-case basis if they arise after our workshop participants return home and begin practicing hypnosis with their patients.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label faq-q">Are you a part of a larger organization?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>No. NPHTI is a 501(c)(3) not-for-profit educational corporation, and since NPHTI&rsquo;s inception our workshops have been co-sponsored by the University of Minnesota Medical School Department of Pediatrics and the Minnesota Society of Clinical Hypnosis (which is itself also a 501(c)(3) non-profit corporation and, in turn, an affiliate of the American Society of Clinical Hypnosis). In addition to these co-sponsors, in recent years we have had ACCME Accreditation for workshops and our monthly webinar program by the Minnesota Medical Association. We have also provided workshops co-sponsored by regional children&rsquo;s hospitals including Children&rsquo;s Hospitals and Clinics of Minnesota and Nationwide Children&rsquo;s Hospital (The Ohio State University, Columbus, OH) and Rainbow Babies and Children&rsquo;s Hospital (Case Western Reserve University, Cleveland, OH). Prior to being organized as NPHTI, we were sponsored for 24 years by the Society for Developmental and Behavioral Pediatrics (SDBP).</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label faq-q">Do you provide scripts to assist clinicians working in the field?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>No. There are many reasons for this, which we teach during all levels at our workshops. For example, we are working to meet children &ldquo;where they are,&rdquo; both in terms of hypnotic readiness/skills and also their developmental level, so our workshops are very heavily influenced by the work of pioneers in our field such as Milton Erickson, MD and others who practice the so-called &ldquo;utilization&rdquo; approach to hypnotherapeutic work. Of course, you&rsquo;ll complete our Fundamentals workshop having developed some of your own &ldquo;scripts&rdquo; by using communication techniques that you find can be healing, helpful, and meaningful &mdash; a great many of which are probably things you&rsquo;re doing already but didn&rsquo;t yet know could be called &ldquo;hypnosis&rdquo;!</p>
+      </div>
+    </details>
+
+    <details class="acc t-aqua">
+      <summary><span class="acc-label faq-q">Do you provide forms/materials such as waivers, marketing information, etc.?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>No, but these topics are covered and discussed during various presentations including &ldquo;Ethics.&rdquo; These topics are also often discussed one-on-one with our expert faculty during and after the workshops, and with faculty and peers on the <a href="#nphti-listserv" style="color:var(--purple);text-decoration:underline;">NPHTI Listserv/Google Group</a> (which functions as a &ldquo;living archive&rdquo; of such materials shared by peers and colleagues). Finally, those who attend NPHTI workshops become part of our wider referral network.</p>
+      </div>
+    </details>
+
+    <details class="acc t-purple">
+      <summary><span class="acc-label faq-q">I looked on your website and in your brochure, and it seems my professional society isn&rsquo;t accredited for continuing education for your course. How can I get continuing professional education credits for attending your workshop?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>While we endeavor to ensure that all health professionals across disciplines receive continuing education credits for our workshops, there are occasional issues that make this problematic. We recommend that you register for the course early, since our registration does tend to fill early, and <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">contact us</a> and your professional body as soon as possible to understand what will be required for you and/or NPHTI to make an appeal to that body for appropriate accreditation. We will do everything we can (short of paying additional unmanageable fees to these organizations), such as writing letters and/or statements to make an application on your behalf, to allow you to receive fair and appropriate credit for participating in our evidence-based training program. This kind of situation has rarely resulted in anyone being unable to participate without receiving appropriate credit.</p>
+      </div>
+    </details>
+
+    <details class="acc t-teal">
+      <summary><span class="acc-label faq-q">Will you ever have a workshop in my area?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>We hope and expect to provide workshops around the U.S., and have begun to do so. Please make sure you are on our mailing list and we will be pleased to add you to all future announcements. You can also <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">contact us</a> if you&rsquo;d like to discuss hosting NPHTI for a regional workshop, group training with you and your colleagues, or an in-service at your institution. Specifically, if you are interested in bringing a NPHTI workshop to your community / children&rsquo;s hospital / university pediatric department, please contact us so we can send you our FAQ documents designed to answer specific questions about how we can collaborate to bring NPHTI to you.</p>
+      </div>
+    </details>
+
+    <details class="acc t-lav">
+      <summary><span class="acc-label faq-q">Do you offer individualized consultation towards ASCH certification?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="acc-body faq-a">
+        <p>In addition to our Individualized Consultation (previously known as Advanced) level trainings which count toward Individualized Consultation certification hours with ASCH, many of our faculty are ASCH-approved consultants who can provide fee-for-service Individualized Consultations, in-person and/or remotely. Please <a href="mailto:TrainWithNPHTI@gmail.com" style="color:var(--purple);text-decoration:underline;">contact us</a> for further information.</p>
+      </div>
+    </details>
+
+  </section>
+
+</div>
+<script>
+  document.querySelectorAll('.jump-nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        var acc = target.closest('details.acc');
+        if(acc) acc.open = true;
+      }
+    });
+  });
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+  document.querySelectorAll('details.acc').forEach(function(d){
+    d.addEventListener('toggle', reportHeight);
+  });
+</script>
+</body>
+</html>
