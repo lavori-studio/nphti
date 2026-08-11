@@ -94,7 +94,7 @@ Gap between nav items: ~14–26px depending on viewport (tighter on smaller desk
 Unlike Training, these two are plain flat nav links (default nav-link styling from the table above), each pointing at one page:
 
 - **Find a Provider** → external link to the live `https://www.nphti.org/find-a-provider` directory. This is parent/caregiver-facing (finding a clinician for their child), so it gets its own top-level slot rather than being buried in trainee-facing content.
-- **Training Resources** → a single Bright Geometric page (not a dropdown) aimed at clinicians considering training with NPHTI. Combines what were originally going to be five separate subpages — Learn about Hypnosis, From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — into sections on one page instead. (Earlier drafts of this spec called this nav item "Resources" and modeled it as a second dropdown; renamed to avoid reading as a parent/caregiver resource hub, which it isn't.)
+- **Training Resources** → a single Bright Geometric page (not a dropdown, built as `nphti-training-resources-bright-geometric.html`) aimed at clinicians considering training with NPHTI. Combines what were originally going to be separate subpages — From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — into sections on one page instead, with a jump-nav at the top. ("Learn about Hypnosis" was in the original lineup but dropped per client feedback before build. Earlier drafts of this spec called this nav item "Resources" and modeled it as a second dropdown; renamed to avoid reading as a parent/caregiver resource hub, which it isn't.)
 
 ### 3.5 Mobile hamburger
 Below **720px**, the nav collapses into a hamburger menu:
