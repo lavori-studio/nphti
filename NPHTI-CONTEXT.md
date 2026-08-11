@@ -163,6 +163,12 @@ Call `reportHeight()` again after ANY interaction that changes page height (bio 
 
 Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner and Lombard are current teaching faculty and were removed from the past-speakers list at client request.
 
+- **"Information for Caregivers and Children" links** — removed from the Training Resources page's Other Hypnosis Training section at client request (that page is scoped to clinicians, not caregivers), but kept here in case they come back in as a section on a caregiver-facing page later:
+  - Hypnosis: Your Child &ndash; University of Michigan Health System &mdash; `https://www.med.umich.edu/yourchild/topics/hypnosis.htm`
+  - Understanding Hypnosis &ndash; via F. Ralph Berberich, MD &mdash; `https://www.pediatricsuggestions.net`
+  - How Does Medical Hypnosis Work? &ndash; via Jeff Lazarus, MD &mdash; `https://www.jefflazarusmd.com/faqs.html#how`
+  - What is Hypnosis and Why Use Hypnosis? &ndash; via Ran Anbar, MD &mdash; `https://www.centerpointmedicine.com/#!information-for-parents/c1uuw`
+
 ---
 
 ## 7. Hosting & deployment
