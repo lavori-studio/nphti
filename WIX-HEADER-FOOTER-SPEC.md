@@ -54,7 +54,7 @@ In Wix: four equal-width rectangle/strip elements stacked horizontally, or a sin
 - Background: `--paper` (#f1f4fb) or transparent over the page background — the page background is `--paper` everywhere, so either works as long as it's not white or warm.
 
 ### 3.3 Nav links
-Order: **About · Training (dropdown) · Resources · Contact · Donate**
+Order: **About · Training (dropdown) · Resources (dropdown) · Contact · Donate**
 
 | State | Style |
 |---|---|
@@ -88,6 +88,19 @@ Gap between nav items: ~14–26px depending on viewport (tighter on smaller desk
   Don't spend a lot of effort chasing pixel-perfect fidelity here — the color/type/spacing match matters far more than the bullet icons.
 
 **Mobile:** below 720px, this should behave as an accordion — tapping "Training" expands the four items in place (indented, same diamond/no-diamond treatment), rather than navigating or overlaying. Wix's native mobile menu should handle this automatically once the pages are nested under "Training" in the page manager; verify it actually accordions rather than just listing all four as flat top-level items in the mobile menu.
+
+### 3.4b Resources dropdown
+
+**Same pattern as Training — Resources also has no landing page of its own.** It's a menu of six items:
+
+- Find a Provider (→ external link, `https://www.nphti.org/find-a-provider` — the live provider directory, not a Bright Geometric page)
+- Learn about Hypnosis
+- From our Faculty
+- NPHTI Listserv
+- Other Hypnosis Training
+- FAQ
+
+Build and styling notes are identical to §3.4 (trigger chevron, panel dimensions, diamond markers cycling purple → teal → lavender → aqua → purple → teal for the six items, mobile accordion behavior below 720px). The one difference: "Find a Provider" is an external link (opens the existing nphti.org directory), so it shouldn't be nested as a Wix child page the way the other five subpages are — set it as a plain external-link menu item within the Resources dropdown instead.
 
 ### 3.5 Mobile hamburger
 Below **720px**, the nav collapses into a hamburger menu:

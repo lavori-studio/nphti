@@ -116,7 +116,7 @@ The four logo hues (purple / teal / lavender / aqua) are used as **bold blocks**
 
 **As of this round, the topband, logo, primary nav, and footer have been stripped out of all four HTML pages.** Wix owns them now — every page embeds via iframe into a Wix page that already has its own header/footer, so duplicating that chrome inside each HTML file was redundant. Full rebuild spec (exact colors, spacing, states, and how to handle the Training dropdown natively in Wix) lives in **`WIX-HEADER-FOOTER-SPEC.md`** — read that before touching Wix's header/footer.
 
-Quick summary for reference: Logo left, nav right — **About · Training (dropdown) · Resources · Contact · Donate** (Donate is a filled purple button). Below 720px, links collapse into a hamburger that opens an in-flow stacked menu. Training has no landing page — it's a dropdown/accordion listing four real subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), ideally built as native Wix child pages so Wix's menu auto-nests them.
+Quick summary for reference: Logo left, nav right — **About · Training (dropdown) · Resources (dropdown) · Contact · Donate** (Donate is a filled purple button). Below 720px, links collapse into a hamburger that opens an in-flow stacked menu. Neither Training nor Resources has a landing page — each is a dropdown/accordion. Training lists four real subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive). Resources lists six items: Find a Provider (external link to the live `nphti.org/find-a-provider` directory, not a Bright Geometric page), Learn about Hypnosis, From our Faculty, NPHTI Listserv, Other Hypnosis Training, and FAQ. All real subpages should be built as native Wix child pages so Wix's menu auto-nests them.
 
 **What stays in the HTML:** everything from the hero down. The homepage's dark "Registration is open" promo banner is page content (not chrome) and stays in `nphti-home-bright-geometric.html` only.
 
@@ -185,10 +185,10 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 
 ## 9. Next up
 
-- **Build the Wix header and footer** per `WIX-HEADER-FOOTER-SPEC.md` — topband, logo, nav (including the Training dropdown), and footer, applied sitewide.
+- **Build the Wix header and footer** per `WIX-HEADER-FOOTER-SPEC.md` — topband, logo, nav (including the Training and Resources dropdowns), and footer, applied sitewide.
 - Confirm all 26 faculty headshots are present in `faculty/`.
 - Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
-- Build remaining pages in Bright Geometric: Resources, Contact, Donate, plus the four Training subpages (Mid-Year Meetup, Annual Workshops, Webinars, Training Archive). (Leadership and About are done.)
+- Build remaining pages in Bright Geometric: the four Training subpages (done: Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), the five Resources subpages (Learn about Hypnosis, From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — Find a Provider is an external link, not a new page), plus Contact and Donate. (Leadership and About are done.)
 - Once real Wix page URLs exist, remap the cross-page links still pointing at sibling HTML filenames (e.g. About page's faculty/board cards) to the actual Wix paths.
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.
