@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Training Archive — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:700px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:620px;margin:18px 0 0;line-height:1.7;}
+  .hero p a{color:var(--purple);font-weight:500;text-decoration:underline;text-underline-offset:3px;}
+  .hero p a:hover{color:#353f85;}
+
+  .shapes{position:absolute;top:50%;right:-100px;transform:translateY(-50%);z-index:1;width:460px;height:460px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{display:none;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== BROCHURE LIST ===== */
+  .brochures{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:760px){.brochures{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.brochures{grid-template-columns:1fr;}}
+  .brochure{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;border:1.5px solid var(--line);border-radius:9px;background:var(--white);font-size:13.5px;}
+  a.brochure{color:var(--ink);text-decoration:none;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease;}
+  a.brochure:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 10px 22px rgba(22,27,56,.09);}
+  a.brochure.current{border-color:var(--purple);background:#eef0fa;font-weight:500;}
+  .brochure svg{width:15px;height:15px;flex:0 0 auto;color:var(--purple);}
+  .brochure.pending{color:var(--mid);opacity:.7;}
+  .brochure.pending .soon{font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--mid);background:var(--paper-2);border-radius:20px;padding:3px 8px;flex:0 0 auto;}
+
+  /* ===== WEBINAR ARCHIVE SEASONS ===== */
+  .season-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+  .season-nav a{font-size:12.5px;font-weight:500;color:var(--mid);background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:7px 14px;text-decoration:none;transition:border-color .15s ease,color .15s ease;}
+  .season-nav a:hover{border-color:var(--purple);color:var(--purple);}
+
+  details.season{background:var(--white);border:1.5px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;scroll-margin-top:20px;}
+  details.season summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;border-left:6px solid var(--glyph);}
+  details.season summary::-webkit-details-marker{display:none;}
+  .season-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);}
+  .season-count{font-size:12px;color:var(--mid);flex:1;}
+  .chev{width:16px;height:16px;color:var(--mid);transition:transform .2s ease;flex:0 0 auto;}
+  details.season[open] .chev{transform:rotate(180deg);}
+
+  .season-body{padding:4px 22px 14px;}
+  .arch-row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:12px 0;border-top:1px solid var(--line);}
+  @media(max-width:600px){.arch-row{grid-template-columns:1fr;gap:3px;}}
+  .arch-date{font-size:12.5px;color:var(--mid);font-weight:500;padding-top:1px;}
+  .arch-title{font-size:14px;color:var(--ink);font-weight:500;line-height:1.5;}
+  .arch-speaker{font-size:12.5px;color:var(--mid);font-style:italic;margin-top:3px;}
+
+  .footnote{font-size:12px;color:var(--mid);opacity:.85;margin-top:18px;max-width:760px;line-height:1.6;}
+
+  @media (prefers-reduced-motion:reduce){.brochure,.chev{transition:none;}a.brochure:hover{transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training &middot; Training Archive</span>
+      <h1>Training Archive</h1>
+      <p>NPHTI maintains brochures and topic listings from prior years&rsquo; workshops and webinars. This serves both to honor our faculty as well as to document our curricula as they develop and evolve over time.</p>
+      <p>For upcoming workshops and webinars, visit our <a href="nphti-annual-workshops-bright-geometric.html">Annual Workshops</a> or <a href="nphti-webinars-bright-geometric.html">Webinars</a> page.</p>
+    </div>
+  </section>
+
+  <!-- ===== WORKSHOP BROCHURES ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Annual Workshops</span><h2>Workshop Brochures</h2></div>
+    </div>
+    <div class="brochures">
+      <a class="brochure current" href="training/nphti-2026-annual-workshops-program-guide.pdf" target="_blank" rel="noopener">2026 Workshop Brochure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>
+      <div class="brochure pending">2025 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2024 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2023 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2022 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2021 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2019 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2018 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2017 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2016 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2015 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2014 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2013 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2012 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2011 Workshop Brochure <span class="soon">Coming Soon</span></div>
+      <div class="brochure pending">2010 Workshop Brochure <span class="soon">Coming Soon</span></div>
+    </div>
+    <p class="footnote">Brochures are being migrated from our previous site and will be added here on a rolling basis.</p>
+  </section>
+
+  <!-- ===== WEBINAR ARCHIVES ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><span class="eyebrow">Monthly Series</span><h2>Webinar Archives</h2></div>
+    </div>
+
+    <div class="season-nav">
+      <a href="#season-2025-2026">2025&ndash;26</a>
+      <a href="#season-2024-2025">2024&ndash;25</a>
+      <a href="#season-2023-2024">2023&ndash;24</a>
+      <a href="#season-2022-2023">2022&ndash;23</a>
+      <a href="#season-2021-2022">2021&ndash;22</a>
+      <a href="#season-2020-2021">2020&ndash;21</a>
+    </div>
+
+    <details class="season t-purple" id="season-2025-2026" open>
+      <summary><span class="season-label">2025&ndash;2026</span><span class="season-count">6 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Oct 16, 2025</div><div><p class="arch-title">&ldquo;Hypnosis for the Treatment of Chronic Pediatric Pain&rdquo;</p><p class="arch-speaker">Rashmi Bhandari, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jan 20, 2026</div><div><p class="arch-title">&ldquo;Getting More Familiar with Your Favorite Place&rdquo;</p><p class="arch-speaker">Leora Kuttner, PhD and Adam Keating, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Feb 17, 2026</div><div><p class="arch-title">&ldquo;Time in Hypnosis: Freedom and Flexibility&rdquo;</p><p class="arch-speaker">Katalin Varga, PhD, DSc</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 17, 2026</div><div><p class="arch-title">&ldquo;The Power of Hypnosis in my 45 Years of Research and Clinical Work&rdquo;</p><p class="arch-speaker">Lonnie Zeltzer, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Apr 21, 2026</div><div><p class="arch-title">&ldquo;The Actual Favorite Place&rdquo;</p><p class="arch-speaker">Maren Lindheim, Clinical Psychologist</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 19, 2026</div><div><p class="arch-title">&ldquo;Using Hypnosis with Youth on the Autism Spectrum&rdquo;</p><p class="arch-speaker">Andrew Barnes, MD, MPH</p></div></div>
+      </div>
+    </details>
+
+    <details class="season t-teal" id="season-2024-2025">
+      <summary><span class="season-label">2024&ndash;2025</span><span class="season-count">6 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Oct 22, 2024</div><div><p class="arch-title">&ldquo;To pee or not to pee: Hypnosis to treat Enuresis&rdquo;</p><p class="arch-speaker">Linda Thomson, PhD, APRN, ABMH, ABHN, FASCH</p></div></div>
+        <div class="arch-row"><div class="arch-date">Nov 26, 2024</div><div><p class="arch-title">&ldquo;Trance &amp; Trauma&rdquo;</p><p class="arch-speaker">Julie H. Linden, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jan 21, 2025</div><div><p class="arch-title">&ldquo;Trauma &amp; Shame: Somatic Hypnosis Approaches&rdquo;</p><p class="arch-speaker">Silvia Zanotta, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 18, 2025</div><div><p class="arch-title">&ldquo;Helping Children Displaced by Disasters Learn to Self-Soothe and Helping the Relief Workers who Help the Children&rdquo;</p><p class="arch-speaker">Dan Kohen, MD, FAAP, ABMH and Karen Olness, MD, FAAP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Apr 15, 2025</div><div><p class="arch-title">&ldquo;Hypnosis for Treatment of Patients with Shortness of Breath, including Asthma, Cystic Fibrosis &amp; Vocal Cord Dysfunction&rdquo;</p><p class="arch-speaker">Ran Anbar, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 20, 2025</div><div><p class="arch-title">&ldquo;Functional Constipation, Helping Kids Get Unstuck&rdquo;</p><p class="arch-speaker">Mindy Szelap, MSW</p></div></div>
+      </div>
+    </details>
+
+    <details class="season t-lav" id="season-2023-2024">
+      <summary><span class="season-label">2023&ndash;2024</span><span class="season-count">5 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Sep 19, 2023</div><div><p class="arch-title">&ldquo;Hypnosis in the Management of Adolescent Depression&rdquo;</p><p class="arch-speaker">Michael Yapko, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Nov 28, 2023</div><div><p class="arch-title">&ldquo;Using Hypnosis with Anxious Children: Tolerating Uncertainty, Building Flexibility, and Normalizing Symptoms&rdquo;</p><p class="arch-speaker">Lynn Lyons, LICSW</p></div></div>
+        <div class="arch-row"><div class="arch-date">Feb 19, 2024</div><div><p class="arch-title">&ldquo;Iatrogenic Tears in the Clinic: Immunizations and Hypnosis&rdquo;</p><p class="arch-speaker">Ralph Berberich, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 19, 2024</div><div><p class="arch-title">&ldquo;Spoiled for Choice: Pediatric Hypnosis and Integrative Medicine (IM) Modalities&rdquo;</p><p class="arch-speaker">Lynn Gershan, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 21, 2024</div><div><p class="arch-title">&ldquo;Evidence Based Hypnosis for Pediatric G.I. Problems&rdquo;</p><p class="arch-speaker">Arine Vlieger, MD</p></div></div>
+      </div>
+    </details>
+
+    <details class="season t-aqua" id="season-2022-2023">
+      <summary><span class="season-label">2022&ndash;2023</span><span class="season-count">7 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Sep 20, 2022</div><div><p class="arch-title">&ldquo;Having Hypnotic Conversations from the Beginning (with Parents and children)&rdquo;</p><p class="arch-speaker">Laurence I. Sugarman, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Nov 15, 2022</div><div><p class="arch-title">&ldquo;Stress and Anxiety: How to Design Goals &amp; Response (Yes) Sets&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jan 17, 2023</div><div><p class="arch-title">&ldquo;Comfort Kits for Children Update: A hypnotically informed resource that helps children cope with challenges like war, shootings, and disasters&rdquo;</p><p class="arch-speaker">Lisa Lombard, PhD, and Karen Olness, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Feb 21, 2023</div><div><p class="arch-title">&ldquo;The Hypnotic Potential of Co-Regulation for Parents and Caregivers&rdquo;</p><p class="arch-speaker">Mary Wilde, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 21, 2023</div><div><p class="arch-title">&ldquo;Poetry in Practice: Integrating the poetic into self-hypnosis teaching as a path toward burning bright in our work&rdquo;</p><p class="arch-speaker">Bryan Kono, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 16, 2023</div><div><p class="arch-title">&ldquo;The Broad Application of Breath Training&rdquo;</p><p class="arch-speaker">Robert Pendergrast, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jun 20, 2023</div><div><p class="arch-title">&ldquo;Chronic Pain: Helping Clinician, Child &amp; Parent(s) with Hypnosis&rdquo;</p><p class="arch-speaker">Candace Erikson, MD</p></div></div>
+      </div>
+    </details>
+
+    <details class="season t-purple" id="season-2021-2022">
+      <summary><span class="season-label">2021&ndash;2022</span><span class="season-count">10 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Aug 17, 2021</div><div><p class="arch-title">&ldquo;Hypnosis in the Context of Pediatric Integrative Medicine&rdquo;</p><p class="arch-speaker">Robert Pendergrast, MD, MPH, FAAP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Sep 21, 2021</div><div><p class="arch-title">&ldquo;Anxiety &amp; Metaphors: What? Why? How?&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Oct 19, 2021</div><div><p class="arch-title">&ldquo;Helping Children Resolve Primary Nocturnal Enuresis&rdquo;</p><p class="arch-speaker">Adam Keating, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Dec 21, 2021</div><div><p class="arch-title">&ldquo;Sleep Challenges in Adolescents &ndash; How Hypnosis Can Help&rdquo;</p><p class="arch-speaker">Leora Kuttner, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jan 18, 2022</div><div><p class="arch-title">&ldquo;Hypnosis for Pain &ndash; How to Use Technology to Help&rdquo;</p><p class="arch-speaker">Jody Thomas, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Feb 15, 2022</div><div><p class="arch-title">&ldquo;Planning Hypnotic Interventions for Chronic Pain&rdquo;</p><p class="arch-speaker">Candace Erickson, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 15, 2022</div><div><p class="arch-title">&ldquo;Social Emotional Health, Technology and Hypnotic Principles&rdquo;</p><p class="arch-speaker">Lisa Lombard, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Apr 19, 2022</div><div><p class="arch-title">&ldquo;Psychoneuroimmunology and POTTS Syndrome&rdquo;</p><p class="arch-speaker">Howard Hall, PhD, PsyD</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 17, 2022</div><div><p class="arch-title">&ldquo;Self-Hypnosis for Self-Care&rdquo;</p><p class="arch-speaker">Andy Barnes, MD, MPH, FAAP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jun 21, 2022</div><div><p class="arch-title">&ldquo;Not Everything that Counts Can be Counted: Therapeutic Scaling with Clinical Hypnosis&rdquo;</p><p class="arch-speaker">Laurence Sugarman, MD, FAAP</p></div></div>
+      </div>
+    </details>
+
+    <details class="season t-teal" id="season-2020-2021">
+      <summary><span class="season-label">2020&ndash;2021</span><span class="season-count">12 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="season-body">
+        <div class="arch-row"><div class="arch-date">Jul 21, 2020</div><div><p class="arch-title">&ldquo;NPHTI Guidelines&hellip;&rdquo;</p><p class="arch-speaker">Karen Olness, MD; Pamela Kaiser, PhD, CPNP; Daniel Kohen, MD, FAAP, ABMH</p></div></div>
+        <div class="arch-row"><div class="arch-date">Aug 18, 2020</div><div><p class="arch-title">&ldquo;Resilience to Stress: Learning to Tolerate Uncertainty&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Sep 15, 2020</div><div><p class="arch-title">&ldquo;Acute and Procedural Pain: Big Picture to Specific Tools&rdquo;</p><p class="arch-speaker">Jody D. Thomas, PhD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Oct 20, 2020</div><div><p class="arch-title">&ldquo;Integrating Conversational Hypnosis into Clinical Encounters&rdquo;</p><p class="arch-speaker">Robert Pendergrast, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Nov 17, 2020</div><div><p class="arch-title">&ldquo;Utilization in the Diagnosis and Treatment of Headaches&rdquo;</p><p class="arch-speaker">Daniel Kohen, MD, FAAP, ABMH</p></div></div>
+        <div class="arch-row"><div class="arch-date">Dec 15, 2020</div><div><p class="arch-title">&ldquo;Resilience to Anxiety: Fostering a Growth Mindset&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jan 19, 2021</div><div><p class="arch-title">&ldquo;Hypnosis with Teenagers: Individualizing their Hypnotic Experience&rdquo;</p><p class="arch-speaker">Leora Kuttner, PhD &amp; Melanie Gold, DO</p></div></div>
+        <div class="arch-row"><div class="arch-date">Feb 23, 2021</div><div><p class="arch-title">&ldquo;Sleep Dysregulation: How Hypnosis Can Help&rdquo;</p><p class="arch-speaker">Eileen Poulin, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Mar 16, 2021</div><div><p class="arch-title">&ldquo;Hypnosis for Pediatric GI Conditions&rdquo;</p><p class="arch-speaker">Jeff Lazarus, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Apr 20, 2021</div><div><p class="arch-title">&ldquo;Back to Basics: Cultivating a Beginner&rsquo;s Mind in Hypnosis with Children&rdquo;</p><p class="arch-speaker">Adam Keating, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">May 18, 2021</div><div><p class="arch-title">&ldquo;Hypnotic Strategies for Neurodiverse Youth&rdquo;</p><p class="arch-speaker">Andy Barnes, MD</p></div></div>
+        <div class="arch-row"><div class="arch-date">Jun 15, 2021</div><div><p class="arch-title">&ldquo;Activating Hypnosis: When Hypnosis is not Relaxation&rdquo;</p><p class="arch-speaker">Laurence Sugarman, MD</p></div></div>
+      </div>
+    </details>
+
+  </section>
+
+</div>
+<script>
+  document.querySelectorAll('.season-nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if(target) target.open = true;
+    });
+  });
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+  document.querySelectorAll('details.season').forEach(function(d){
+    d.addEventListener('toggle', reportHeight);
+  });
+</script>
+</body>
+</html>
