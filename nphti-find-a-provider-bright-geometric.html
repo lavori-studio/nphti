@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Find a Provider — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(24px,4vw,32px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(24px,4vw,36px);}
+  .hero-grid{max-width:760px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:14px;max-width:740px;margin:18px 0 0;line-height:1.75;}
+
+  .disclaimer{background:var(--white);border:1.5px solid var(--line);border-left:4px solid var(--lavender);border-radius:9px;padding:16px 20px;margin-top:22px;}
+  .disclaimer p{margin:0;font-size:12.5px;color:var(--mid);line-height:1.7;max-width:none;}
+
+  /* ===== SEARCH ===== */
+  .search-wrap{position:relative;margin-bottom:22px;}
+  .search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--mid);pointer-events:none;}
+  .search-input{width:100%;padding:14px 16px 14px 44px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:10px;outline:none;transition:border-color .15s ease;}
+  .search-input:focus{border-color:var(--purple);}
+  .search-input::placeholder{color:var(--mid);opacity:.75;}
+  .result-count{font-size:12.5px;color:var(--mid);margin-top:10px;}
+
+  /* ===== MAP ===== */
+  .map-frame{border:1.5px solid var(--line);border-radius:12px;overflow:hidden;height:360px;background:var(--paper-2);margin-bottom:26px;}
+  .map-frame .leaflet-container{background:var(--paper-2);font-family:'DM Sans',sans-serif;}
+  .provider-pin{width:14px;height:14px;background:var(--teal);border:2px solid var(--white);border-radius:50%;box-shadow:0 1px 4px rgba(22,27,56,.35);}
+  .marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:rgba(66,76,154,.22);}
+  .marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:var(--purple);color:#fff;font-family:'DM Sans',sans-serif;font-weight:500;}
+
+  /* Popup */
+  .leaflet-popup-content-wrapper{border-radius:10px;border:1.5px solid var(--line);box-shadow:0 10px 26px rgba(22,27,56,.18);}
+  .leaflet-popup-content{margin:14px 16px;}
+  .leaflet-popup-tip{border:1.5px solid var(--line);}
+  .pin-popup{font-family:'DM Sans',sans-serif;}
+  .pp-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;color:var(--ink);}
+  .pp-practice{font-size:11.5px;color:var(--mid);margin-top:2px;}
+  .pp-location{font-size:12px;color:var(--mid);margin-top:6px;}
+  .pp-badge{margin-top:8px;}
+  .pp-contact{font-size:12px;margin-top:6px;color:var(--ink);}
+  .pp-contact a{color:var(--purple);text-decoration:underline;}
+
+  /* ===== STATES ===== */
+  .state-msg{padding:36px 20px;text-align:center;color:var(--mid);font-size:13.5px;background:var(--white);border:1.5px solid var(--line);border-radius:10px;}
+
+  /* ===== RESULTS — expandable provider rows ===== */
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+  #results{display:flex;flex-direction:column;gap:12px;}
+  .provider{background:var(--white);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;}
+  .provider summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:16px 20px;border-left:6px solid var(--glyph);flex-wrap:wrap;}
+  .provider summary::-webkit-details-marker{display:none;}
+  .p-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;color:var(--ink);flex:1 1 220px;min-width:180px;}
+  .p-name span{display:block;font-family:'DM Sans',sans-serif;font-weight:400;font-size:12px;color:var(--mid);margin-top:2px;}
+  .p-location{font-size:13px;color:var(--mid);flex:0 0 auto;min-width:120px;text-align:right;}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.03em;padding:5px 11px;border-radius:20px;flex:0 0 auto;white-space:nowrap;}
+  .badge.yes{background:#e3f3f0;color:#1f6e5f;}
+  .badge.no{background:var(--paper-2);color:var(--mid);}
+  .badge i{width:6px;height:6px;border-radius:50%;background:currentColor;}
+  .chev{width:15px;height:15px;color:var(--mid);transition:transform .2s ease;flex:0 0 auto;margin-left:auto;}
+  .provider[open] .chev{transform:rotate(180deg);}
+  .p-body{padding:4px 20px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:640px){.p-body{grid-template-columns:1fr;} .p-location{text-align:left;}}
+  .p-field{font-size:13px;color:var(--ink);}
+  .p-field .lbl{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);opacity:.8;font-weight:500;margin-bottom:3px;}
+  .p-field a{color:var(--purple);text-decoration:underline;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Provider Directory</span>
+      <h1>Find a Provider</h1>
+      <p>This directory contains NPHTI-trained providers all over the world. Each professional listed has completed a course of training provided by NPHTI. Type a keyword into the search box below, or browse the map and list to find a provider near you.</p>
+      <div class="disclaimer">
+        <p>The additional information in this directory has been provided by each professional. It implies only that the professional has met the requirements and standards established by the academic, professional, or governmental body that regulates their profession &mdash; NPHTI does not certify the accuracy of this information. Inclusion in this directory does not imply competency, quality of services, or endorsement by NPHTI.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SEARCH ===== -->
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input class="search-input" id="search" type="text" placeholder="Search by name, location, or area of expertise&hellip;">
+  </div>
+  <div id="resultCount" class="result-count" style="display:none;"></div>
+
+  <!-- ===== MAP ===== -->
+  <div class="map-frame" id="map"></div>
+
+  <!-- ===== RESULTS ===== -->
+  <div id="stateMsg" class="state-msg">Loading providers&hellip;</div>
+  <div id="results"></div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  // Swap in your real Velo HTTP Function endpoint once it's live.
+  // A backend function named `get_providers` in http-functions.js is served at:
+  //   https://www.nphti.org/_functions/providers
+  // See FIND-A-PROVIDER-SPEC.md for the exact backend code + JSON shape expected here.
+  var PROVIDERS_ENDPOINT = 'https://www.nphti.org/_functions/providers';
+
+  var HUES = ['t-purple', 't-teal', 't-lav', 't-aqua'];
+  var allProviders = [];
+  var map, markerCluster;
+
+  function escapeHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function initMap(){
+    map = L.map('map', { scrollWheelZoom: false }).setView([20, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+    markerCluster = L.markerClusterGroup();
+    map.addLayer(markerCluster);
+  }
+
+  function pinIcon(){
+    return L.divIcon({ className: 'provider-pin', iconSize: [14,14] });
+  }
+
+  function badgeHtml(p){
+    return p.offersTelehealth
+      ? '<span class="badge yes"><i></i>Telehealth</span>'
+      : '<span class="badge no"><i></i>In-person only</span>';
+  }
+
+  function contactHtml(p){
+    var contact = [];
+    if (p.contactEmail) contact.push('<a href="mailto:' + escapeHtml(p.contactEmail) + '">' + escapeHtml(p.contactEmail) + '</a>');
+    if (p.contactPhone) contact.push(escapeHtml(p.contactPhone));
+    return contact.join(' &middot; ');
+  }
+
+  function popupContent(p){
+    var location = [p.city, p.state, p.country].filter(Boolean).join(', ');
+    var html = '<div class="pin-popup">';
+    html += '<div class="pp-name">' + escapeHtml(p.name) + '</div>';
+    if (p.practiceName) html += '<div class="pp-practice">' + escapeHtml(p.practiceName) + '</div>';
+    if (location) html += '<div class="pp-location">' + escapeHtml(location) + '</div>';
+    html += '<div class="pp-badge">' + badgeHtml(p) + '</div>';
+    var contact = contactHtml(p);
+    if (contact) html += '<div class="pp-contact">' + contact + '</div>';
+    if (p.website) html += '<div class="pp-contact"><a href="' + escapeHtml(p.website) + '" target="_blank" rel="noopener">' + escapeHtml(p.website.replace(/^https?:\/\//,'')) + '</a></div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderMap(list){
+    markerCluster.clearLayers();
+    var pts = [];
+    list.forEach(function(p){
+      if (typeof p.lat === 'number' && typeof p.lng === 'number'){
+        var marker = L.marker([p.lat, p.lng], { icon: pinIcon() });
+        marker.bindPopup(popupContent(p), { maxWidth: 260 });
+        markerCluster.addLayer(marker);
+        pts.push([p.lat, p.lng]);
+      }
+    });
+    if (pts.length) map.fitBounds(pts, { padding: [30,30], maxZoom: 9 });
+  }
+
+  function renderResults(list){
+    var results = document.getElementById('results');
+    var stateMsg = document.getElementById('stateMsg');
+    var resultCount = document.getElementById('resultCount');
+
+    if (!list.length){
+      results.innerHTML = '';
+      stateMsg.style.display = '';
+      stateMsg.textContent = 'No providers match that search. Try a different keyword.';
+      resultCount.style.display = 'none';
+      return;
+    }
+    stateMsg.style.display = 'none';
+    resultCount.style.display = '';
+    resultCount.textContent = list.length + (list.length === 1 ? ' provider' : ' providers');
+
+    results.innerHTML = list.map(function(p, i){
+      var hue = HUES[i % HUES.length];
+      var location = [p.city, p.state, p.country].filter(Boolean).join(', ');
+      var fields = '';
+      if (p.areasOfExpertise) fields += '<div class="p-field"><span class="lbl">Areas of Expertise</span>' + escapeHtml(p.areasOfExpertise) + '</div>';
+      if (p.certifiedToPracticeIn) fields += '<div class="p-field"><span class="lbl">Certified to Practice In</span>' + escapeHtml(p.certifiedToPracticeIn) + '</div>';
+      var contact = contactHtml(p);
+      if (contact) fields += '<div class="p-field"><span class="lbl">Contact</span>' + contact + '</div>';
+      if (p.website) fields += '<div class="p-field"><span class="lbl">Website</span><a href="' + escapeHtml(p.website) + '" target="_blank" rel="noopener">' + escapeHtml(p.website.replace(/^https?:\/\//,'')) + '</a></div>';
+
+      return '<details class="provider ' + hue + '">' +
+        '<summary>' +
+          '<div class="p-name">' + escapeHtml(p.name) + (p.practiceName ? '<span>' + escapeHtml(p.practiceName) + '</span>' : '') + '</div>' +
+          '<div class="p-location">' + escapeHtml(location) + '</div>' +
+          badgeHtml(p) +
+          '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>' +
+        '</summary>' +
+        '<div class="p-body">' + fields + '</div>' +
+      '</details>';
+    }).join('');
+
+    // Re-report height whenever a row is expanded/collapsed
+    results.querySelectorAll('details.provider').forEach(function(d){
+      d.addEventListener('toggle', reportHeight);
+    });
+  }
+
+  function applyFilter(){
+    var q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q){
+      renderResults(allProviders);
+      renderMap(allProviders);
+      return;
+    }
+    var filtered = allProviders.filter(function(p){
+      return [p.name, p.practiceName, p.areasOfExpertise, p.city, p.state, p.country, p.certifiedToPracticeIn]
+        .filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
+    });
+    renderResults(filtered);
+    renderMap(filtered);
+  }
+
+  function loadProviders(){
+    fetch(PROVIDERS_ENDPOINT)
+      .then(function(res){
+        if (!res.ok) throw new Error('Bad response');
+        return res.json();
+      })
+      .then(function(data){
+        allProviders = (data && data.providers) || [];
+        if (!allProviders.length){
+          document.getElementById('stateMsg').textContent = 'No providers are listed yet.';
+          reportHeight();
+          return;
+        }
+        renderResults(allProviders);
+        renderMap(allProviders);
+        reportHeight();
+      })
+      .catch(function(){
+        document.getElementById('stateMsg').textContent = 'Providers couldn’t be loaded right now. Please try again shortly.';
+        reportHeight();
+      });
+  }
+
+  document.getElementById('search').addEventListener('input', function(){
+    applyFilter();
+    reportHeight();
+  });
+
+  initMap();
+  loadProviders();
+
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>

@@ -93,7 +93,7 @@ Gap between nav items: ~14–26px depending on viewport (tighter on smaller desk
 
 Unlike Training, these two are plain flat nav links (default nav-link styling from the table above), each pointing at one page:
 
-- **Find a Provider** → external link to the live `https://www.nphti.org/find-a-provider` directory. This is parent/caregiver-facing (finding a clinician for their child), so it gets its own top-level slot rather than being buried in trainee-facing content.
+- **Find a Provider** → now a Bright Geometric page too (`nphti-find-a-provider-bright-geometric.html`), rebuilding the existing provider directory (map, keyword search, provider data) in the new visual system rather than linking out to the old external `nphti.org/find-a-provider` page. Unlike Contact's native Wix Form, this one is a fully custom frontend built directly into the iframe (Leaflet map with clustering, live keyword search, expandable provider rows) that fetches JSON from a Velo backend function reading the existing Wix CMS Collection — see `FIND-A-PROVIDER-SPEC.md` for the backend function to build (data stays in the same CMS Collection you already update). This is parent/caregiver-facing (finding a clinician for their child), so it gets its own top-level slot rather than being buried in trainee-facing content.
 - **Training Resources** → a single Bright Geometric page (not a dropdown, built as `nphti-training-resources-bright-geometric.html`) aimed at clinicians considering training with NPHTI. Combines what were originally going to be separate subpages — From our Faculty, NPHTI Listserv, Other Hypnosis Training, FAQ — into sections on one page instead, with a jump-nav at the top. ("Learn about Hypnosis" was in the original lineup but dropped per client feedback before build. Earlier drafts of this spec called this nav item "Resources" and modeled it as a second dropdown; renamed to avoid reading as a parent/caregiver resource hub, which it isn't.)
 
 ### 3.5 Mobile hamburger
@@ -119,7 +119,7 @@ Three-column layout (desktop), stacking to one column below **700px**:
 |---|---|---|
 | Brand | 1.3fr | Logo (56px height) + one-line tagline: "Training licensed health professionals in pediatric clinical hypnosis." (13px, `--mid`) |
 | Explore | 1fr | Label "EXPLORE" (12px, uppercase, letter-spacing .08em, `--teal`) + links: About, Training, Faculty, Training Resources |
-| Connect | 1fr | Label "CONNECT" (same label style) + links: Find a Provider (→ `https://www.nphti.org/find-a-provider`), Contact, Donate |
+| Connect | 1fr | Label "CONNECT" (same label style) + links: Find a Provider (now the internal Bright Geometric page, not the external nphti.org URL), Contact, Donate |
 
 Column gap: ~24–40px.
 
