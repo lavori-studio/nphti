@@ -1,76 +1,109 @@
-# Find a Provider — Search Bar & Results Design Spec
+# Find a Provider — Backend Spec (Velo)
 
-This describes how to restyle the existing interactive directory (map, keyword search, provider data) to match Bright Geometric, once it's moved onto the Wix page below `nphti-find-a-provider-bright-geometric.html`'s hero. I'm not rebuilding the underlying functionality — the map, search-filtering, and provider data source already exist in your Wix custom code. This is a visual spec for whoever maintains that code.
+The frontend is done — `nphti-find-a-provider-bright-geometric.html` is a real, working map + live keyword search + expandable provider list, fetching from a JSON endpoint you'll expose from your existing Wix CMS Collection via a Velo backend function. This doc is everything you need to build that one function.
 
-The current live version (map + "Search" text field + a wide data table with 8 columns) doesn't translate well to the rest of this site's visual language, and 8 columns is too wide to read as a flat table at any reasonable screen size. The recommended layout below replaces the table with **expandable provider rows** — the same accordion pattern already used on the Training Resources and Training Archive pages — so it reads as one system with the rest of the site and works on mobile without horizontal scrolling.
+The map (Leaflet + OpenStreetMap, with marker clustering) and the search/filter/results UI are already built and tested — no further frontend work needed once your endpoint is live and matches the shape below.
 
 ---
 
-## 1. Layout order
+## 1. Why a backend function instead of native Wix elements
 
-Hero (in the iframe) → Search bar → Map → Results list → sitewide footer. All native Wix elements below the iframe, in that order.
+You already have the provider data in a Wix CMS Collection and add rows there today — that workflow doesn't change. The difference from the native Wix widget: instead of a Wix-rendered map/table, a small backend function exposes that same collection as plain JSON, and the custom frontend (hosted in this repo, iframed into the Wix page) fetches it and renders the map/search/results itself. This gives full design control that matching Wix's native widget styling couldn't reach, while keeping "add a row to the CMS" as the entire update workflow.
 
-## 2. Search bar
+## 2. Create the backend function
 
-Single keyword field — same interaction as today (type a keyword, list/map filter live). Restyle only:
+In the Wix Editor: **Velo → Backend → add `http-functions.js`** (if you don't already have one), and add this function. Adjust the collection name/field keys to match your actual CMS Collection — the field keys below (`name`, `practiceName`, etc.) are guesses at common naming; open your collection's field list in the CMS panel and swap in the real keys.
 
-| Property | Value |
-|---|---|
-| Container | Full width, max content width 1080px (matches page `.wrap`) |
-| Input background | White |
-| Border | 1.5px solid `--line` (#dbe1f4), 10px border-radius |
-| Padding | 14px vertical, 16px left of icon, 44px left-inset for the icon, 16px right |
-| Icon | Magnifying glass, 17px, `--mid` (#5b618c), vertically centered, 16px from left edge |
-| Placeholder text | "Search by name, location, or area of expertise…" in `--mid`, 75% opacity |
-| Font | DM Sans, 14px, `--ink` (#161b38) for typed text |
-| Focus state | Border color `--purple` (#424c9a), no box-shadow glow needed |
+```js
+// backend/http-functions.js
+import { ok, serverError } from 'wix-http-functions';
+import wixData from 'wix-data';
 
-No separate "Search" button — filtering happens live as today; the icon is decorative, not clickable.
+export async function get_providers(request) {
+  try {
+    const results = await wixData.query('Providers')   // <-- your collection's ID
+      .limit(1000)
+      .find();
 
-## 3. Map
+    const providers = results.items.map(item => ({
+      name: item.name || '',
+      practiceName: item.practiceName || '',
+      areasOfExpertise: item.areasOfExpertise || '',
+      offersTelehealth: !!item.offersTelehealth,
+      contactEmail: item.contactEmail || '',
+      contactPhone: item.contactPhone || '',
+      website: item.website || '',
+      city: item.city || '',
+      state: item.state || '',
+      country: item.country || '',
+      certifiedToPracticeIn: item.certifiedToPracticeIn || '',
+      // If location is a Wix "Address" field, coordinates live at item.location.latitude/longitude.
+      // Swap this out if your collection stores lat/lng as separate plain number fields instead.
+      lat: item.location && item.location.latitude ? item.location.latitude : null,
+      lng: item.location && item.location.longitude ? item.location.longitude : null
+    }));
 
-| Property | Value |
-|---|---|
-| Container | 1.5px solid `--line` border, 12px border-radius, `overflow: hidden` so the map corners clip cleanly |
-| Height | ~340px desktop, can shrink on mobile if Wix's map element requires it |
-| Pin color | `--teal` (#3290a4) for individual markers |
-| Cluster circles | `--purple` (#424c9a) background, white count text — gives the cluster/pin combo the same two-tone relationship as everything else on the site |
-| Zoom controls | Keep Leaflet's default +/− control, just confirm it doesn't clash visually (white background, small border-radius is fine as-is) |
+    return ok({
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: { providers }
+    });
+  } catch (err) {
+    return serverError({
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      body: { error: 'Unable to load providers' }
+    });
+  }
+}
+```
 
-Recolor only what the Leaflet/custom-code marker options expose — don't rebuild the map integration itself.
+**Why `Access-Control-Allow-Origin: *`:** these HTML pages are hosted on GitHub Pages and iframed into the Wix page (see `NPHTI-CONTEXT.md` §7), not served from the nphti.org domain itself — so the browser treats the fetch from inside the iframe as cross-origin, and without this header the browser will silently block the response. `*` is fine here since this endpoint only exposes public directory data (nothing private, no auth) — there's no security downside to allowing any origin to read it.
 
-## 4. Results — expandable provider rows (replaces the 8-column table)
+## 3. Publish and get the URL
 
-Each provider is a collapsed summary row by default; clicking/tapping expands it to reveal the remaining fields. This is the same interaction pattern as the FAQ and faculty bibliography accordions elsewhere on the site, so it should reuse those components' styling, not invent new ones.
+Once published, this function is live at:
 
-**Collapsed row** shows only what's needed to scan and decide whether to expand:
+```
+https://www.nphti.org/_functions/providers
+```
 
-| Field | Style |
-|---|---|
-| Name + credentials | Bricolage Grotesque 600, 15px, `--ink` |
-| Practice name | DM Sans 400, 12px, `--mid`, directly under the name |
-| Location (city, state/country) | DM Sans, 13px, `--mid`, right-aligned before the badge |
-| Telehealth badge | Pill, 11px, 600 weight. **Yes**: background `#e3f3f0`, text `#1f6e5f` (muted green — this is the one spot on the site using green, since Yes/No status reads better as green/neutral than forcing it into the purple/teal/lavender/aqua system). **No**: background `--paper-2`, text `--mid`, label "In-person only" rather than a bare "No" |
-| Chevron | 15px, `--mid`, rotates 180° open, same as every other accordion on the site |
-| Left accent border | 6px, cycling hue per row (purple → teal → lavender → aqua → repeat) — same as the Training Archive season list and Training Resources faculty accordions |
+(Wix's convention: a function named `get_providers` in `http-functions.js` is served at `/_functions/providers` — the `get_` prefix maps to the HTTP method, the rest becomes the path.) That URL is already wired into the frontend as `PROVIDERS_ENDPOINT` at the top of the `<script>` block in `nphti-find-a-provider-bright-geometric.html`. If your site domain differs from `www.nphti.org`, update that one line.
 
-**Expanded body** — two-column grid on desktop (single column under 640px), each field labeled:
+## 4. Test it
 
-| Field | Notes |
-|---|---|
-| Areas of Expertise | Plain text, wraps naturally — don't force into tag/chip pills, some entries are long comma-separated lists that would produce a huge chip wall |
-| Certified to Practice In | Plain text — state/country list |
-| Contact | Email as `mailto:` link, phone as plain text if both present, separated by " · " |
-| Website | External link, same underlined-purple-link style used sitewide |
+Visit `https://www.nphti.org/_functions/providers` directly in a browser once published — you should see raw JSON like:
 
-Field label style: 10px, uppercase, `--mid` at 80% opacity, 0.06em letter-spacing — matches the "SPEAKER" / "MODERATOR" labels on the Webinars page.
+```json
+{
+  "providers": [
+    {
+      "name": "Marjan Y. Tabibzadeh, MD",
+      "practiceName": "Marjan Y Tabibzadeh, MD, PLLC",
+      "areasOfExpertise": "General Pediatrics / Pediatric Hypnosis",
+      "offersTelehealth": true,
+      "contactEmail": "Marjanpeds@gmail.com",
+      "contactPhone": "",
+      "website": "http://www.drtabibzadeh.com/",
+      "city": "Manhasset",
+      "state": "NY",
+      "country": "USA",
+      "certifiedToPracticeIn": "New York",
+      "lat": 40.786,
+      "lng": -73.683
+    }
+  ]
+}
+```
 
-## 5. What NOT to change
+If `lat`/`lng` come back `null` for everyone, the field-key guess for the Address field is wrong — check the actual field key in your CMS Collection's field list and adjust the function.
 
-- Don't add filter dropdowns (by state, by specialty, etc.) — out of scope, the existing keyword search is the only filter today and this spec doesn't add new functionality.
-- Don't paginate — if the full list currently renders in one scrollable page, keep it that way; accordion rows are lightweight enough that 70+ providers won't feel heavy the way a wide table would.
-- Don't alter the underlying data fields or the map/search filtering logic — this spec is styling only.
+## 5. What the frontend already does with this data
 
-## 6. Mobile
+- Renders the map with a teal dot per provider, clustering nearby pins into purple count-circles (verified working, including the cluster-count badge, in local testing)
+- Live keyword search filtering by name, practice, location, and areas of expertise — updates both the map and results list as you type
+- Each result is a collapsed row (name, practice, location, telehealth badge) that expands to show areas of expertise, contact info, website, and certified-to-practice-in states
+- Loading, empty ("no providers are listed yet"), no-results, and fetch-error states are all handled
 
-Below 640px: badge and location wrap onto their own line under the name, chevron moves to that same row's end, expanded body drops to a single column. Verify with real data that long names + long practice names don't force awkward line breaks — a few entries in the current dataset have quite long combined name/practice strings (e.g. "Marjan Y. Tabibzadeh, MD" / "Marjan Y Tabibzadeh, MD, PLLC").
+None of that needs to change — it's driven entirely by whatever the endpoint returns, so once the function is live with real data, the page just works.

@@ -195,6 +195,6 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
 - Confirm all 26 faculty headshots are present in `faculty/`.
 - Get board headshots into the `faculty/` folder (currently all initials fallback).
 - Decide whether to add the specific 2026 workshop dates/location (Oct 15–17, St. Charles, IL) to the homepage.
-- Build remaining pages in Bright Geometric: the four Training subpages (done: Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), the Training Resources page (done), Contact (done — hero + native Wix Form, see `CONTACT-FORM-SPEC.md`), Find a Provider (done — hero + native Wix map/search/results, see `FIND-A-PROVIDER-SPEC.md`), plus Donate. (Leadership and About are done.)
+- Build remaining pages in Bright Geometric: the four Training subpages (done: Mid-Year Meetup, Annual Workshops, Webinars, Training Archive), the Training Resources page (done), Contact (done — hero + native Wix Form, see `CONTACT-FORM-SPEC.md`), Find a Provider (done — hero + a fully custom map/search/results frontend in the iframe itself, backed by a Velo function reading the existing Wix CMS Collection, see `FIND-A-PROVIDER-SPEC.md`), plus Donate. (Leadership and About are done.)
 - Once real Wix page URLs exist, remap the cross-page links still pointing at sibling HTML filenames (e.g. About page's faculty/board cards) to the actual Wix paths.
 - Wix embedding: Velo `onMessage` handler for `nphtiFrameHeight`, cross-browser/device QA, launch, handoff notes.
