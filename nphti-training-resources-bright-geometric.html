@@ -43,6 +43,12 @@
   .jump-nav a{font-size:12.5px;font-weight:500;color:var(--mid);background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:7px 14px;text-decoration:none;transition:border-color .15s ease,color .15s ease;}
   .jump-nav a:hover{border-color:var(--purple);color:var(--purple);}
 
+  /* ===== PHOTO BAND ===== */
+  .photo-duo{margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:640px){.photo-duo{grid-template-columns:1fr;}}
+  .photo-frame{border-radius:12px;overflow:hidden;border:1.5px solid var(--line);aspect-ratio:4/3;}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+
   /* ===== SECTION HEADER ===== */
   .sec{margin-top:clamp(48px,7vw,90px);scroll-margin-top:20px;}
   .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
@@ -118,6 +124,12 @@
         <a href="#faq">FAQ</a>
       </div>
     </div>
+  </section>
+
+  <!-- ===== PHOTO BAND ===== -->
+  <section class="photo-duo">
+    <div class="photo-frame"><img src="images/children-in-a-circle.jpg" alt="Six children lying in a circle on a colorful blanket, laughing together"></div>
+    <div class="photo-frame"><img src="images/two-children-laughing.jpg" alt="Two young girls laughing together"></div>
   </section>
 
   <!-- ===== FROM OUR FACULTY ===== -->
