@@ -120,6 +120,9 @@
   .link-arrow:hover svg{transform:translateX(3px);}
 
   /* ===== LOCATION ===== */
+  .loc-banner{border-radius:12px;overflow:hidden;border:1.5px solid var(--line);margin-bottom:28px;position:relative;}
+  .loc-banner::after{content:"";position:absolute;top:14px;right:14px;width:12px;height:12px;background:var(--spark);border-radius:2px;transform:rotate(45deg);}
+  .loc-banner img{width:100%;height:clamp(160px,26vw,280px);object-fit:cover;display:block;}
   .loc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,48px);align-items:start;}
   @media(max-width:820px){.loc{grid-template-columns:1fr;}}
   .loc h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);margin-top:26px;}
@@ -156,7 +159,6 @@
 
   /* ===== PROGRAM GUIDE CTA — striped card ===== */
   .guide-cta{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
-  .guide-cta .stripe{width:10px;background:var(--purple);flex:0 0 auto;}
   .guide-cta .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
   .guide-cta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
   .guide-cta h3 i{width:10px;height:10px;background:var(--purple);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
@@ -209,7 +211,7 @@
   <!-- ===== WHAT'S NEW ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">2026</span><h2>What&rsquo;s New This Year</h2></div>
+      <div><h2>What&rsquo;s New This Year</h2></div>
     </div>
     <ul class="dlist">
       <li><i></i><div><b>New retreat location</b> &mdash; the Q Center, a 95-acre retreat respite in St. Charles, IL, about 40 minutes from Chicago O&rsquo;Hare, with walking trails, bike paths, and many other amenities.</div></li>
@@ -221,7 +223,7 @@
   <!-- ===== WORKSHOP LEVELS ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Choose your track</span><h2>Workshop Levels</h2></div>
+      <div><h2>Workshop Levels</h2></div>
     </div>
     <div class="levels">
       <article class="card level t-purple">
@@ -276,7 +278,7 @@
   <!-- ===== ELIGIBILITY ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Who can attend</span><h2>Eligibility</h2></div>
+      <div><h2>Eligibility</h2></div>
     </div>
     <p style="color:var(--mid);font-size:14px;max-width:760px;">Requires an active clinical license <b style="color:var(--ink);">and</b> one of the following:</p>
     <ul class="dlist two-col">
@@ -295,8 +297,9 @@
   <!-- ===== LOCATION & LODGING ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Where you&rsquo;ll stay</span><h2>Location &amp; Lodging</h2></div>
+      <div><h2>Location &amp; Lodging</h2></div>
     </div>
+    <div class="loc-banner"><img src="images/Q-center.jpg" alt="Aerial view of the Q Center campus, showing its buildings, pond, and wooded grounds in St. Charles, IL"></div>
     <div class="loc">
       <div>
         <p>The Q Center is a 95-acre retreat respite in St. Charles, IL &mdash; about 40 minutes from Chicago O&rsquo;Hare and 50 minutes from Midway &mdash; with walking trails, bike paths, and many other amenities. St. Charles is a picturesque riverfront city offering restaurants, nightlife, and shopping just outside Chicago.</p>
@@ -318,7 +321,7 @@
   <!-- ===== ACCREDITATION & SCHOLARSHIPS ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Credit</span><h2>Accreditation</h2></div>
+      <div><h2>Accreditation</h2></div>
     </div>
     <div class="accred">
       <p>Approved by the American Society of Clinical Hypnosis Standards of Training Committee toward Membership and Certification requirements. The ASCH Education &amp; Research Foundation (ASCH-ERF) is accredited by the Accreditation Council for Continuing Medical Education and designates this activity for up to <b style="color:var(--ink);">21 AMA PRA Category 1 Credits&trade;</b> (Fundamentals &amp; Utilization) and <b style="color:var(--ink);">20 credits</b> (Advanced Case-based Masterclass). Also approved by the National Association of Social Workers for 20 continuing education contact hours, and an approved PACE Program Provider for FAGD/MAGD credit.</p>
@@ -339,7 +342,7 @@
   <!-- ===== TESTIMONIALS ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">In their words</span><h2>What Past Attendees Say</h2></div>
+      <div><h2>What Past Attendees Say</h2></div>
     </div>
     <div class="quotes">
       <article class="card quote t-purple">
@@ -359,7 +362,6 @@
 
   <!-- ===== PROGRAM GUIDE CTA ===== -->
   <section class="guide-cta">
-    <div class="stripe" aria-hidden="true"></div>
     <div class="content">
       <div>
         <h3><i></i>Get the Full Brochure</h3>

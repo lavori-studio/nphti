@@ -53,7 +53,7 @@
   .hero-photo .frame,.hero-photo .backing{clip-path:polygon(0 0,100% 0,100% 80%,82% 100%,0 100%);}
   .hero-photo .backing{position:absolute;inset:0;z-index:1;background:var(--purple);transform:translate(16px,16px);}
   .hero-photo .frame{position:relative;z-index:2;overflow:hidden;aspect-ratio:4/3;background:var(--white);}
-  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;display:block;filter:url(#duotone-hero);}
+  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;display:block;}
   .hero-photo .frame::after{content:"";position:absolute;top:14px;right:14px;width:12px;height:12px;background:var(--spark);border-radius:2px;transform:rotate(45deg);}
   @media(max-width:820px){.hero-photo{order:-1;max-width:340px;margin:0 auto;}.hero-photo .shapes-mini{display:none;}.hero-photo .backing{transform:translate(10px,10px);}}
 
@@ -99,7 +99,6 @@
 
   /* ===== WORKSHOP CTA — striped card, not a soft box ===== */
   .workshop{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
-  .workshop .stripe{width:10px;background:var(--purple);flex:0 0 auto;}
   .workshop .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
   .workshop h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
   .workshop h3 i{width:10px;height:10px;background:var(--purple);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
@@ -129,16 +128,6 @@
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <filter id="duotone-hero" color-interpolation-filters="sRGB">
-    <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/>
-    <feComponentTransfer>
-      <feFuncR type="table" tableValues="0.259 0.302"/>
-      <feFuncG type="table" tableValues="0.298 0.663"/>
-      <feFuncB type="table" tableValues="0.604 0.737"/>
-    </feComponentTransfer>
-  </filter>
-</svg>
 <div class="alert" role="note">
   <span class="dot" aria-hidden="true"></span>
   Registration is open for the 2026 Annual Workshops.
@@ -200,7 +189,7 @@
   <!-- ===== WHAT WE DO ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Why NPHTI</span><h2>What We Do</h2></div>
+      <div><h2>What We Do</h2></div>
     </div>
     <div class="pillar-list">
       <div class="pillar-row t-purple"><i></i><div><h3>Training Program</h3><p>Ongoing clinical hypnosis skill development for advanced practice pediatric clinicians — helping children and teens build self-regulation, resilience, and overall well-being.</p></div></div>
@@ -221,7 +210,6 @@
 
   <!-- ===== WORKSHOP CTA ===== -->
   <section class="workshop">
-    <div class="stripe" aria-hidden="true"></div>
     <div class="content">
       <div>
         <h3><i></i>Registration is open for the 2026 Annual Workshops.</h3>
