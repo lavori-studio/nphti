@@ -61,7 +61,8 @@
 
   /* ===== ACCORDION (faculty + FAQ) ===== */
   details.acc{background:var(--white);border:1.5px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden;}
-  details.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 20px;border-left:6px solid var(--glyph);}
+  details.acc.acc-band::before{content:"";display:block;height:8px;background:var(--glyph);}
+  details.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 20px;}
   details.acc summary::-webkit-details-marker{display:none;}
   .acc-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px;color:var(--ink);flex:1;}
   .chev{width:15px;height:15px;color:var(--mid);transition:transform .2s ease;flex:0 0 auto;}
@@ -114,7 +115,6 @@
       <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
     </svg>
     <div class="hero-grid">
-      <span class="eyebrow"><span class="spark"></span> Training Resources</span>
       <h1>Training Resources</h1>
       <p>Reference material for clinicians training with, or considering training with, NPHTI &mdash; faculty publications, our listserv community, other reputable hypnosis training organizations, and answers to common questions. Looking for a NPHTI-trained provider? Visit our <a href="https://www.nphti.org/find-a-provider" target="_blank" rel="noopener">Find a Provider</a> directory instead.</p>
       <div class="jump-nav">
@@ -139,14 +139,14 @@
     </div>
     <p class="sec-intro">Selected publications by NPHTI faculty on pediatric clinical hypnosis and hypnotherapy.</p>
 
-    <details class="acc t-purple">
+    <details class="acc acc-band t-purple">
       <summary><span class="acc-label">Andrew Barnes, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Barnes, A. &amp; Kohen, D. (2006). Clinical hypnosis as an effective adjunct in the care of pediatric inpatients. <em>J. Pediatrics</em>, October. Volume 149, Issue 4, 563&ndash;565.</p>
       </div>
     </details>
 
-    <details class="acc t-teal">
+    <details class="acc acc-band t-teal">
       <summary><span class="acc-label">Howard H. Hall, Ph.D., PsyD</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Hall, H., Chiarucci, K., &amp; Berman, B. (1992). Self-regulation and assessment approaches for vaso-occlusive pain management for pediatric sickle cell anemia patients. <em>International Journal of Psychosomatics</em>, 39(1&ndash;4), 28&ndash;33.</p>
@@ -155,7 +155,7 @@
       </div>
     </details>
 
-    <details class="acc t-lav">
+    <details class="acc acc-band t-lav">
       <summary><span class="acc-label">Pamela Kaiser, Ph.D., CPNP</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Kaiser, P., Kohen, D., Brown, M., Kajander, R. &amp; Barnes, A. (2018). Integrating Pediatric Hypnosis with Complementary Modalities: Clinical Perspectives on Personalized Treatment. <em>Children</em>, 5(8), 108; <a href="https://doi.org/10.3390/children5080108" target="_blank" rel="noopener">doi.org/10.3390/children5080108</a></p>
@@ -165,7 +165,7 @@
       </div>
     </details>
 
-    <details class="acc t-aqua">
+    <details class="acc acc-band t-aqua">
       <summary><span class="acc-label">Daniel P. Kohen, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Kohen, D., Kaiser, P., &amp; Olness, K. (2017). State-of-the-Art Pediatric Hypnosis Training: Remodeling Curriculum and Refining Faculty Development. <em>American Journal of Clinical Hypnosis</em>, Volume 59, 292&ndash;310. Issue 3: Exploring, Evolving and Refining Hypnosis Education.</p>
@@ -182,7 +182,7 @@
       </div>
     </details>
 
-    <details class="acc t-purple">
+    <details class="acc acc-band t-purple">
       <summary><span class="acc-label">Leora Kuttner, Ph.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Friedrichsdorf, S.J., Kuttner, L., Westendorp, K., &amp; McCarty, R. (2010). Integrative Pediatric Palliative Care. In T. Culbert, K. Olness (Eds.), <em>Integrative Pediatrics</em>, p. 569&ndash;593. London: Oxford University Press.</p>
@@ -194,7 +194,7 @@
       </div>
     </details>
 
-    <details class="acc t-teal">
+    <details class="acc acc-band t-teal">
       <summary><span class="acc-label">Jeffrey Lazarus, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Lazarus, J. (2017). Enuresis. In Elkins, G.R. (Ed.) <em>Handbook of Medical and Psychological Hypnosis: Foundations, Applications, and Professional Issues</em>. Chapt. 24, pp 225&ndash;234. Springer Publishing Company.</p>
@@ -202,7 +202,7 @@
       </div>
     </details>
 
-    <details class="acc t-lav">
+    <details class="acc acc-band t-lav">
       <summary><span class="acc-label">Lisa Lombard, Ph.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Lombard, L., &amp; Milling, L.S. (2023). Hypnosis with Children and Adolescents. In L. Milling (Ed.), <em>Evidence-based practice in clinical hypnosis</em>. American Psychological Association.</p>
@@ -215,7 +215,7 @@
       </div>
     </details>
 
-    <details class="acc t-aqua">
+    <details class="acc acc-band t-aqua">
       <summary><span class="acc-label">Karen Olness, M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Olness, K.N. &amp; Gardner, G.G. (1978). Some guidelines for uses of hypnotherapy in pediatrics. <em>Pediatrics</em>, 62:228.</p>
@@ -225,14 +225,14 @@
       </div>
     </details>
 
-    <details class="acc t-purple">
+    <details class="acc acc-band t-purple">
       <summary><span class="acc-label">Robert Pendergrast, Jr., M.D.</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Pendergrast, R. Jr. (2017). Incorporating Hypnosis into Pediatric Clinical Encounters. <em>Children</em> 2017, 4(3), 18; <a href="http://dx.doi.org/10.3390/children4030018" target="_blank" rel="noopener">doi:10.3390/children4030018</a></p>
       </div>
     </details>
 
-    <details class="acc t-teal">
+    <details class="acc acc-band t-teal">
       <summary><span class="acc-label">Laurence I. Sugarman, MD, FAAP, ABMH</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="acc-body">
         <p class="cite">Hope, A.E. &amp; Sugarman, L.I. (2015). Orienting Hypnosis. <em>American Journal of Clinical Hypnosis</em>, 57:3, 212&ndash;229. <a href="https://doi.org/10.1080/00029157.2014.976787" target="_blank" rel="noopener">doi.org/10.1080/00029157.2014.976787</a></p>

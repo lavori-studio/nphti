@@ -62,10 +62,10 @@
   .season-nav a:hover{border-color:var(--purple);color:var(--purple);}
 
   details.season{background:var(--white);border:1.5px solid var(--line);border-radius:10px;margin-bottom:14px;overflow:hidden;scroll-margin-top:20px;}
-  details.season summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;border-left:6px solid var(--glyph);}
+  details.season::before{content:"";display:block;height:8px;background:var(--glyph);}
+  details.season summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:18px 22px;}
   details.season summary::-webkit-details-marker{display:none;}
-  .season-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);}
-  .season-count{font-size:12px;color:var(--mid);flex:1;}
+  .season-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);flex:1;}
   .chev{width:16px;height:16px;color:var(--mid);transition:transform .2s ease;flex:0 0 auto;}
   details.season[open] .chev{transform:rotate(180deg);}
 
@@ -103,7 +103,7 @@
   <!-- ===== WORKSHOP BROCHURES ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Annual Workshops</span><h2>Workshop Brochures</h2></div>
+      <div><h2>Workshop Brochures</h2></div>
     </div>
     <div class="brochures">
       <a class="brochure current" href="training/nphti-2026-annual-workshops-program-guide.pdf" target="_blank" rel="noopener">2026 Workshop Brochure <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg></a>
@@ -128,7 +128,7 @@
   <!-- ===== WEBINAR ARCHIVES ===== -->
   <section class="sec">
     <div class="sec-head">
-      <div><span class="eyebrow">Monthly Series</span><h2>Webinar Archives</h2></div>
+      <div><h2>Webinar Archives</h2></div>
     </div>
 
     <div class="season-nav">
@@ -141,7 +141,7 @@
     </div>
 
     <details class="season t-purple" id="season-2025-2026" open>
-      <summary><span class="season-label">2025&ndash;2026</span><span class="season-count">6 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2025&ndash;2026</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Oct 16, 2025</div><div><p class="arch-title">&ldquo;Hypnosis for the Treatment of Chronic Pediatric Pain&rdquo;</p><p class="arch-speaker">Rashmi Bhandari, PhD</p></div></div>
         <div class="arch-row"><div class="arch-date">Jan 20, 2026</div><div><p class="arch-title">&ldquo;Getting More Familiar with Your Favorite Place&rdquo;</p><p class="arch-speaker">Leora Kuttner, PhD and Adam Keating, MD</p></div></div>
@@ -153,7 +153,7 @@
     </details>
 
     <details class="season t-teal" id="season-2024-2025">
-      <summary><span class="season-label">2024&ndash;2025</span><span class="season-count">6 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2024&ndash;2025</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Oct 22, 2024</div><div><p class="arch-title">&ldquo;To pee or not to pee: Hypnosis to treat Enuresis&rdquo;</p><p class="arch-speaker">Linda Thomson, PhD, APRN, ABMH, ABHN, FASCH</p></div></div>
         <div class="arch-row"><div class="arch-date">Nov 26, 2024</div><div><p class="arch-title">&ldquo;Trance &amp; Trauma&rdquo;</p><p class="arch-speaker">Julie H. Linden, PhD</p></div></div>
@@ -165,7 +165,7 @@
     </details>
 
     <details class="season t-lav" id="season-2023-2024">
-      <summary><span class="season-label">2023&ndash;2024</span><span class="season-count">5 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2023&ndash;2024</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Sep 19, 2023</div><div><p class="arch-title">&ldquo;Hypnosis in the Management of Adolescent Depression&rdquo;</p><p class="arch-speaker">Michael Yapko, PhD</p></div></div>
         <div class="arch-row"><div class="arch-date">Nov 28, 2023</div><div><p class="arch-title">&ldquo;Using Hypnosis with Anxious Children: Tolerating Uncertainty, Building Flexibility, and Normalizing Symptoms&rdquo;</p><p class="arch-speaker">Lynn Lyons, LICSW</p></div></div>
@@ -176,7 +176,7 @@
     </details>
 
     <details class="season t-aqua" id="season-2022-2023">
-      <summary><span class="season-label">2022&ndash;2023</span><span class="season-count">7 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2022&ndash;2023</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Sep 20, 2022</div><div><p class="arch-title">&ldquo;Having Hypnotic Conversations from the Beginning (with Parents and children)&rdquo;</p><p class="arch-speaker">Laurence I. Sugarman, MD</p></div></div>
         <div class="arch-row"><div class="arch-date">Nov 15, 2022</div><div><p class="arch-title">&ldquo;Stress and Anxiety: How to Design Goals &amp; Response (Yes) Sets&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
@@ -189,7 +189,7 @@
     </details>
 
     <details class="season t-purple" id="season-2021-2022">
-      <summary><span class="season-label">2021&ndash;2022</span><span class="season-count">10 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2021&ndash;2022</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Aug 17, 2021</div><div><p class="arch-title">&ldquo;Hypnosis in the Context of Pediatric Integrative Medicine&rdquo;</p><p class="arch-speaker">Robert Pendergrast, MD, MPH, FAAP</p></div></div>
         <div class="arch-row"><div class="arch-date">Sep 21, 2021</div><div><p class="arch-title">&ldquo;Anxiety &amp; Metaphors: What? Why? How?&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
@@ -205,7 +205,7 @@
     </details>
 
     <details class="season t-teal" id="season-2020-2021">
-      <summary><span class="season-label">2020&ndash;2021</span><span class="season-count">12 sessions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="season-label">2020&ndash;2021</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="season-body">
         <div class="arch-row"><div class="arch-date">Jul 21, 2020</div><div><p class="arch-title">&ldquo;NPHTI Guidelines&hellip;&rdquo;</p><p class="arch-speaker">Karen Olness, MD; Pamela Kaiser, PhD, CPNP; Daniel Kohen, MD, FAAP, ABMH</p></div></div>
         <div class="arch-row"><div class="arch-date">Aug 18, 2020</div><div><p class="arch-title">&ldquo;Resilience to Stress: Learning to Tolerate Uncertainty&rdquo;</p><p class="arch-speaker">Pamela Kaiser, PhD, CPNP</p></div></div>
