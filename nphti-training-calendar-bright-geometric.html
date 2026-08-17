@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Training Calendar — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:clamp(20px,4vw,40px) clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:700px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(34px,5.6vw,56px);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:620px;margin:18px 0 0;line-height:1.7;}
+
+  .shapes{position:absolute;top:50%;right:-100px;transform:translateY(-50%);z-index:1;width:460px;height:460px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{display:none;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(40px,6vw,64px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+
+  /* ===== PROGRAM CARDS ===== */
+  .twoup{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:640px){.twoup{grid-template-columns:1fr;}}
+  .card{position:relative;background:var(--white);border:1.5px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+  .band{height:8px;width:100%;}
+  .b-purple{background:var(--purple);} .b-teal{background:var(--teal);}
+  .card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(22,27,56,.13);}
+  .card.t-purple:hover{border-color:var(--purple);} .card.t-teal:hover{border-color:var(--teal);}
+  .card .inner{padding:clamp(22px,3vw,28px) clamp(22px,3vw,26px) clamp(24px,3.2vw,28px);}
+  .card h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--ink);margin-bottom:8px;}
+  .card p{color:var(--mid);font-size:13.5px;line-height:1.65;}
+  .link-arrow{display:inline-flex;align-items:center;gap:7px;font-weight:500;font-size:13.5px;text-decoration:none;margin-top:16px;}
+  .link-arrow svg{width:14px;height:14px;transition:transform .18s ease;}
+  .link-arrow:hover svg{transform:translateX(3px);}
+  .t-purple .link-arrow{color:var(--purple);} .t-teal .link-arrow{color:var(--teal);}
+
+  /* ===== CALENDAR LIST ===== */
+  .cal-list{display:flex;flex-direction:column;}
+  .cal-row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:20px 0;border-top:1.5px solid var(--line);align-items:start;}
+  .cal-list .cal-row:first-child{border-top:none;padding-top:4px;}
+  @media(max-width:560px){.cal-row{grid-template-columns:1fr;gap:6px;}}
+  .cal-date{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;color:var(--ink);padding-top:2px;}
+  .cal-badge{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:20px;padding:3px 10px;margin-bottom:8px;}
+  .cal-badge.workshop{background:#eef0fa;color:var(--purple);}
+  .cal-badge.webinar{background:#e5f1f4;color:#1f6b7a;}
+  .cal-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.4;}
+  .cal-note{font-size:12.5px;color:var(--mid);margin-top:4px;}
+
+  .footnote{font-size:12px;color:var(--mid);opacity:.85;margin-top:22px;max-width:760px;line-height:1.6;}
+
+  @media (prefers-reduced-motion:reduce){.card{transition:none;}.card:hover{transform:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training &middot; Training Calendar</span>
+      <h1>Training Calendar</h1>
+      <p>A single place to see everything coming up from NPHTI &mdash; the Annual Workshops and the monthly Webinar series. Each listing links through to full details, pricing, and registration on its own page.</p>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM LINKS ===== -->
+  <section class="sec">
+    <div class="twoup">
+      <article class="card t-purple">
+        <div class="band b-purple"></div>
+        <div class="inner">
+          <h3>Annual Workshops</h3>
+          <p>Our flagship 3-day, in-person training near Chicago &mdash; Fundamentals, Utilization &amp; Expanded Clinical Applications, and the Advanced Case-based Masterclass.</p>
+          <a class="link-arrow" href="nphti-annual-workshops-bright-geometric.html">Pricing, eligibility &amp; registration <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+      <article class="card t-teal">
+        <div class="band b-teal"></div>
+        <div class="inner">
+          <h3>Monthly Webinars</h3>
+          <p>Live, faculty-led sessions on focused clinical topics for clinicians with prior hypnosis training &mdash; held virtually most months.</p>
+          <a class="link-arrow" href="nphti-webinars-bright-geometric.html">Full schedule &amp; registration <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== UPCOMING EVENTS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Upcoming Events</h2></div>
+    </div>
+    <div class="cal-list">
+
+      <div class="cal-row">
+        <div class="cal-date">Sep 15, 2026</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Hypnotically Bringing Order to the Habit Disorders</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Oct 15&ndash;17, 2026</div>
+        <div>
+          <span class="cal-badge workshop">Annual Workshop</span>
+          <div class="cal-title">15th Annual Pediatric Clinical Hypnosis Skills Development Workshops</div>
+          <div class="cal-note">Q Center &middot; St. Charles, IL &mdash; Fundamentals, Utilization &amp; Advanced levels</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Nov 17, 2026</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Hypnosis in Pediatric Palliative Care</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Jan 19, 2027</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Skills Practice <span style="color:var(--mid);font-weight:400;">(Topic TBD)</span></div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Feb 16, 2027</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Changing Young Minds &mdash; From Depression to Hope</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Mar 16, 2027</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Pediatric Hypnosis and Mindfulness</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">Apr 20, 2027</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Update on Hypnosis Research</div>
+        </div>
+      </div>
+
+      <div class="cal-row">
+        <div class="cal-date">May 18, 2027</div>
+        <div>
+          <span class="cal-badge webinar">Webinar</span>
+          <div class="cal-title">Topic TBD</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="footnote">Some webinar topics and moderators are still being confirmed and will be added as details are finalized. See the <a href="nphti-webinars-bright-geometric.html" style="color:var(--purple);text-decoration:underline;">Webinars page</a> for speakers, moderators, and registration, or the <a href="nphti-annual-workshops-bright-geometric.html" style="color:var(--purple);text-decoration:underline;">Annual Workshops page</a> for full pricing and eligibility.</p>
+  </section>
+
+</div>
+<script>
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+</body>
+</html>
