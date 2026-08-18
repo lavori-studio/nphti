@@ -1,88 +1,172 @@
-/* NPHTI Bright Geometric — DEMO-ONLY preview navigation.
- * Not part of the final site. The real header/nav will be built natively
- * in Wix (see WIX-HEADER-FOOTER-SPEC.md). This script exists purely so
- * the board can click between pages when viewing them directly on
- * GitHub Pages, standing in for the Wix chrome that isn't present here.
+/* ============================================================
+ * TEMPORARY — board-review navigation only. NOT the final site chrome.
  *
- * Safe to leave in place after Wix launch: it only renders when the page
- * is loaded as a top-level document. Inside the real Wix iframe embed
- * (window.self !== window.top) it does nothing. Still best practice to
- * remove the <script src="demo-nav.js"> line from each page once Wix
- * launch is live and this is no longer needed for review.
- */
+ * The real header/nav will be built natively in Wix per
+ * WIX-HEADER-FOOTER-SPEC.md. This script exists only so the NPHTI
+ * board can click between pages while reviewing on GitHub Pages,
+ * standing in for the Wix header that isn't present in these files.
+ *
+ * TO REMOVE once Wix launch is live: delete this file, and delete the
+ * `<script src="demo-nav.js"></script>` line (flagged with a matching
+ * "TEMP nav" HTML comment) near the bottom of every nphti-*.html page.
+ *
+ * Styled to match WIX-HEADER-FOOTER-SPEC.md as closely as possible
+ * (topband, logo, nav link states, Training dropdown, Donate button,
+ * mobile hamburger) so it reads as real site chrome during review.
+ *
+ * Self-limiting: renders nothing when the page is loaded inside an
+ * iframe (window.self !== window.top), so it stays invisible once
+ * these pages are embedded in the live Wix site even if this script
+ * tag is accidentally left in place.
+ * ============================================================ */
 (function () {
   if (window.self !== window.top) return; // inside the Wix iframe — stay invisible
 
-  var PAGES = [
-    { group: 'Main', items: [
-      { href: 'nphti-home-bright-geometric.html', label: 'Home' },
-      { href: 'nphti-about-bright-geometric.html', label: 'About' },
-      { href: 'nphti-faculty-bright-geometric.html', label: 'Faculty' },
-      { href: 'nphti-leadership-bright-geometric.html', label: 'Leadership' }
-    ]},
-    { group: 'Training', items: [
-      { href: 'nphti-training-calendar-bright-geometric.html', label: 'Training Calendar' },
-      { href: 'nphti-annual-workshops-bright-geometric.html', label: 'Annual Workshops' },
-      { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup' },
-      { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars' },
-      { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive' },
-      { href: 'nphti-training-resources-bright-geometric.html', label: 'Training Resources' },
-      { href: 'nphti-find-a-provider-bright-geometric.html', label: 'Find a Provider' }
-    ]},
-    { group: 'Support NPHTI', items: [
-      { href: 'nphti-donate-bright-geometric.html', label: 'Donate' },
-      { href: 'nphti-scholarship-campaign-bright-geometric.html', label: 'Scholarship Campaign' },
-      { href: 'nphti-contact-bright-geometric.html', label: 'Contact' }
-    ]}
+  var HOME = 'nphti-home-bright-geometric.html';
+  var TRAINING_ITEMS = [
+    { href: 'nphti-training-calendar-bright-geometric.html', label: 'Training Calendar', hue: '#424c9a' },
+    { href: 'nphti-annual-workshops-bright-geometric.html', label: 'Annual Workshops', hue: '#3290a4' },
+    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#90a1d7' },
+    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#4da9bc' },
+    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#424c9a' }
+  ];
+  var NAV = [
+    { href: 'nphti-about-bright-geometric.html', label: 'About' },
+    { training: true, label: 'Training' },
+    { href: 'nphti-find-a-provider-bright-geometric.html', label: 'Find a Provider' },
+    { href: 'nphti-training-resources-bright-geometric.html', label: 'Training Resources' },
+    { href: 'nphti-contact-bright-geometric.html', label: 'Contact' }
   ];
 
-  var here = location.pathname.split('/').pop();
+  var here = location.pathname.split('/').pop() || HOME;
+  var trainingHrefs = TRAINING_ITEMS.map(function (i) { return i.href; });
+  var trainingActive = trainingHrefs.indexOf(here) !== -1;
 
   var style = document.createElement('style');
   style.textContent = [
-    '#dn-root{position:fixed;bottom:20px;right:20px;z-index:99999;font-family:"DM Sans",sans-serif;}',
-    '#dn-toggle{display:flex;align-items:center;gap:8px;background:#161b38;color:#fff;border:none;border-radius:99px;padding:12px 18px 12px 16px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 10px 30px rgba(22,27,56,.35);}',
-    '#dn-toggle:hover{background:#242b56;}',
-    '#dn-toggle svg{width:16px;height:16px;flex:0 0 auto;}',
-    '#dn-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#f2b134;color:#3a2a00;border-radius:20px;padding:2px 7px;}',
-    '#dn-panel{display:none;position:absolute;bottom:56px;right:0;width:260px;max-height:70vh;overflow-y:auto;background:#fff;border:1.5px solid #dbe1f4;border-radius:12px;box-shadow:0 20px 50px rgba(22,27,56,.25);padding:14px;}',
-    '#dn-panel.open{display:block;}',
-    '#dn-panel .dn-notice{font-size:10.5px;color:#5b618c;line-height:1.5;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #dbe1f4;}',
-    '#dn-panel .dn-notice b{color:#161b38;}',
-    '#dn-panel h6{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#3290a4;margin:14px 0 6px;}',
-    '#dn-panel h6:first-of-type{margin-top:0;}',
-    '#dn-panel a{display:block;font-size:13px;color:#161b38;text-decoration:none;padding:7px 8px;border-radius:7px;line-height:1.3;}',
-    '#dn-panel a:hover{background:#f1f4fb;}',
-    '#dn-panel a.dn-current{background:#eef0fa;color:#424c9a;font-weight:500;}'
+    '#dn-root *{box-sizing:border-box;}',
+    '#dn-root{font-family:"DM Sans",sans-serif;}',
+    '#dn-topband{display:flex;width:100%;height:6px;}',
+    '#dn-topband span{flex:1;}',
+    '#dn-header{display:flex;align-items:center;justify-content:space-between;background:#f1f4fb;border-bottom:2px solid #161b38;padding:18px clamp(20px,4vw,40px) 16px;position:relative;}',
+    '#dn-logo{display:flex;align-items:center;}',
+    '#dn-logo img{height:56px;width:auto;display:block;}',
+    '#dn-links{display:flex;align-items:center;gap:22px;}',
+    '.dn-link{font-family:"DM Sans",sans-serif;font-weight:500;font-size:13.5px;color:#5b618c;text-decoration:none;white-space:nowrap;}',
+    '.dn-link:hover,.dn-link.dn-current{color:#161b38;}',
+    '.dn-trig{display:inline-flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;font-weight:500;font-size:13.5px;color:#5b618c;background:none;border:none;cursor:pointer;padding:0;white-space:nowrap;}',
+    '.dn-trig:hover,.dn-trig.dn-current{color:#161b38;}',
+    '.dn-trig svg{width:11px;height:11px;transition:transform .15s ease;}',
+    '.dn-trig[aria-expanded="true"] svg{transform:rotate(180deg);}',
+    '#dn-donate{background:#424c9a;color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;font-family:"DM Sans",sans-serif;}',
+    '#dn-donate:hover{background:#353f85;}',
+    '#dn-dropdown{display:none;position:absolute;top:100%;left:0;margin-top:14px;min-width:240px;background:#fff;border:1.5px solid #dbe1f4;border-radius:10px;box-shadow:0 18px 44px rgba(22,27,56,.16);padding:8px;z-index:2;}',
+    '#dn-dropdown.dn-open{display:block;}',
+    '#dn-dropdown a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:7px;font-family:"DM Sans",sans-serif;font-weight:500;font-size:13.5px;color:#161b38;text-decoration:none;}',
+    '#dn-dropdown a:hover{background:#e7ecf8;}',
+    '#dn-dropdown a.dn-current{background:#eef0fa;}',
+    '#dn-dropdown i{width:8px;height:8px;border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}',
+    '#dn-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;width:30px;height:30px;flex-direction:column;justify-content:center;gap:6px;}',
+    '#dn-hamburger span{display:block;width:100%;height:2px;background:#161b38;transition:transform .2s ease,opacity .2s ease;}',
+    '#dn-hamburger.dn-open span:nth-child(1){transform:translateY(8px) rotate(45deg);}',
+    '#dn-hamburger.dn-open span:nth-child(2){opacity:0;}',
+    '#dn-hamburger.dn-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}',
+    '#dn-mobile{display:none;background:#fff;border-bottom:2px solid #161b38;}',
+    '#dn-mobile.dn-open{display:block;}',
+    '#dn-mobile .dn-mrow{display:block;padding:15px clamp(20px,4vw,40px);font-size:15px;color:#161b38;text-decoration:none;border-top:1px solid #dbe1f4;font-family:"DM Sans",sans-serif;}',
+    '#dn-mobile .dn-mtrig{display:flex;align-items:center;justify-content:space-between;width:100%;padding:15px clamp(20px,4vw,40px);font-size:15px;color:#161b38;background:none;border:none;border-top:1px solid #dbe1f4;text-align:left;cursor:pointer;font-family:"DM Sans",sans-serif;}',
+    '#dn-mobile .dn-mtrig svg{width:12px;height:12px;transition:transform .15s ease;}',
+    '#dn-mobile .dn-mtrig[aria-expanded="true"] svg{transform:rotate(180deg);}',
+    '#dn-mobile .dn-msub{display:none;background:#f7f9fd;}',
+    '#dn-mobile .dn-msub.dn-open{display:block;}',
+    '#dn-mobile .dn-msub a{display:flex;align-items:center;gap:10px;padding:13px clamp(20px,4vw,40px) 13px calc(clamp(20px,4vw,40px) + 14px);font-size:14px;color:#161b38;text-decoration:none;border-top:1px solid #dbe1f4;}',
+    '#dn-mobile .dn-msub i{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}',
+    '#dn-mobile .dn-mdonate{display:block;margin:16px clamp(20px,4vw,40px) 20px;background:#424c9a;color:#fff;text-align:center;padding:12px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;}',
+    '@media(max-width:900px){#dn-links{display:none;}#dn-hamburger{display:flex;}}',
+    '#dn-flag{position:fixed;bottom:10px;right:10px;z-index:99999;font-family:"DM Sans",sans-serif;font-size:9.5px;color:#a9b0d9;background:rgba(22,27,56,.85);padding:3px 8px;border-radius:4px;pointer-events:none;letter-spacing:.02em;}'
   ].join('');
   document.head.appendChild(style);
 
-  var panelHtml = '<div class="dn-notice"><b>Preview navigation</b><br>Demo aid only — the real site will use a Wix-native menu. Not part of the final design.</div>';
-  PAGES.forEach(function (section) {
-    panelHtml += '<h6>' + section.group + '</h6>';
-    section.items.forEach(function (item) {
-      var current = item.href === here ? ' dn-current' : '';
-      panelHtml += '<a class="' + current.trim() + '" href="' + item.href + '">' + item.label + '</a>';
-    });
-  });
+  function diamond(hue) {
+    return '<i style="background:' + hue + '"></i>';
+  }
+
+  var dropdownHtml = TRAINING_ITEMS.map(function (item) {
+    var cur = item.href === here ? ' dn-current' : '';
+    return '<a class="' + cur.trim() + '" href="' + item.href + '">' + diamond(item.hue) + item.label + '</a>';
+  }).join('');
+
+  var linksHtml = NAV.map(function (item) {
+    if (item.training) {
+      return '<div style="position:relative;">' +
+        '<button type="button" class="dn-trig' + (trainingActive ? ' dn-current' : '') + '" id="dn-trig" aria-expanded="false">Training ' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>' +
+        '<div id="dn-dropdown">' + dropdownHtml + '</div>' +
+      '</div>';
+    }
+    var cur = item.href === here ? ' dn-current' : '';
+    return '<a class="dn-link' + cur + '" href="' + item.href + '">' + item.label + '</a>';
+  }).join('');
+
+  var mobileHtml = NAV.map(function (item) {
+    if (item.training) {
+      var subItems = TRAINING_ITEMS.map(function (t) {
+        var cur = t.href === here ? ' dn-current' : '';
+        return '<a class="' + cur.trim() + '" href="' + t.href + '">' + diamond(t.hue) + t.label + '</a>';
+      }).join('');
+      return '<button type="button" class="dn-mtrig" id="dn-mtrig" aria-expanded="false">Training ' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>' +
+        '<div class="dn-msub" id="dn-msub">' + subItems + '</div>';
+    }
+    var cur = item.href === here ? ' dn-current' : '';
+    return '<a class="dn-mrow' + cur + '" href="' + item.href + '">' + item.label + '</a>';
+  }).join('');
 
   var root = document.createElement('div');
   root.id = 'dn-root';
   root.innerHTML =
-    '<div id="dn-panel">' + panelHtml + '</div>' +
-    '<button id="dn-toggle" type="button" aria-expanded="false">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>' +
-      'Site menu <span id="dn-tag">Preview</span>' +
-    '</button>';
-  document.body.appendChild(root);
+    '<div id="dn-topband"><span style="background:#424c9a"></span><span style="background:#3290a4"></span><span style="background:#90a1d7"></span><span style="background:#4da9bc"></span></div>' +
+    '<div id="dn-header">' +
+      '<a id="dn-logo" href="' + HOME + '"><img src="nphti-logo.png" alt="NPHTI"></a>' +
+      '<div id="dn-links">' + linksHtml + '<a id="dn-donate" href="nphti-donate-bright-geometric.html">Donate</a></div>' +
+      '<button id="dn-hamburger" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>' +
+    '</div>' +
+    '<div id="dn-mobile">' + mobileHtml + '<a class="dn-mdonate" href="nphti-donate-bright-geometric.html">Donate</a></div>' +
+    '<div id="dn-flag">Preview build &middot; final menu will be native Wix</div>';
 
-  var toggle = document.getElementById('dn-toggle');
-  var panel = document.getElementById('dn-panel');
-  toggle.addEventListener('click', function () {
-    var open = panel.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  document.body.insertBefore(root, document.body.firstChild);
+
+  // Desktop Training dropdown
+  var trig = document.getElementById('dn-trig');
+  var dropdown = document.getElementById('dn-dropdown');
+  if (trig) {
+    trig.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = dropdown.classList.toggle('dn-open');
+      trig.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!dropdown.contains(e.target) && e.target !== trig) {
+        dropdown.classList.remove('dn-open');
+        trig.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Mobile hamburger + accordion
+  var hamburger = document.getElementById('dn-hamburger');
+  var mobile = document.getElementById('dn-mobile');
+  hamburger.addEventListener('click', function () {
+    var open = mobile.classList.toggle('dn-open');
+    hamburger.classList.toggle('dn-open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  document.addEventListener('click', function (e) {
-    if (!root.contains(e.target)) panel.classList.remove('open');
-  });
+  var mtrig = document.getElementById('dn-mtrig');
+  var msub = document.getElementById('dn-msub');
+  if (mtrig) {
+    mtrig.addEventListener('click', function () {
+      var open = msub.classList.toggle('dn-open');
+      mtrig.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 })();
