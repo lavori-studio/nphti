@@ -29,9 +29,10 @@
   var ABOUT_HREF = 'nphti-about-bright-geometric.html';
   var DONATE_HREF = 'nphti-donate-bright-geometric.html';
 
-  var ABOUT_CHILDREN = [
-    { href: 'nphti-faculty-bright-geometric.html', label: 'Faculty', hue: '#424c9a' },
-    { href: 'nphti-leadership-bright-geometric.html', label: 'Leadership', hue: '#3290a4' }
+  var ABOUT_ITEMS = [
+    { href: ABOUT_HREF, label: 'About NPHTI', hue: '#424c9a' },
+    { href: 'nphti-leadership-bright-geometric.html', label: 'Leadership', hue: '#3290a4' },
+    { href: 'nphti-faculty-bright-geometric.html', label: 'Faculty', hue: '#90a1d7' }
   ];
   var DONATE_CHILDREN = [
     { href: 'nphti-scholarship-campaign-bright-geometric.html', label: 'Scholarship Campaign', hue: '#f2b134' }
@@ -39,13 +40,14 @@
   var TRAINING_ITEMS = [
     { href: 'nphti-training-calendar-bright-geometric.html', label: 'Training Calendar', hue: '#424c9a' },
     { href: 'nphti-annual-workshops-bright-geometric.html', label: 'Annual Workshops', hue: '#3290a4' },
-    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#90a1d7' },
-    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#4da9bc' },
-    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#424c9a' }
+    { href: 'nphti-scholarship-application-bright-geometric.html', label: 'Scholarship Application', hue: '#90a1d7' },
+    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#4da9bc' },
+    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#424c9a' },
+    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#3290a4' }
   ];
   var NAV = [
-    { href: ABOUT_HREF, label: 'About', children: ABOUT_CHILDREN },
-    { training: true, label: 'Training' },
+    { trigger: true, label: 'About', items: ABOUT_ITEMS },
+    { trigger: true, label: 'Training', items: TRAINING_ITEMS },
     { href: 'nphti-find-a-provider-bright-geometric.html', label: 'Find a Provider' },
     { href: 'nphti-training-resources-bright-geometric.html', label: 'Training Resources' },
     { href: 'nphti-contact-bright-geometric.html', label: 'Contact' }
@@ -56,7 +58,7 @@
 
   function hrefs(list) { return list.map(function (i) { return i.href; }); }
   function isActive(item) {
-    if (item.training) return TRAINING_ITEMS.some(function (i) { return i.href === here; });
+    if (item.trigger) return item.items.some(function (i) { return i.href === here; });
     if (item.children) return item.href === here || hrefs(item.children).indexOf(here) !== -1;
     return item.href === here;
   }
@@ -67,7 +69,10 @@
     '#dn-root{font-family:"DM Sans",sans-serif;}',
     '#dn-topband{display:flex;width:100%;height:6px;}',
     '#dn-topband span{flex:1;}',
-    '#dn-header{display:flex;align-items:center;justify-content:space-between;background:#f1f4fb;border-bottom:2px solid #161b38;padding:18px clamp(20px,4vw,40px) 16px;position:relative;}',
+    '#dn-header{display:flex;align-items:center;justify-content:space-between;background:#f1f4fb;border-bottom:2px solid #161b38;padding:18px clamp(20px,4vw,40px) 16px;position:relative;z-index:10000;}',
+    '#dn-actions{display:flex;align-items:center;gap:14px;}',
+    '#dn-login{background:transparent;color:#161b38;border:1.5px solid #dbe1f4;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:500;font-family:"DM Sans",sans-serif;cursor:pointer;white-space:nowrap;}',
+    '#dn-login:hover{border-color:#424c9a;color:#424c9a;}',
     '#dn-logo{display:flex;align-items:center;}',
     '#dn-logo img{height:56px;width:auto;display:block;}',
     '#dn-links{display:flex;align-items:center;gap:20px;}',
@@ -118,7 +123,8 @@
     '.dn-msub-donate.dn-open{display:block;}',
     '.dn-msub-donate a{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:14px;color:#161b38;text-decoration:none;}',
     '.dn-msub-donate i{width:7px;height:7px;border-radius:2px;transform:rotate(45deg);flex:0 0 auto;background:#f2b134;}',
-    '@media(max-width:900px){#dn-links{display:none;}#dn-donate-wrap.dn-desktop-only{display:none;}#dn-hamburger{display:flex;}}',
+    '.dn-mlogin{display:block;width:calc(100% - clamp(40px,8vw,80px));margin:16px clamp(20px,4vw,40px) 0;background:transparent;color:#161b38;border:1.5px solid #dbe1f4;text-align:center;padding:11px;border-radius:8px;font-size:14px;font-weight:500;font-family:"DM Sans",sans-serif;cursor:pointer;}',
+    '@media(max-width:900px){#dn-links{display:none;}#dn-actions.dn-desktop-only{display:none;}#dn-hamburger{display:flex;}}',
     '#dn-flag{position:fixed;bottom:10px;right:10px;z-index:99999;font-family:"DM Sans",sans-serif;font-size:9.5px;color:#a9b0d9;background:rgba(22,27,56,.85);padding:3px 8px;border-radius:4px;pointer-events:none;letter-spacing:.02em;}'
   ].join('');
   document.head.appendChild(style);
@@ -134,10 +140,10 @@
   // ---------- Desktop nav ----------
   var linksHtml = NAV.map(function (item, idx) {
     var active = isActive(item);
-    if (item.training) {
+    if (item.trigger) {
       return '<div class="dn-item">' +
-        '<button type="button" class="dn-trig' + (active ? ' dn-current' : '') + '" data-dd="dd' + idx + '" aria-expanded="false">Training ' + chev + '</button>' +
-        '<div class="dn-dropdown" id="dd' + idx + '">' + dropdownItems(TRAINING_ITEMS) + '</div>' +
+        '<button type="button" class="dn-trig' + (active ? ' dn-current' : '') + '" data-dd="dd' + idx + '" aria-expanded="false">' + item.label + ' ' + chev + '</button>' +
+        '<div class="dn-dropdown" id="dd' + idx + '">' + dropdownItems(item.items) + '</div>' +
       '</div>';
     }
     if (item.children) {
@@ -151,18 +157,21 @@
     return '<a class="dn-link' + cur + '" href="' + item.href + '">' + item.label + '</a>';
   }).join('');
 
-  var donateHtml =
-    '<div id="dn-donate-wrap" class="dn-item dn-desktop-only">' +
-      '<a id="dn-donate" href="' + DONATE_HREF + '">Donate</a>' +
-      '<button type="button" class="dn-donate-caret" data-dd="dd-donate" aria-expanded="false" aria-label="Donate submenu">' + chev + '</button>' +
-      '<div class="dn-dropdown" id="dd-donate">' + dropdownItems(DONATE_CHILDREN) + '</div>' +
+  var actionsHtml =
+    '<div id="dn-actions" class="dn-desktop-only">' +
+      '<button type="button" id="dn-login">Log In</button>' +
+      '<div id="dn-donate-wrap" class="dn-item">' +
+        '<a id="dn-donate" href="' + DONATE_HREF + '">Donate</a>' +
+        '<button type="button" class="dn-donate-caret" data-dd="dd-donate" aria-expanded="false" aria-label="Donate submenu">' + chev + '</button>' +
+        '<div class="dn-dropdown" id="dd-donate">' + dropdownItems(DONATE_CHILDREN) + '</div>' +
+      '</div>' +
     '</div>';
 
   // ---------- Mobile nav ----------
   var mobileHtml = NAV.map(function (item, idx) {
-    if (item.training) {
-      return '<button type="button" class="dn-mtrig" data-msub="ms' + idx + '" aria-expanded="false">Training ' + chev + '</button>' +
-        '<div class="dn-msub" id="ms' + idx + '">' + subRows(TRAINING_ITEMS) + '</div>';
+    if (item.trigger) {
+      return '<button type="button" class="dn-mtrig" data-msub="ms' + idx + '" aria-expanded="false">' + item.label + ' ' + chev + '</button>' +
+        '<div class="dn-msub" id="ms' + idx + '">' + subRows(item.items) + '</div>';
     }
     if (item.children) {
       return '<div class="dn-msplit">' +
@@ -182,7 +191,8 @@
     }).join('');
   }
 
-  var mobileDonateHtml =
+  var mobileActionsHtml =
+    '<button type="button" class="dn-mlogin">Log In</button>' +
     '<div class="dn-mdonate-wrap">' +
       '<a class="dn-mdonate" href="' + DONATE_HREF + '">Donate</a>' +
       '<button type="button" class="dn-mdonate-caret" data-msub="ms-donate" aria-expanded="false" aria-label="Donate submenu">' + chev + '</button>' +
@@ -197,10 +207,10 @@
     '<div id="dn-header">' +
       '<a id="dn-logo" href="' + HOME + '"><img src="nphti-logo.png" alt="NPHTI"></a>' +
       '<div id="dn-links">' + linksHtml + '</div>' +
-      donateHtml +
+      actionsHtml +
       '<button id="dn-hamburger" type="button" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>' +
     '</div>' +
-    '<div id="dn-mobile">' + mobileHtml + mobileDonateHtml + '</div>' +
+    '<div id="dn-mobile">' + mobileHtml + mobileActionsHtml + '</div>' +
     '<div id="dn-flag">Preview build &middot; final menu will be native Wix</div>';
 
   document.body.insertBefore(root, document.body.firstChild);
