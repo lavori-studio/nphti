@@ -40,9 +40,10 @@
   var TRAINING_ITEMS = [
     { href: 'nphti-training-calendar-bright-geometric.html', label: 'Training Calendar', hue: '#424c9a' },
     { href: 'nphti-annual-workshops-bright-geometric.html', label: 'Annual Workshops', hue: '#3290a4' },
-    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#90a1d7' },
-    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#4da9bc' },
-    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#424c9a' }
+    { href: 'nphti-scholarship-application-bright-geometric.html', label: 'Scholarship Application', hue: '#90a1d7' },
+    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#4da9bc' },
+    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#424c9a' },
+    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#3290a4' }
   ];
   var NAV = [
     { trigger: true, label: 'About', items: ABOUT_ITEMS },

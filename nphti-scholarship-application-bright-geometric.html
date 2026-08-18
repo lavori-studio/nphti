@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPHTI Scholarship Application — Bright Geometric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#424c9a; --teal:#3290a4; --lavender:#90a1d7; --aqua:#4da9bc;
+    --paper:#f1f4fb; --paper-2:#e7ecf8; --white:#ffffff;
+    --ink:#161b38; --mid:#5b618c; --line:#dbe1f4; --spark:#f2b134;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'DM Sans',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
+
+  .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
+  .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,48px);overflow:hidden;}
+  .hero-grid{position:relative;z-index:2;max-width:740px;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(32px,5.2vw,52px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero p{color:var(--mid);font-size:clamp(15px,2vw,17px);max-width:680px;margin:18px 0 0;line-height:1.75;}
+
+  .shapes{position:absolute;top:50%;right:-100px;transform:translateY(-50%);z-index:1;width:460px;height:460px;pointer-events:none;}
+  .shapes .drift1{animation:drift1 7s ease-in-out infinite;}
+  .shapes .drift2{animation:drift2 8.5s ease-in-out infinite;}
+  @keyframes drift1{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes drift2{0%,100%{transform:translateY(0);}50%{transform:translateY(9px);}}
+  @media(max-width:760px){.shapes{display:none;}}
+  @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
+
+  /* ===== STATUS BAND ===== */
+  .status-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(32px,5vw,48px) 0;}
+  .status-inner{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px);display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .status-inner i{width:11px;height:11px;background:var(--lavender);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .status-inner .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a9b0d9;}
+  .status-inner .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(16px,2.1vw,19px);color:var(--white);line-height:1.4;}
+
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(44px,6vw,72px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+
+  /* ===== DIAMOND LIST ===== */
+  .dlist{list-style:none;display:flex;flex-direction:column;gap:14px;max-width:760px;}
+  .dlist li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start;font-size:14.5px;color:var(--ink);line-height:1.65;}
+  .dlist li i{width:9px;height:9px;background:var(--purple);border-radius:2px;transform:rotate(45deg);margin-top:6px;flex:0 0 auto;}
+
+  .award-note{background:var(--white);border:1.5px solid var(--line);border-radius:10px;padding:18px 20px;margin-top:26px;max-width:760px;}
+  .award-note p{color:var(--mid);font-size:13.5px;line-height:1.7;}
+
+  /* ===== CLOSED-CYCLE NOTICE ===== */
+  .closed-card{background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:clamp(28px,4.5vw,40px) clamp(24px,4vw,34px);max-width:760px;}
+  .closed-card h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:var(--ink);display:flex;align-items:center;gap:10px;}
+  .closed-card h3 i{width:9px;height:9px;background:var(--lavender);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .closed-card p{color:var(--mid);font-size:14px;line-height:1.7;margin-top:10px;}
+  .closed-card a{color:var(--purple);text-decoration:underline;text-underline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <svg class="shapes" viewBox="0 0 520 520" aria-hidden="true">
+      <polygon class="drift1" points="150,150 340,150 150,340" fill="#424c9a" opacity=".92"/>
+      <polygon class="drift2" points="360,130 460,130 425,205 325,205" fill="#90a1d7" opacity=".9"/>
+      <polygon points="375,160 450,235 375,310 300,235" fill="#3290a4" opacity=".92"/>
+      <polygon points="210,340 370,340 290,452" fill="#4da9bc" opacity=".92"/>
+    </svg>
+    <div class="hero-grid">
+      <span class="eyebrow"><span class="spark"></span> Training &middot; Scholarship Application</span>
+      <h1>Scholarships for the NPHTI Annual Workshops</h1>
+      <p>NPHTI provides scholarships to help defray annual workshop registration costs for clinicians and trainees who have limited monetary resources.</p>
+    </div>
+  </section>
+
+  <!-- ===== STATUS ===== -->
+  <section class="status-band">
+    <div class="status-inner">
+      <i aria-hidden="true"></i>
+      <span class="lbl">Status</span>
+      <span class="val">The deadline to apply for a 2026 scholarship (August 15, 2026) has passed. Check back in 2027 for details on scholarships to the 2027 Annual Workshops.</span>
+    </div>
+  </section>
+
+  <!-- ===== CRITERIA ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Criteria for Recipients</h2></div>
+    </div>
+    <p style="color:var(--mid);font-size:14.5px;max-width:760px;margin-bottom:20px;">NPHTI intends to focus its limited scholarships for the annual workshop on:</p>
+    <ul class="dlist">
+      <li><i></i><div>Trainees (graduate students, interns, residents, and post-doctoral fellows) in clinical programs leading to licensure</div></li>
+      <li><i></i><div>Licensed clinicians who live in resource-limited countries</div></li>
+      <li><i></i><div>U.S. licensed clinicians with limited financial resources</div></li>
+      <li><i></i><div>Early career professionals (e.g. within 2 years after licensure) with limited financial resources</div></li>
+      <li><i></i><div>Trainees or licensed clinicians with limited financial resources who demonstrate plans to conduct research in the area of pediatric clinical hypnosis within the next 2 years</div></li>
+    </ul>
+    <div class="award-note">
+      <p>The scholarship award does not go directly to the awardee &mdash; it goes to NPHTI for registration fees, or to pay hotel costs if hotel support is part of the award.</p>
+    </div>
+  </section>
+
+  <!-- ===== CLOSED-CYCLE NOTICE ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Applications</h2></div>
+    </div>
+    <div class="closed-card">
+      <h3><i></i>2026 Applications Are Closed</h3>
+      <p>The application window for 2026 Annual Workshop scholarships has closed. NPHTI will open applications for the 2027 Annual Workshops on this page once next year&rsquo;s scholarship cycle begins &mdash; check back after this year&rsquo;s workshops.</p>
+      <p>Questions in the meantime? <a href="mailto:TrainWithNPHTI@gmail.com">Contact NPHTI</a>.</p>
+    </div>
+  </section>
+
+</div>
+<script>
+  function reportHeight(){
+    var h=document.documentElement.scrollHeight;
+    if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
+  }
+  window.addEventListener('load',reportHeight);
+  window.addEventListener('resize',reportHeight);
+</script>
+<!-- TEMP nav (board-review only, remove before Wix launch — see demo-nav.js) -->
+<script src="demo-nav.js"></script>
+</body>
+</html>
