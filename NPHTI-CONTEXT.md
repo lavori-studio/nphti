@@ -169,6 +169,11 @@ Note: Kaiser appears both as a founder and in prior-years (intentional). Kuttner
   - How Does Medical Hypnosis Work? &ndash; via Jeff Lazarus, MD &mdash; `https://www.jefflazarusmd.com/faqs.html#how`
   - What is Hypnosis and Why Use Hypnosis? &ndash; via Ran Anbar, MD &mdash; `https://www.centerpointmedicine.com/#!information-for-parents/c1uuw`
 
+- **"Scholarships Available" callout** — removed from the Annual Workshops page (`nphti-annual-workshops-bright-geometric.html`) at client request, since the 2026 scholarship application deadline (August 15) has passed by the time this round of edits was made and the callout read as still-open. It was a striped card just above the closing content, linking to the new Scholarship Application page:
+  > **Scholarships Available** — "NPHTI offers scholarships to help defray registration costs for trainees, clinicians in resource-limited countries, and early-career professionals with limited financial resources. Applications are due **August 15**." → button "Scholarship Details" → `nphti-scholarship-application-bright-geometric.html`
+
+  Re-add a version of this callout to next year's Annual Workshops page once the 2027 application window is confirmed open (the Scholarship Application page itself already exists and just needs its "2026 Applications Are Closed" status band updated for 2027 — see that page's `.status-band` section).
+
 ---
 
 ## 7. Hosting & deployment
