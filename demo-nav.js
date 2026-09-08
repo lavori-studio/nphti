@@ -25,32 +25,32 @@
 (function () {
   if (window.self !== window.top) return; // inside the Wix iframe — stay invisible
 
-  var HOME = 'nphti-home-bright-geometric.html';
-  var ABOUT_HREF = 'nphti-about-bright-geometric.html';
-  var DONATE_HREF = 'nphti-donate-bright-geometric.html';
+  var HOME = 'nphti-home.html';
+  var ABOUT_HREF = 'nphti-about.html';
+  var DONATE_HREF = 'nphti-donate.html';
 
   var ABOUT_ITEMS = [
     { href: ABOUT_HREF, label: 'About NPHTI', hue: '#424c9a' },
-    { href: 'nphti-leadership-bright-geometric.html', label: 'Leadership', hue: '#3290a4' },
-    { href: 'nphti-faculty-bright-geometric.html', label: 'Faculty', hue: '#90a1d7' }
+    { href: 'nphti-leadership.html', label: 'Leadership', hue: '#3290a4' },
+    { href: 'nphti-faculty.html', label: 'Faculty', hue: '#90a1d7' }
   ];
   var DONATE_CHILDREN = [
-    { href: 'nphti-scholarship-campaign-bright-geometric.html', label: 'Scholarship Campaign', hue: '#f2b134' }
+    { href: 'nphti-scholarship-campaign.html', label: 'Scholarship Campaign', hue: '#f2b134' }
   ];
   var TRAINING_ITEMS = [
-    { href: 'nphti-training-calendar-bright-geometric.html', label: 'Training Calendar', hue: '#424c9a' },
-    { href: 'nphti-annual-workshops-bright-geometric.html', label: 'Annual Workshops', hue: '#3290a4' },
-    { href: 'nphti-scholarship-application-bright-geometric.html', label: 'Scholarship Application', hue: '#90a1d7' },
-    { href: 'nphti-mid-year-meetup-bright-geometric.html', label: 'Mid-Year Meetup', hue: '#4da9bc' },
-    { href: 'nphti-webinars-bright-geometric.html', label: 'Webinars', hue: '#424c9a' },
-    { href: 'nphti-training-archive-bright-geometric.html', label: 'Training Archive', hue: '#3290a4' }
+    { href: 'nphti-training-calendar.html', label: 'Training Calendar', hue: '#424c9a' },
+    { href: 'nphti-annual-workshops.html', label: 'Annual Workshops', hue: '#3290a4' },
+    { href: 'nphti-scholarship-application.html', label: 'Scholarship Application', hue: '#90a1d7' },
+    { href: 'nphti-mid-year-meetup.html', label: 'Mid-Year Meetup', hue: '#4da9bc' },
+    { href: 'nphti-webinars.html', label: 'Webinars', hue: '#424c9a' },
+    { href: 'nphti-training-archive.html', label: 'Training Archive', hue: '#3290a4' }
   ];
   var NAV = [
     { trigger: true, label: 'About', items: ABOUT_ITEMS },
     { trigger: true, label: 'Training', items: TRAINING_ITEMS },
-    { href: 'nphti-find-a-provider-bright-geometric.html', label: 'Find a Provider' },
-    { href: 'nphti-training-resources-bright-geometric.html', label: 'Training Resources' },
-    { href: 'nphti-contact-bright-geometric.html', label: 'Contact' }
+    { href: 'nphti-find-a-provider.html', label: 'Find a Provider' },
+    { href: 'nphti-training-resources.html', label: 'Training Resources' },
+    { href: 'nphti-contact.html', label: 'Contact' }
   ];
 
   var here = location.pathname.split('/').pop() || HOME;

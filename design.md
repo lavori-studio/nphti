@@ -182,7 +182,7 @@ Call `reportHeight()` again after any interaction that changes page height
 ```
 
 ## Known drift to resolve (from the 2026-08-14 Hallmark audit)
-- **Critical:** side-stripe accordions (`border-left:6px solid var(--glyph)`) in `nphti-training-archive-bright-geometric.html`, `nphti-find-a-provider-bright-geometric.html`, `nphti-webinars-bright-geometric.html`, `nphti-training-resources-bright-geometric.html` — should move to the top-band card language documented above.
+- **Critical:** side-stripe accordions (`border-left:6px solid var(--glyph)`) in `nphti-training-archive.html`, `nphti-find-a-provider.html`, `nphti-webinars.html`, `nphti-training-resources.html` — should move to the top-band card language documented above.
 - **Major:** eyebrow used on nearly every section sitewide (48 instances) — reserve for genuinely ordinal/categorical sections per page, not a default.
 - **Minor:** a handful of straight apostrophes/quotes in visible copy (homepage H1, training-resources media list, scholarship-campaign earmark note) — should be curly per the Typography rule above.
 
