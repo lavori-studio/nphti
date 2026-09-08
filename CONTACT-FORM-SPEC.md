@@ -1,6 +1,6 @@
 # Contact Form Spec — Native Wix Forms
 
-This describes the form to build directly in the Wix editor on the Contact page, below the `nphti-contact-bright-geometric.html` iframe (which only carries the hero — eyebrow, heading, intro copy, and the paper-airplane photo). The form itself is intentionally **not** in that HTML file: it uses Wix's native Forms + Automations so submissions email out with zero third-party services or API keys to manage.
+This describes the form to build directly in the Wix editor on the Contact page, below the `nphti-contact.html` iframe (which only carries the hero — eyebrow, heading, intro copy, and the paper-airplane photo). The form itself is intentionally **not** in that HTML file: it uses Wix's native Forms + Automations so submissions email out with zero third-party services or API keys to manage.
 
 I can't build this myself — Wix Forms only exist inside the Wix editor, which this repo has no access to. This doc is the exact spec for whoever builds it there.
 

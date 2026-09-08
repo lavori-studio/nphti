@@ -1,6 +1,6 @@
 # Find a Provider — Backend Spec (Velo)
 
-The frontend is done — `nphti-find-a-provider-bright-geometric.html` is a real, working map + live keyword search + expandable provider list, fetching from a JSON endpoint you'll expose from your existing Wix CMS Collection via a Velo backend function. This doc is everything you need to build that one function.
+The frontend is done — `nphti-find-a-provider.html` is a real, working map + live keyword search + expandable provider list, fetching from a JSON endpoint you'll expose from your existing Wix CMS Collection via a Velo backend function. This doc is everything you need to build that one function.
 
 The map (Leaflet + OpenStreetMap, with marker clustering) and the search/filter/results UI are already built and tested — no further frontend work needed once your endpoint is live and matches the shape below.
 
@@ -69,7 +69,7 @@ Once published, this function is live at:
 https://www.nphti.org/_functions/providers
 ```
 
-(Wix's convention: a function named `get_providers` in `http-functions.js` is served at `/_functions/providers` — the `get_` prefix maps to the HTTP method, the rest becomes the path.) That URL is already wired into the frontend as `PROVIDERS_ENDPOINT` at the top of the `<script>` block in `nphti-find-a-provider-bright-geometric.html`. If your site domain differs from `www.nphti.org`, update that one line.
+(Wix's convention: a function named `get_providers` in `http-functions.js` is served at `/_functions/providers` — the `get_` prefix maps to the HTTP method, the rest becomes the path.) That URL is already wired into the frontend as `PROVIDERS_ENDPOINT` at the top of the `<script>` block in `nphti-find-a-provider.html`. If your site domain differs from `www.nphti.org`, update that one line.
 
 ## 4. Test it
 
