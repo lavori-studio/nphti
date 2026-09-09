@@ -95,7 +95,7 @@
   .avatar.noimg .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
 
   /* ===== BOARD (founder-card layout, 2-up) ===== */
-  .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px;}
+  .board{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:20px;}
   @media(min-width:720px){.board{grid-template-columns:1fr 1fr;}}
   .member .inner{padding:24px 24px 26px;display:flex;flex-direction:column;}
   .member-top{display:flex;align-items:center;gap:18px;}
