@@ -39,9 +39,6 @@
   @media(max-width:960px){.shapes{display:none;}}
   @media(prefers-reduced-motion:reduce){.shapes .drift1,.shapes .drift2{animation:none;}}
 
-  .jump-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px;}
-  .jump-nav a{font-size:12.5px;font-weight:500;color:var(--mid);background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:7px 14px;text-decoration:none;transition:border-color .15s ease,color .15s ease;}
-  .jump-nav a:hover{border-color:var(--purple);color:var(--purple);}
 
   /* ===== PHOTO BAND ===== */
   .photo-duo{margin-top:clamp(28px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -123,12 +120,6 @@
     <div class="hero-grid">
       <h1>Training Resources</h1>
       <p>Reference material for clinicians training with, or considering training with, NPHTI &mdash; faculty publications, our listserv community, other reputable hypnosis training organizations, and answers to common questions. Looking for a NPHTI-trained provider? Visit our <a href="https://www.nphti.org/find-a-provider" target="_blank" rel="noopener">Find a Provider</a> directory instead.</p>
-      <div class="jump-nav">
-        <a href="#from-our-faculty">From our Faculty</a>
-        <a href="#nphti-listserv">NPHTI Listserv</a>
-        <a href="#other-hypnosis-training">Other Hypnosis Training</a>
-        <a href="#faq">FAQ</a>
-      </div>
     </div>
   </section>
 
@@ -425,16 +416,6 @@
 
 </div>
 <script>
-  document.querySelectorAll('.jump-nav a').forEach(function(a){
-    a.addEventListener('click', function(){
-      var id = a.getAttribute('href').slice(1);
-      var target = document.getElementById(id);
-      if(target){
-        var acc = target.closest('details.acc');
-        if(acc) acc.open = true;
-      }
-    });
-  });
   function reportHeight(){
     var h=document.documentElement.scrollHeight;
     if(window.parent){window.parent.postMessage({nphtiFrameHeight:h},'*');}
