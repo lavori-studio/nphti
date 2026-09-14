@@ -86,6 +86,13 @@
   .p-field{font-size:13px;color:var(--ink);}
   .p-field .lbl{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);opacity:.8;font-weight:500;margin-bottom:3px;}
   .p-field a{color:var(--purple);text-decoration:underline;}
+
+  /* ===== SHOW MORE ===== */
+  .show-more-wrap{display:none;justify-content:center;margin-top:22px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;padding:13px 22px;border-radius:9px;text-decoration:none;border:none;cursor:pointer;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease;}
+  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);}
+  @media (prefers-reduced-motion:reduce){.btn{transition:none;}.btn:hover{transform:none;}}
 </style>
 </head>
 <body>
@@ -116,6 +123,9 @@
   <!-- ===== RESULTS ===== -->
   <div id="stateMsg" class="state-msg">Loading providers&hellip;</div>
   <div id="results"></div>
+  <div class="show-more-wrap" id="showMoreWrap">
+    <button type="button" class="btn btn-outline" id="showMoreBtn">Show More Providers</button>
+  </div>
 
 </div>
 
@@ -129,7 +139,9 @@
   var PROVIDERS_ENDPOINT = 'https://www.nphti.org/_functions/providers';
 
   var HUES = ['t-purple', 't-teal', 't-lav', 't-aqua'];
+  var PAGE_SIZE = 10;
   var allProviders = [];
+  var visibleCount = PAGE_SIZE;
   var map, markerCluster;
 
   function escapeHtml(s){
@@ -197,19 +209,26 @@
     var results = document.getElementById('results');
     var stateMsg = document.getElementById('stateMsg');
     var resultCount = document.getElementById('resultCount');
+    var showMoreWrap = document.getElementById('showMoreWrap');
 
     if (!list.length){
       results.innerHTML = '';
       stateMsg.style.display = '';
       stateMsg.textContent = 'No providers match that search. Try a different keyword.';
       resultCount.style.display = 'none';
+      showMoreWrap.style.display = 'none';
       return;
     }
     stateMsg.style.display = 'none';
     resultCount.style.display = '';
-    resultCount.textContent = list.length + (list.length === 1 ? ' provider' : ' providers');
 
-    results.innerHTML = list.map(function(p, i){
+    var shown = list.slice(0, visibleCount);
+    resultCount.textContent = shown.length < list.length
+      ? 'Showing ' + shown.length + ' of ' + list.length + ' providers'
+      : shown.length + (shown.length === 1 ? ' provider' : ' providers');
+    showMoreWrap.style.display = shown.length < list.length ? 'flex' : 'none';
+
+    results.innerHTML = shown.map(function(p, i){
       var hue = HUES[i % HUES.length];
       var location = [p.city, p.state, p.country].filter(Boolean).join(', ');
       var fields = '';
@@ -236,20 +255,27 @@
     });
   }
 
-  function applyFilter(){
+  function getFiltered(){
     var q = document.getElementById('search').value.trim().toLowerCase();
-    if (!q){
-      renderResults(allProviders);
-      renderMap(allProviders);
-      return;
-    }
-    var filtered = allProviders.filter(function(p){
+    if (!q) return allProviders;
+    return allProviders.filter(function(p){
       return [p.name, p.practiceName, p.areasOfExpertise, p.city, p.state, p.country, p.certifiedToPracticeIn]
         .filter(Boolean).join(' ').toLowerCase().indexOf(q) !== -1;
     });
+  }
+
+  function applyFilter(){
+    visibleCount = PAGE_SIZE;
+    var filtered = getFiltered();
     renderResults(filtered);
     renderMap(filtered);
   }
+
+  document.getElementById('showMoreBtn').addEventListener('click', function(){
+    visibleCount += PAGE_SIZE;
+    renderResults(getFiltered());
+    reportHeight();
+  });
 
   function loadProviders(){
     fetch(PROVIDERS_ENDPOINT)
@@ -259,6 +285,9 @@
       })
       .then(function(data){
         allProviders = (data && data.providers) || [];
+        allProviders.sort(function(a, b){
+          return (a.name || '').localeCompare(b.name || '');
+        });
         if (!allProviders.length){
           document.getElementById('stateMsg').textContent = 'No providers are listed yet.';
           reportHeight();
