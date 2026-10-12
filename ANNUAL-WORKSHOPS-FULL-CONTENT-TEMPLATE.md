@@ -21,7 +21,7 @@ This doc preserves the **full page** as it stood for the 2026 workshop (Oct 15�
 </div>
 ```
 
-**Update for 2027:** ordinal ("15th" → whatever the real count is — confirm with the client, don't assume +1 without checking for gap years), dates, "new retreat setting" → drop once it's no longer new, registration URL, brochure filename/path.
+**Update for 2027:** ordinal ("15th" → "16th," confirmed by the client for the 2027 workshop), dates, "new retreat setting" → drop once it's no longer new, registration URL, brochure filename/path.
 **Evergreen:** the tagline, the general H1 pattern, the two-button shape (register + download brochure).
 
 ## 2. Quick Facts band (`.fact-band` / `.fact-grid` / `.fact`)
@@ -141,7 +141,7 @@ Three quotes, hue-cycled (purple/teal/lavender), no attribution given on the liv
 
 ## Rebuild checklist, once 2027 details are confirmed
 
-1. Swap hero copy/dates/links (§1), confirm the ordinal workshop number with the client.
+1. Swap hero copy/dates/links (§1) — the 2027 workshop is confirmed as the 16th Annual.
 2. Restore the Quick Facts band (§2) with 2027 values.
 3. Replace "What's New" (§3) with real 2027 content — the save-the-date page already has the three flyer bullets as a starting point.
 4. Restore Workshop Levels (§4) with 2027 pricing/availability.
