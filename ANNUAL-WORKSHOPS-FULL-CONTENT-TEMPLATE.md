@@ -137,6 +137,56 @@ Three quotes, hue-cycled (purple/teal/lavender), no attribution given on the liv
 
 **Update for 2027:** the year reference and the PDF filename/path once a 2027 program guide exists. Note the 2026 brochure now lives on the Training Archive page (`nphti-training-archive.html`) instead, since it's no longer the current year's guide.
 
+## 10. Homepage registration banner & workshop CTA (`nphti-home.html`)
+
+Two spots on the homepage referenced open 2026 registration and were updated/removed alongside the Annual Workshops rewrite — these aren't part of the Annual Workshops page itself, but need to come back in sync with it:
+
+**Top-of-page alert banner (`.alert`) — removed entirely.** It read:
+
+```html
+<div class="alert" role="note">
+  <span class="dot" aria-hidden="true"></span>
+  Registration is open for the 2026 Annual Workshops.
+  <a href="nphti-annual-workshops.html">View registration details →</a>
+</div>
+```
+
+Its CSS (`.alert`, `.alert .dot`, `.alert a`, `.alert a:hover`) was removed too. **Restore this** (banner markup + CSS) once 2027 registration actually opens, swapping in the 2027 dates/link.
+
+**Workshop CTA card (`.workshop`) — updated in place, not removed**, since the homepage should still point visitors at the workshop even while it's save-the-date-only:
+
+```html
+<h3><i></i>Save the Date for the 16th Annual Workshop</h3>
+<p>October 21–23, 2027 at the Q Center in St. Charles, IL — training offered at three levels for licensed professionals at any stage of their practice.</p>
+...
+<a class="btn btn-solid" href="nphti-annual-workshops.html">Learn More</a>
+```
+
+Was previously: `<h3>Registration is open for the 2026 Annual Workshops.</h3>` / `<p>Training is offered at three levels — Fundamentals, Intermediate, and Advanced — for licensed professionals at any stage of their practice.</p>` / button text "View Workshop Details". **Update for 2027:** swap this copy back to a registration-open framing (restoring the original heading/button-text pattern above, with 2027 dates) once registration opens.
+
+## 11. Training Calendar page (`nphti-training-calendar.html`)
+
+Also updated alongside the rewrite, since it listed the same stale 2026 info:
+
+**Program Links card ("Annual Workshops"):** the description and link text ("Pricing, eligibility & registration") implied live registration/pricing — updated to a save-the-date framing ("2027 details are coming soon — save the date for Oct 21–23" / link text "View the 2027 save-the-date"), matching the voice already used on the adjacent Mid-Year Meetup card. **Restore to a registration-open framing** once 2027 registration opens.
+
+**Upcoming Events list:** removed the `Sep 15, 2026` webinar row (already past) and the `Oct 15–17, 2026` Annual Workshop row (superseded), and added a new row at the chronological end of the list (after `May 18, 2027`):
+
+```html
+<div class="cal-row">
+  <div class="cal-date">Oct 21&ndash;23, 2027</div>
+  <div>
+    <span class="cal-badge workshop">Annual Workshop</span>
+    <div class="cal-title">16th Annual Pediatric Clinical Hypnosis Skills Development Workshops</div>
+    <div class="cal-note">Q Center &middot; St. Charles, IL &mdash; save the date, full details coming soon</div>
+  </div>
+</div>
+```
+
+**Update for 2027:** once registration opens, update the `.cal-note` to real level/pricing info (matching §4's restored content), and keep pruning past-dated rows as each one passes — this list is meant to only ever show what's actually upcoming.
+
+**Footnote:** "for full pricing and eligibility" → "for 2027 save-the-date details". **Restore** once pricing/eligibility are live again.
+
 ---
 
 ## Rebuild checklist, once 2027 details are confirmed
@@ -150,3 +200,5 @@ Three quotes, hue-cycled (purple/teal/lavender), no attribution given on the liv
 7. Restore Accreditation (§7) after confirming credit hours with ASCH/NASW/PACE for the 2027 curriculum.
 8. Restore or refresh Testimonials (§8).
 9. Build a 2027 program guide PDF, link it in a restored Program Guide CTA (§9), and add it to the Training Archive alongside prior years once 2027 becomes a past year.
+10. Bring back the homepage alert banner and update the workshop CTA card's copy/button text (§10) to a registration-open framing, once 2027 registration opens.
+11. Update the Training Calendar's program-link card, calendar note, and footnote (§11) back to a registration-open framing.
