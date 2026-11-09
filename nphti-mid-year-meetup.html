@@ -18,25 +18,23 @@
   body{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px) clamp(48px,6vw,72px);}
   a{color:inherit;}
+  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
 
   .eyebrow{font-family:'DM Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:9px;}
   .eyebrow .spark{width:7px;height:7px;border-radius:50%;background:var(--spark);box-shadow:0 0 0 4px rgba(242,177,52,.18);}
-
-  :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:5px;}
 
   /* ===== HERO ===== */
   .hero{position:relative;padding:clamp(40px,7vw,88px) 0 clamp(28px,4vw,48px);}
   .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;}
   @media(max-width:820px){.hero-inner{grid-template-columns:1fr;}}
-  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(32px,5.4vw,52px);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(32px,5.4vw,52px);line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin:18px 0 0;}
+  .hero h1 .c{color:var(--purple);}
   .hero p{color:var(--mid);font-size:clamp(16px,2vw,18px);max-width:480px;margin:18px 0 0;line-height:1.7;}
-  .hero p.thanks{color:var(--ink);font-weight:500;}
+  .hero .tagline{font-family:'Bricolage Grotesque',sans-serif;font-style:italic;font-weight:600;color:var(--teal);font-size:clamp(15px,2vw,18px);margin-top:14px;}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px;}
   .btn{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;padding:13px 22px;border-radius:9px;text-decoration:none;transition:transform .15s ease,background .15s ease,border-color .15s ease,color .15s ease;}
   .btn-solid{background:var(--purple);color:#fff;}
   .btn-solid:hover{background:#353f85;transform:translateY(-2px);}
-  .btn-outline{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
-  .btn-outline:hover{border-color:var(--purple);color:var(--purple);transform:translateY(-2px);}
 
   .hero-photo{position:relative;}
   .hero-photo .shapes-mini{position:absolute;top:-34px;left:-30px;width:120px;height:120px;z-index:1;pointer-events:none;}
@@ -50,8 +48,78 @@
   .hero-photo .frame::after{content:"";position:absolute;top:14px;right:14px;width:12px;height:12px;background:var(--spark);border-radius:2px;transform:rotate(45deg);}
   @media(max-width:820px){.hero-photo{order:-1;max-width:340px;margin:0 auto;}.hero-photo .shapes-mini{display:none;}.hero-photo .backing{transform:translate(10px,10px);}}
 
-  .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;letter-spacing:.03em;color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:20px;padding:7px 14px;margin-top:24px;}
-  .badge i{width:7px;height:7px;background:var(--spark);border-radius:50%;flex:0 0 auto;}
+  /* ===== SECTION HEADER ===== */
+  .sec{margin-top:clamp(48px,7vw,90px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:18px;border-bottom:2px solid var(--ink);}
+  .sec-head h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1;letter-spacing:-.015em;color:var(--ink);margin-top:8px;}
+
+  .t-purple{--glyph:#424c9a;} .t-teal{--glyph:#3290a4;} .t-lav{--glyph:#90a1d7;} .t-aqua{--glyph:#4da9bc;}
+
+  /* ===== FACT BAND ===== */
+  .fact-band{width:100vw;margin-left:calc(50% - 50vw);background:var(--ink);padding:clamp(32px,5vw,52px) 0;}
+  .fact-inner{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,40px);}
+  .fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,30px);}
+  @media(max-width:760px){.fact-grid{grid-template-columns:1fr 1fr;}}
+  .fact{border-top:3px solid var(--glyph);padding-top:14px;}
+  .fact .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(17px,2.4vw,21px);color:var(--white);line-height:1.2;}
+  .fact .label{color:#a9b0d9;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:8px;}
+
+  /* ===== WHY DGBI ===== */
+  .about{max-width:760px;}
+  .about p{color:var(--mid);font-size:16px;line-height:1.75;margin-top:10px;}
+  .about p:first-child{margin-top:0;}
+
+  /* ===== MODERATORS ===== */
+  .mods{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:620px;}
+  @media(max-width:560px){.mods{grid-template-columns:1fr;}}
+  .mod{display:flex;align-items:center;gap:16px;background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:18px 20px;}
+  .avatar{flex:0 0 auto;width:62px;height:62px;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;color:var(--white);border-radius:28%;position:relative;overflow:hidden;}
+  .a-purple{background:var(--purple);} .a-teal{background:var(--teal);}
+  .avatar .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .avatar .ini{display:none;}
+  .avatar.noimg .ph{display:none;}
+  .avatar.noimg .ini{display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
+  .mod h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:18px;color:var(--ink);line-height:1.2;}
+  .mod .cred{color:var(--mid);font-size:12.5px;font-weight:500;margin-top:3px;}
+
+  /* ===== REGISTRATION & PRICING ===== */
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;}
+  @media(max-width:520px){.price-grid{grid-template-columns:1fr;}}
+  .price-box{border-radius:10px;padding:18px 20px;}
+  .price-box.early{background:var(--paper-2);}
+  .price-box.regular{border:1.5px solid var(--line);background:var(--white);}
+  .price-box .lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);display:flex;align-items:center;gap:6px;}
+  .price-box.regular .lbl{color:var(--mid);}
+  .price-box .lbl i{width:7px;height:7px;background:var(--spark);border-radius:50%;flex:0 0 auto;}
+  .price-box .amt{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:32px;color:var(--ink);margin-top:6px;line-height:1.1;}
+  .price-box .range{font-size:12.5px;color:var(--mid);margin-top:4px;}
+  .price-note{font-size:14px;color:var(--mid);line-height:1.7;margin-top:18px;max-width:620px;}
+  .price-note b{color:var(--ink);}
+  .price-note:first-of-type{margin-top:22px;}
+
+  /* ===== CLOSING CTA — striped card ===== */
+  .close-cta{margin-top:clamp(48px,7vw,90px);display:flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--white);}
+  .close-cta .stripe{width:10px;background:var(--purple);flex:0 0 auto;}
+  .close-cta .content{flex:1;padding:clamp(26px,4vw,38px) clamp(24px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .close-cta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(19px,2.6vw,24px);color:var(--ink);display:flex;align-items:center;gap:11px;}
+  .close-cta h3 i{width:10px;height:10px;background:var(--purple);border-radius:2px;transform:rotate(45deg);flex:0 0 auto;}
+  .close-cta p{color:var(--mid);font-size:16px;margin-top:8px;max-width:480px;}
+  .close-cta .cta-actions{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:0 1 auto;}
+  .close-cta .btn-solid{flex:0 1 auto;min-width:0;white-space:normal;text-align:center;}
+  .close-cta .mailto{font-size:12.5px;color:var(--mid);text-decoration:underline;text-underline-offset:2px;}
+  .close-cta .mailto:hover{color:var(--purple);}
+
+  @media (prefers-reduced-motion:reduce){.btn{transition:none;}.btn:hover{transform:none;}}
+
+  /* ===== MOBILE — tighten section rhythm ===== */
+  @media(max-width:640px){
+    .sec{margin-top:32px;}
+    .sec-head{margin-bottom:18px;padding-bottom:14px;}
+    .fact-band{padding:24px 0;}
+    .close-cta{margin-top:32px;}
+    .close-cta .content{justify-content:flex-start;}
+    .close-cta .cta-actions{align-items:flex-start;width:100%;}
+  }
 </style>
 </head>
 <body>
@@ -63,12 +131,11 @@
     <div class="hero-inner">
       <div class="hero-grid">
         <span class="eyebrow"><span class="spark"></span> Training &middot; Mid-Year Meetup</span>
-        <h1>NPHTI Mid-Year Meetup</h1>
-        <p class="thanks">Thank you to the attendees and NPHTI faculty for making our 2026 Mid-Year Meetup a success!</p>
-        <p>Check back soon for information on our 2027 Mid-Year Meetup, or visit the Workshops page to learn more about our 2026 Annual Workshops.</p>
-        <span class="badge"><i></i> 2027 details coming soon</span>
+        <h1>Hypnosis for Disorders of <span class="c">Gut-Brain Interaction</span></h1>
+        <p>A four-hour virtual session on DGBI, with treatment-focused and scientifically informed presentations, group discussion, and small-group practice.</p>
+        <p class="tagline">&ldquo;Helping Children Help Themselves&rdquo;</p>
         <div class="hero-ctas">
-          <a class="btn btn-solid" href="nphti-annual-workshops.html">View the 2026 Annual Workshops</a>
+          <a class="btn btn-solid" href="https://www.nphti.org/event-details-registration/2027-pediatric-hypnosis-mid-year-online-meet-up" target="_top">Register Now</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -78,8 +145,88 @@
         </svg>
         <div class="backing" aria-hidden="true"></div>
         <div class="frame">
-          <img src="images/single-pinwheel.jpg" alt="A colorful pinwheel spinning on a rocky mountain summit, with green valleys and peaks in the background">
+          <img src="images/2027-midyear.png" alt="A child holding their stomach, illustrating the abdominal pain central to disorders of gut-brain interaction">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUICK FACTS ===== -->
+  <section class="fact-band">
+    <div class="fact-inner">
+      <div class="fact-grid">
+        <div class="fact t-purple"><div class="val">Apr 20, 2027</div><div class="label">Tuesday</div></div>
+        <div class="fact t-teal"><div class="val">11 AM&ndash;3 PM CT</div><div class="label">Live on Zoom</div></div>
+        <div class="fact t-lav"><div class="val">$180 Early Bird</div><div class="label">Through Feb 28, 2027</div></div>
+        <div class="fact t-aqua"><div class="val">Prior Training Required</div><div class="label">Pediatric hypnosis course</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DGBI ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Why Clinical Hypnosis for DGBI?</h2></div>
+    </div>
+    <div class="about">
+      <p>Disorders of gut-brain interaction, including functional abdominal pain, irritable bowel syndrome, and functional dyspepsia, are among the most common reasons children and teens see a pediatric gastroenterologist. Symptoms are real and often disabling, leaving families searching for answers.</p>
+      <p>Because DGBI involve heightened sensitivity along the gut-brain axis, they respond well to approaches that calm that pathway. <b>Gut-directed hypnotherapy is one of the best-studied psychological treatments for pediatric abdominal pain</b>, with research showing meaningful, lasting relief. This meetup will deepen your skills in applying it.</p>
+    </div>
+  </section>
+
+  <!-- ===== MODERATORS ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Moderated By</h2></div>
+    </div>
+    <div class="mods">
+      <div class="mod">
+        <div class="avatar a-purple"><img class="ph" src="faculty/lombard.jpg" alt="Lisa Lombard" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">LL</span></div>
+        <div><h3>Lisa Lombard</h3><div class="cred">PhD</div></div>
+      </div>
+      <div class="mod">
+        <div class="avatar a-teal"><img class="ph" src="faculty/keating-square.jpg" alt="Adam Keating" loading="lazy" onerror="if(!this.dataset.p){this.dataset.p=1;this.src=this.src.replace(/\.jpg$/,'.png');}else{this.parentNode.classList.add('noimg');}"><span class="ini">AK</span></div>
+        <div><h3>Adam Keating</h3><div class="cred">MD</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REGISTRATION & PRICING ===== -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><h2>Registration</h2></div>
+    </div>
+    <div class="price-grid">
+      <div class="price-box early">
+        <div class="lbl"><i></i> Early Bird</div>
+        <div class="amt">$180</div>
+        <div class="range">Oct 1&ndash;Feb 28</div>
+      </div>
+      <div class="price-box regular">
+        <div class="lbl">Regular</div>
+        <div class="amt">$200</div>
+        <div class="range">Mar 1&ndash;Apr 29</div>
+      </div>
+    </div>
+    <p class="price-note"><b>Who can register:</b> open to those who have previously taken a Pediatric Hypnosis course. Registration and payment are required to attend.</p>
+    <p class="price-note"><b>Accreditation:</b> details will be announced soon.</p>
+    <p class="price-note"><b>Format:</b> the Zoom link is sent after registration. All registered attendees will receive the session recording after the event.</p>
+    <div class="hero-ctas" style="margin-top:22px;">
+      <a class="btn btn-solid" href="https://www.nphti.org/event-details-registration/2027-pediatric-hypnosis-mid-year-online-meet-up" target="_top">Register Now</a>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section class="close-cta">
+    <div class="stripe" aria-hidden="true"></div>
+    <div class="content">
+      <div>
+        <h3><i></i>Reserve Your Spot</h3>
+        <p>Early bird pricing ends February 28, 2027, so register soon.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-solid" href="https://www.nphti.org/event-details-registration/2027-pediatric-hypnosis-mid-year-online-meet-up" target="_top">Register Now</a>
+        <a class="mailto" href="mailto:TrainWithNPHTI@gmail.com">Questions? TrainWithNPHTI@gmail.com</a>
       </div>
     </div>
   </section>
